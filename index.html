@@ -36,7 +36,7 @@
     body {
       background: var(--white);
       color: var(--black);
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
+      font-family: 'TR', sans-serif;
       font-size: 14px;
       line-height: 1.5;
       overflow-x: hidden;
@@ -88,7 +88,7 @@
     }
 
     .nav-logo {
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
+      font-family: 'TR', sans-serif;
       font-size: 1.3rem;
       letter-spacing: 3px;
       text-decoration: none;
@@ -102,7 +102,7 @@
     }
 
     .nav-links a {
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
+      font-family: 'TR', sans-serif;
       font-weight: 700;
       font-size: 0.68rem;
       letter-spacing: 4px;
@@ -128,30 +128,24 @@
       overflow: hidden;
     }
 
-    /* Foto di sfondo */
-    .hero-bg-photo {
+    /* Foto di sfondo — sfumata da nero a sinistra verso destra */
+    .hero::after {
+      content: '';
       position: absolute;
       inset: 0;
-      background-image: url('images/backgroundhome.jpg');
-      background-size: cover;
-      background-position: 22% 45%;
+      background-image:
+        linear-gradient(to right,
+          rgba(8,8,8,1)    0%,
+          rgba(8,8,8,0.85) 35%,
+          rgba(8,8,8,0.4)  65%,
+          rgba(8,8,8,0.1)  100%
+        ),
+        url('images/backgroundhome.jpg');
+      background-size: 100% 100%, cover;
+      background-position: 0 0, 22% 45%;
       opacity: 0.75;
       pointer-events: none;
       z-index: 0;
-    }
-
-    /* Gradiente sopra la foto */
-    .hero-bg-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right,
-        rgba(8,8,8,1)    0%,
-        rgba(8,8,8,0.85) 35%,
-        rgba(8,8,8,0.4)  65%,
-        rgba(8,8,8,0.1)  100%
-      );
-      pointer-events: none;
-      z-index: 1;
     }
 
     .hero::before {
@@ -163,7 +157,7 @@
         repeating-linear-gradient(-45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 0, transparent 50%);
       background-size: 12px 12px;
       pointer-events: none;
-      z-index: 2;
+      z-index: 1;
     }
 
     .hero-inner {
@@ -184,7 +178,7 @@
     }
 
     .hero-title {
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
+      font-family: 'TR', sans-serif;
       font-size: clamp(4.5rem, 14vw, 11rem);
       line-height: 0.88;
       text-transform: uppercase;
@@ -221,26 +215,8 @@
       line-height: 1.7;
     }
 
-    .hero-stat {
-      text-align: right;
-      line-height: 1;
-    }
 
-    .hero-stat-num {
-      font-size: 4.5rem;
-      font-weight: 700;
-      letter-spacing: -4px;
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
-    }
 
-    .hero-stat-label {
-      display: block;
-      font-size: 0.58rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      opacity: 0.45;
-      margin-top: 4px;
-    }
 
     /* ═══════════════════════════════════
        TICKER MANIFESTO
@@ -370,7 +346,7 @@
     }
 
     .ph-band {
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
+      font-family: 'TR', sans-serif;
       font-weight: 700;
       font-size: 0.78rem;
       letter-spacing: 2px;
@@ -385,7 +361,7 @@
       font-weight: 700;
       opacity: 0.1;
       line-height: 1;
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
+      font-family: 'TR', sans-serif;
       letter-spacing: -3px;
     }
 
@@ -446,7 +422,7 @@
     }
 
     .footer-logo {
-      font-family: 'TR', Impact, 'Arial Black', sans-serif;
+      font-family: 'TR', sans-serif;
       font-size: 1.1rem;
       letter-spacing: 2px;
     }
@@ -467,7 +443,6 @@
       .hero { padding: 40px 20px 36px; }
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
-      .hero-stat { text-align: left; }
       .section-header { padding: 20px; }
       .records-wrap { padding: 24px 20px; }
       .records-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -494,8 +469,6 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <div class="hero-bg-photo"></div>
-    <div class="hero-bg-gradient"></div>
     <div class="hero-inner">
 
       <p class="hero-eyebrow">1977 Punk Vinyl Archive &mdash; </p>
@@ -511,9 +484,7 @@
         <p class="hero-tagline">
           “...Don’t you know your last years youth, ‘77 you told the truth...” (Menace, 1979)
         </p>
-        <div class="hero-stat">
-          <div class="hero-stat-num">—</div>
-          <span class="hero-stat-label">- Massimo Redaelli -</span>
+
         </div>
       </div>
 
