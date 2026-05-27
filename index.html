@@ -126,12 +126,10 @@
       border-bottom: 5px solid var(--black);
       position: relative;
       overflow: hidden;
-      min-height: 80vh; /* Aumentato per dare più respiro alla foto */
-      display: flex;
-      align-items: center;
+      min-height: 500px; /* Altezza minima garantita per il blocco iniziale */
     }
 
-    /* Foto di sfondo — Approccio migliorato */
+    /* Foto di sfondo — EFFETTO ZOOM */
     .hero::after {
       content: '';
       position: absolute;
@@ -139,29 +137,36 @@
       background-image:
         linear-gradient(to right,
           rgba(8,8,8,1)    0%,
-          rgba(8,8,8,0.9)  30%,
-          rgba(8,8,8,0.2)  70%,
+          rgba(8,8,8,0.8)  40%,
+          rgba(8,8,8,0.2)  75%,
           rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
       
-      /* CAMBIO STRATEGIA: Usiamo una dimensione fissa o percentuali più alte per permettere lo scroll orizzontale dell'immagine dentro il div */
-      background-size: cover;
-      background-position: right center; /* Forza l'immagine a destra */
-      
-      /* Se vuoi spostarla ancora di più, usa i pixel o percentuali > 100% (ma cover solitamente basta se l'immagine è larga) */
-      /* background-position: 120% center; */
+      /* ZOOM: Ingrandiamo l'immagine del 150% rispetto alla sua dimensione normale */
+      /* e la posizioniamo in modo che il lato destro sia ben visibile */
+      background-size: 160%; 
+      background-position: 95% 40%; /* 95% orizzontale porta il lato destro dell'immagine al centro/destra del sito */
+      background-repeat: no-repeat;
 
       opacity: 0.8;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Media query specifica per spostare il viso su schermi piccoli */
+    /* Fix per schermi molto grandi (per evitare che lo zoom sgrani troppo o lasci bordi vuoti) */
+    @media (min-width: 1600px) {
+      .hero::after {
+        background-size: 130%;
+        background-position: 90% 40%;
+      }
+    }
+
+    /* Media query per mobile: zoom ancora più forte per inquadrare il viso */
     @media (max-width: 768px) {
       .hero::after {
-        background-position: 80% center; /* Sposta il viso lateralmente su mobile */
-        background-size: auto 100%; /* Impedisce all'immagine di rimpicciolirsi troppo */
+        background-size: 250%; /* Zoom massiccio su mobile */
+        background-position: 85% 30%;
       }
     }
 
@@ -178,7 +183,6 @@
     }
 
     .hero-inner {
-      width: 100%;
       max-width: 1280px;
       margin: 0 auto;
       position: relative;
@@ -202,8 +206,6 @@
       text-transform: uppercase;
       letter-spacing: -3px;
       margin-bottom: 8px;
-      /* Aggiunto un leggero ombra per staccare dal fondo se il viso dovesse ancora toccare */
-      text-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
     .hero-title .line2 {
@@ -383,7 +385,7 @@
     }
 
     .record-cover::after {
-      content: '';
+      content: absolute;
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(
@@ -457,7 +459,7 @@
     @media (max-width: 768px) {
       nav { padding: 12px 20px; }
       .nav-links { gap: 18px; }
-      .hero { padding: 40px 20px 36px; min-height: 60vh; }
+      .hero { padding: 40px 20px 36px; }
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       .section-header { padding: 20px; }
