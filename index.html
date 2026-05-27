@@ -128,7 +128,7 @@
       overflow: hidden;
     }
 
-    /* Foto di sfondo — sfumata da nero a sinistra verso destra */
+    /* Foto di sfondo — spostata a destra per non coprire il viso */
     .hero::after {
       content: '';
       position: absolute;
@@ -142,7 +142,7 @@
         ),
         url('images/backgroundhome.jpg');
       background-size: 100% 100%, cover;
-      background-position: 0 0, 22% 45%;
+      background-position: 0 0, 85% 45%; /* Modificato da 22% a 85% per spostare il viso a destra */
       opacity: 0.75;
       pointer-events: none;
       z-index: 0;
@@ -214,9 +214,6 @@
       max-width: 380px;
       line-height: 1.7;
     }
-
-
-
 
     /* ═══════════════════════════════════
        TICKER MANIFESTO
@@ -499,13 +496,6 @@
       <span>VINYL NOT DEAD</span><span class="dot">✦</span>
       <span>CUT PASTE DESTROY</span><span class="dot">✦</span>
       <span>ANARCHY IN THE GROOVE</span><span class="dot">✦</span>
-      <span>GLUE &amp; CHAOS</span><span class="dot">✦</span>
-      <span>77 PUNK VINYL</span><span class="dot">✦</span>
-      <span>NO FUTURE</span><span class="dot">✦</span>
-      <span>KILL YOUR TV</span><span class="dot">✦</span>
-      <span>VINYL NOT DEAD</span><span class="dot">✦</span>
-      <span>CUT PASTE DESTROY</span><span class="dot">✦</span>
-      <span>ANARCHY IN THE GROOVE</span><span class="dot">✦</span>
     </div>
   </div>
 
@@ -590,7 +580,7 @@
 
       <div class="record-card">
         <div class="record-cover">
-          <div class="cover-placeholder">
+          <div class="record-placeholder">
             <span class="ph-band">X-Ray Spex</span>
             <span class="ph-year">78</span>
           </div>
