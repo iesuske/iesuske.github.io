@@ -126,10 +126,10 @@
       border-bottom: 5px solid var(--black);
       position: relative;
       overflow: hidden;
-      min-height: 500px; /* Altezza minima garantita per il blocco iniziale */
+      min-height: 550px;
     }
 
-    /* Foto di sfondo — EFFETTO ZOOM */
+    /* Foto di sfondo — INQUADRATURA SELETTIVA */
     .hero::after {
       content: '';
       position: absolute;
@@ -137,36 +137,40 @@
       background-image:
         linear-gradient(to right,
           rgba(8,8,8,1)    0%,
-          rgba(8,8,8,0.8)  40%,
-          rgba(8,8,8,0.2)  75%,
+          rgba(8,8,8,0.9)  35%,
+          rgba(8,8,8,0.3)  70%,
           rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
       
-      /* ZOOM: Ingrandiamo l'immagine del 150% rispetto alla sua dimensione normale */
-      /* e la posizioniamo in modo che il lato destro sia ben visibile */
-      background-size: 160%; 
-      background-position: 95% 40%; /* 95% orizzontale porta il lato destro dell'immagine al centro/destra del sito */
+      /* ZOOM MASSICCIO: Ingrandiamo molto l'immagine per poter ritagliare solo il ragazzo urlante */
+      /* background-size: 220%; */
+      background-size: 240% auto; 
+      
+      /* POSIZIONAMENTO: Spostiamo l'immagine molto a sinistra (valore percentuale alto) 
+         per portare la parte destra dell'immagine (il ragazzo urlante) nell'inquadratura 
+         e spingere il ragazzo con la cravatta fuori dal bordo destro */
+      background-position: 100% 35%; 
       background-repeat: no-repeat;
 
-      opacity: 0.8;
+      opacity: 0.85;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Fix per schermi molto grandi (per evitare che lo zoom sgrani troppo o lasci bordi vuoti) */
+    /* Media query per schermi molto larghi */
     @media (min-width: 1600px) {
       .hero::after {
-        background-size: 130%;
-        background-position: 90% 40%;
+        background-size: 180% auto;
+        background-position: 100% 35%;
       }
     }
 
-    /* Media query per mobile: zoom ancora più forte per inquadrare il viso */
+    /* Media query per mobile: zoom ancora più estremo per isolare il ragazzo urlante */
     @media (max-width: 768px) {
       .hero::after {
-        background-size: 250%; /* Zoom massiccio su mobile */
-        background-position: 85% 30%;
+        background-size: 450% auto; 
+        background-position: 98% 25%;
       }
     }
 
@@ -385,7 +389,7 @@
     }
 
     .record-cover::after {
-      content: absolute;
+      content: '';
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(
@@ -602,7 +606,7 @@
 
       <div class="record-card">
         <div class="record-cover">
-          <div class="record-placeholder">
+          <div class="cover-placeholder">
             <span class="ph-band">X-Ray Spex</span>
             <span class="ph-year">78</span>
           </div>
