@@ -126,9 +126,12 @@
       border-bottom: 5px solid var(--black);
       position: relative;
       overflow: hidden;
+      min-height: 80vh; /* Aumentato per dare più respiro alla foto */
+      display: flex;
+      align-items: center;
     }
 
-    /* Foto di sfondo — spostata a destra per non coprire il viso */
+    /* Foto di sfondo — Approccio migliorato */
     .hero::after {
       content: '';
       position: absolute;
@@ -136,16 +139,30 @@
       background-image:
         linear-gradient(to right,
           rgba(8,8,8,1)    0%,
-          rgba(8,8,8,0.85) 35%,
-          rgba(8,8,8,0.4)  65%,
-          rgba(8,8,8,0.1)  100%
+          rgba(8,8,8,0.9)  30%,
+          rgba(8,8,8,0.2)  70%,
+          rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
-      background-size: 100% 100%, cover;
-      background-position: 0 0, 85% 45%; /* Modificato da 22% a 85% per spostare il viso a destra */
-      opacity: 0.75;
+      
+      /* CAMBIO STRATEGIA: Usiamo una dimensione fissa o percentuali più alte per permettere lo scroll orizzontale dell'immagine dentro il div */
+      background-size: cover;
+      background-position: right center; /* Forza l'immagine a destra */
+      
+      /* Se vuoi spostarla ancora di più, usa i pixel o percentuali > 100% (ma cover solitamente basta se l'immagine è larga) */
+      /* background-position: 120% center; */
+
+      opacity: 0.8;
       pointer-events: none;
       z-index: 0;
+    }
+
+    /* Media query specifica per spostare il viso su schermi piccoli */
+    @media (max-width: 768px) {
+      .hero::after {
+        background-position: 80% center; /* Sposta il viso lateralmente su mobile */
+        background-size: auto 100%; /* Impedisce all'immagine di rimpicciolirsi troppo */
+      }
     }
 
     .hero::before {
@@ -161,10 +178,11 @@
     }
 
     .hero-inner {
+      width: 100%;
       max-width: 1280px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hero-eyebrow {
@@ -184,6 +202,8 @@
       text-transform: uppercase;
       letter-spacing: -3px;
       margin-bottom: 8px;
+      /* Aggiunto un leggero ombra per staccare dal fondo se il viso dovesse ancora toccare */
+      text-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
     .hero-title .line2 {
@@ -437,7 +457,7 @@
     @media (max-width: 768px) {
       nav { padding: 12px 20px; }
       .nav-links { gap: 18px; }
-      .hero { padding: 40px 20px 36px; }
+      .hero { padding: 40px 20px 36px; min-height: 60vh; }
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       .section-header { padding: 20px; }
