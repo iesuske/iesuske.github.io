@@ -129,7 +129,7 @@
       min-height: 550px;
     }
 
-    /* Foto di sfondo — INQUADRATURA SELETTIVA */
+    /* Foto di sfondo — CORREZIONE POSIZIONE */
     .hero::after {
       content: '';
       position: absolute;
@@ -137,23 +137,24 @@
       background-image:
         linear-gradient(to right,
           rgba(8,8,8,1)    0%,
-          rgba(8,8,8,0.9)  35%,
-          rgba(8,8,8,0.3)  70%,
+          rgba(8,8,8,0.9)  30%,
+          rgba(8,8,8,0.2)  60%,
           rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
       
-      /* ZOOM MASSICCIO: Ingrandiamo molto l'immagine per poter ritagliare solo il ragazzo urlante */
-      /* background-size: 220%; */
-      background-size: 240% auto; 
+      /* ZOOM: Ingrandiamo per avere margine di manovra */
+      background-size: 180% auto; 
       
-      /* POSIZIONAMENTO: Spostiamo l'immagine molto a sinistra (valore percentuale alto) 
-         per portare la parte destra dell'immagine (il ragazzo urlante) nell'inquadratura 
-         e spingere il ragazzo con la cravatta fuori dal bordo destro */
-      background-position: 100% 35%; 
+      /* CORREZIONE: 
+         Usiamo lo 0% (o un valore basso) per mostrare la parte SINISTRA dell'immagine originale.
+         In questo modo il ragazzo con la cravatta (che sta a destra) viene spinto fuori.
+         Il ragazzo urlante (che sta al centro) si sposterà verso la destra dello schermo, liberando la scritta.
+      */
+      background-position: 0% 35%; 
       background-repeat: no-repeat;
 
-      opacity: 0.85;
+      opacity: 0.8;
       pointer-events: none;
       z-index: 0;
     }
@@ -161,16 +162,16 @@
     /* Media query per schermi molto larghi */
     @media (min-width: 1600px) {
       .hero::after {
-        background-size: 180% auto;
-        background-position: 100% 35%;
+        background-size: 140% auto;
+        background-position: 0% 35%;
       }
     }
 
-    /* Media query per mobile: zoom ancora più estremo per isolare il ragazzo urlante */
+    /* Media query per mobile: zoom e posizione per isolare il ragazzo urlante */
     @media (max-width: 768px) {
       .hero::after {
-        background-size: 450% auto; 
-        background-position: 98% 25%;
+        background-size: 300% auto; 
+        background-position: 15% 25%;
       }
     }
 
