@@ -129,7 +129,7 @@
       min-height: 550px;
     }
 
-    /* Foto di sfondo — POSIZIONE ALZATA PER MOSTRARE IL VOLTO */
+    /* Foto di sfondo — VOLTI VISIBILI */
     .hero::after {
       content: '';
       position: absolute;
@@ -145,11 +145,11 @@
       
       background-size: 180% auto; 
       
-      /* MODIFICA: 
-         Il secondo valore è stato portato al 5% per alzare l'immagine 
-         e inquadrare perfettamente il volto del ragazzo urlante.
+      /* REGOLAZIONE FINALE:
+         Per vedere i volti che nello screenshot erano tagliati in basso,
+         dobbiamo AUMENTARE il valore verticale (es. da 5% a 60%).
       */
-      background-position: 0% 5%; 
+      background-position: 0% 60%; 
       background-repeat: no-repeat;
 
       opacity: 0.8;
@@ -161,7 +161,7 @@
     @media (min-width: 1600px) {
       .hero::after {
         background-size: 140% auto;
-        background-position: 0% 5%;
+        background-position: 0% 60%;
       }
     }
 
@@ -169,7 +169,7 @@
     @media (max-width: 768px) {
       .hero::after {
         background-size: 300% auto; 
-        background-position: 15% 5%;
+        background-position: 15% 50%;
       }
     }
 
