@@ -129,7 +129,7 @@
       min-height: 550px;
     }
 
-    /* Foto di sfondo — CORREZIONE POSIZIONE */
+    /* Foto di sfondo — POSIZIONE ALZATA PER MOSTRARE IL VOLTO */
     .hero::after {
       content: '';
       position: absolute;
@@ -143,15 +143,13 @@
         ),
         url('images/backgroundhome.jpg');
       
-      /* ZOOM: Ingrandiamo per avere margine di manovra */
       background-size: 180% auto; 
       
-      /* CORREZIONE: 
-         Usiamo lo 0% (o un valore basso) per mostrare la parte SINISTRA dell'immagine originale.
-         In questo modo il ragazzo con la cravatta (che sta a destra) viene spinto fuori.
-         Il ragazzo urlante (che sta al centro) si sposterà verso la destra dello schermo, liberando la scritta.
+      /* MODIFICA: 
+         Il secondo valore è stato portato al 5% per alzare l'immagine 
+         e inquadrare perfettamente il volto del ragazzo urlante.
       */
-      background-position: 0% 35%; 
+      background-position: 0% 5%; 
       background-repeat: no-repeat;
 
       opacity: 0.8;
@@ -163,15 +161,15 @@
     @media (min-width: 1600px) {
       .hero::after {
         background-size: 140% auto;
-        background-position: 0% 35%;
+        background-position: 0% 5%;
       }
     }
 
-    /* Media query per mobile: zoom e posizione per isolare il ragazzo urlante */
+    /* Media query per mobile */
     @media (max-width: 768px) {
       .hero::after {
         background-size: 300% auto; 
-        background-position: 15% 25%;
+        background-position: 15% 5%;
       }
     }
 
