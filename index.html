@@ -129,7 +129,7 @@
       min-height: 550px;
     }
 
-    /* Foto di sfondo — RAGAZZO URLANTE CENTRATO */
+    /* Foto di sfondo — SPOSTATA A DESTRA SENZA ZOOM */
     .hero::after {
       content: '';
       position: absolute;
@@ -137,23 +137,23 @@
       background-image:
         linear-gradient(to right,
           rgba(8,8,8,1)    0%,
-          rgba(8,8,8,0.9)  25%,
-          rgba(8,8,8,0.1)  55%,
+          rgba(8,8,8,1)    20%, /* Aumentato il nero fisso a sinistra */
+          rgba(8,8,8,0.1)  60%,
           rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
       
-      /* MODIFICA v9: 
-         Riduco lo zoom al 125% per avere più campo visivo.
+      /* MODIFICA: 
+         Usiamo 'contain' o una dimensione fissa per evitare lo zoom eccessivo.
+         'auto 100%' mantiene l'altezza naturale adattandola al blocco.
       */
-      background-size: 125% auto; 
+      background-size: auto 100%; 
       
       /* POSIZIONAMENTO:
-         42% sposta l'immagine quanto basta per far apparire il ragazzo urlante 
-         subito dopo la sfumatura nera della scritta.
-         28% regola l'altezza per inquadrare i visi.
+         Invece della percentuale, usiamo 'right' o un valore in 'vw'.
+         'right 0px' attacca l'immagine al bordo destro dello schermo.
       */
-      background-position: 01% 50%; 
+      background-position: right 0px center; 
       background-repeat: no-repeat;
 
       opacity: 0.85;
@@ -161,19 +161,11 @@
       z-index: 0;
     }
 
-    /* Media query per schermi molto larghi */
-    @media (min-width: 1600px) {
-      .hero::after {
-        background-size: 110% auto;
-        background-position: 01% 50%;
-      }
-    }
-
     /* Media query per mobile */
     @media (max-width: 768px) {
       .hero::after {
-        background-size: 250% auto; 
-        background-position: 45% 30%;
+        background-size: cover; 
+        background-position: 80% center;
       }
     }
 
