@@ -129,7 +129,7 @@
       min-height: 550px;
     }
 
-    /* Foto di sfondo — VOLTI VISIBILI */
+    /* Foto di sfondo — RAGAZZO URLANTE CENTRATO */
     .hero::after {
       content: '';
       position: absolute;
@@ -137,22 +137,26 @@
       background-image:
         linear-gradient(to right,
           rgba(8,8,8,1)    0%,
-          rgba(8,8,8,0.9)  30%,
-          rgba(8,8,8,0.2)  60%,
+          rgba(8,8,8,0.9)  25%,
+          rgba(8,8,8,0.1)  55%,
           rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
       
-      background-size: 180% auto; 
-      
-      /* REGOLAZIONE FINALE:
-         Per vedere i volti che nello screenshot erano tagliati in basso,
-         dobbiamo AUMENTARE il valore verticale (es. da 5% a 60%).
+      /* MODIFICA v9: 
+         Riduco lo zoom al 125% per avere più campo visivo.
       */
-      background-position: 0% 60%; 
+      background-size: 125% auto; 
+      
+      /* POSIZIONAMENTO:
+         42% sposta l'immagine quanto basta per far apparire il ragazzo urlante 
+         subito dopo la sfumatura nera della scritta.
+         28% regola l'altezza per inquadrare i visi.
+      */
+      background-position: 42% 28%; 
       background-repeat: no-repeat;
 
-      opacity: 0.8;
+      opacity: 0.85;
       pointer-events: none;
       z-index: 0;
     }
@@ -160,16 +164,16 @@
     /* Media query per schermi molto larghi */
     @media (min-width: 1600px) {
       .hero::after {
-        background-size: 140% auto;
-        background-position: 0% 60%;
+        background-size: 110% auto;
+        background-position: 42% 28%;
       }
     }
 
     /* Media query per mobile */
     @media (max-width: 768px) {
       .hero::after {
-        background-size: 300% auto; 
-        background-position: 15% 50%;
+        background-size: 250% auto; 
+        background-position: 45% 30%;
       }
     }
 
