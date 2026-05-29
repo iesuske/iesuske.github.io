@@ -129,7 +129,7 @@
       min-height: 550px;
     }
 
-    /* Foto di sfondo — SPOSTATA A DESTRA SENZA ZOOM */
+    /* Foto di sfondo — RIPRISTINO ZOOM E SFUMATURA */
     .hero::after {
       content: '';
       position: absolute;
@@ -137,23 +137,22 @@
       background-image:
         linear-gradient(to right,
           rgba(8,8,8,1)    0%,
-          rgba(8,8,8,1)    20%, /* Aumentato il nero fisso a sinistra */
-          rgba(8,8,8,0.1)  60%,
+          rgba(8,8,8,0.9)  20%,
+          rgba(8,8,8,0.2)  50%,
           rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
       
-      /* MODIFICA: 
-         Usiamo 'contain' o una dimensione fissa per evitare lo zoom eccessivo.
-         'auto 100%' mantiene l'altezza naturale adattandola al blocco.
+      /* ZOOM RIPRISTINATO: 
+         Il 160% ci dà il margine per spostare l'immagine a destra.
       */
-      background-size: auto 100%; 
+      background-size: 160% auto; 
       
       /* POSIZIONAMENTO:
-         Invece della percentuale, usiamo 'right' o un valore in 'vw'.
-         'right 0px' attacca l'immagine al bordo destro dello schermo.
+         Uso un valore negativo (-10vw) per spingere l'immagine 
+         fisicamente fuori dal bordo sinistro, portando il ragazzo a DESTRA.
       */
-      background-position: right 30px center; 
+      background-position: -10vw 45%; 
       background-repeat: no-repeat;
 
       opacity: 0.85;
@@ -164,8 +163,8 @@
     /* Media query per mobile */
     @media (max-width: 768px) {
       .hero::after {
-        background-size: cover; 
-        background-position: 80% center;
+        background-size: 300% auto; 
+        background-position: -20vw 30%;
       }
     }
 
