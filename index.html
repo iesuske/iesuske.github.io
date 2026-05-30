@@ -130,36 +130,33 @@
     }
 
     /* Foto di sfondo — RIPRISTINO ZOOM E SFUMATURA */
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(to right,
-          rgba(8,8,8,1)    0%,
-          rgba(8,8,8,0.9)  20%,
-          rgba(8,8,8,0.2)  50%,
-          rgba(8,8,8,0)    100%
-        ),
-        url('images/backgroundhome.jpg');
-      
-      /* ZOOM RIPRISTINATO: 
-         Il 160% ci dà il margine per spostare l'immagine a destra.
-      */
-      background-size: 100% auto; 
-      
-      /* POSIZIONAMENTO:
-         Uso un valore negativo (-10vw) per spingere l'immagine 
-         fisicamente fuori dal bordo sinistro, portando il ragazzo a DESTRA.
-      */
-      background-position: 14vw 50%; 
-      background-repeat: no-repeat;
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* 1. VIGNETTATURA: scurisce i bordi e i lati */
+    radial-gradient(ellipse at center, transparent 40%, rgba(8,8,8,0.4) 70%, rgba(8,8,8,1) 100%),
+    
+    /* 2. SFUMATURA TESTO: quella che hai già per la scritta */
+    linear-gradient(to right,
+      rgba(8,8,8,1)    0%,
+      rgba(8,8,8,0.9)  20%,
+      rgba(8,8,8,0.1)  55%,
+      rgba(8,8,8,0)    100%
+    ),
+    
+    /* 3. LA TUA FOTO */
+    url('images/backgroundhome.jpg');
 
-      opacity: 0.85;
-      pointer-events: none;
-      z-index: 0;
-    }
-
+  /* Mantieni i tuoi valori di size e position che hai trovato */
+  background-size: 160% auto; 
+  background-position: -10vw 45%; 
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
     /* Media query per mobile */
     @media (max-width: 768px) {
       .hero::after {
