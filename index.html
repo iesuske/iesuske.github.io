@@ -180,6 +180,20 @@
       z-index: 1;
     }
 
+    /* Vignettatura — scurisce i bordi della foto */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse at center,
+        transparent     40%,
+        rgba(8,8,8,0.55) 75%,
+        rgba(8,8,8,0.85) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
     .hero-inner {
       max-width: 1280px;
       margin: 0 auto;
@@ -486,6 +500,7 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
+    <div class="hero-vignette"></div>
     <div class="hero-inner">
 
       <p class="hero-eyebrow">1977 Punk Vinyl Archive &mdash; </p>
