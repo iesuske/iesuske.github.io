@@ -221,12 +221,19 @@
       display: block;
     }
 
-    .hero-divider {
-      width: 40%;
-      height: 1px;
-      background: rgba(255,255,255,0.18);
+    .hero-divider-text {
+      font-family: 'TR', sans-serif;
+      color: rgba(255,255,255,0.35);
       margin: 36px 0 28px;
-    }
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 1.2rem;
+      line-height: 1;
+}
+
+    .hero-divider-text::before {
+      content: "——— ————— —— ———————— ———— ——————— —— ———————— ———";
+}
 
     .hero-bottom {
       display: flex;
@@ -508,7 +515,7 @@
         <span class="line2">&amp; Chaos]</span>
       </h1>
 
-      <div class="hero-divider"></div>
+      <div class="hero-divider-text"></div>
 
       <div class="hero-bottom">
         <p class="hero-tagline">
