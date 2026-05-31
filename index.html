@@ -155,36 +155,27 @@
           rgba(8,8,8,0)    100%
         ),
         url('images/backgroundhome.jpg');
-      
-      /* ZOOM RIPRISTINATO: 
-         Il 160% ci dà il margine per spostare l'immagine a destra.
-      */
-      background-size: 70% auto; 
-      
-      /* POSIZIONAMENTO:
-         Uso un valore negativo (-10vw) per spingere l'immagine 
-         fisicamente fuori dal bordo sinistro, portando il ragazzo a DESTRA.
-      */
-      background-position: 37vw 50%; 
+      background-size: 70% auto;
+      background-position: 37vw 50%;
       background-repeat: no-repeat;
 
-      opacity: 3.85;
+      opacity: 1;
       filter: sepia(60%);
       pointer-events: none;
       z-index: 0;
     }
 
-/* Media query per mobile */
-@media (max-width: 768px) {
-  .hero::after {
-    background-size: 209% auto;
-    background-position: -23vw -74%;
-  }
-  .ticker-track span {
-    font-size: 0.30rem !important;
-    letter-spacing: 3px !important;
-  }
-}
+    /* Media query per mobile */
+    @media (max-width: 768px) {
+      .hero::after {
+        background-size: 209% auto;
+        background-position: -23vw -74%;
+      }
+      .ticker-track span {
+        font-size: 0.30rem !important;
+        letter-spacing: 3px !important;
+      }
+    }
 /* Vignettatura — scurisce i bordi della foto */
     .hero-vignette {
       position: absolute;
