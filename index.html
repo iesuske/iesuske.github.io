@@ -175,24 +175,16 @@
     }
 
     /* Media query per mobile */
-    @media (max-width: 768px) {
-      .hero::after {
-        background-size: 209% auto; 
-        background-position: -23vw -74%;
-      }
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(45deg,  rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 0, transparent 50%),
-        repeating-linear-gradient(-45deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 0, transparent 50%);
-      background-size: 12px 12px;
-      pointer-events: none;
-      z-index: 1;
-    }
+@media (max-width: 768px) {
+  .hero::after {
+    background-size: 209% auto;
+    background-position: -23vw -74%;
+  }
+  .ticker-track span {
+    font-size: 0.45rem;
+    letter-spacing: 3px;
+  }
+}
 
     /* Vignettatura — scurisce i bordi della foto */
     .hero-vignette {
