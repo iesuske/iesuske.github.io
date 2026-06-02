@@ -49,8 +49,7 @@
     .mobile-only { display: none; }
 
     /* ═══════════════════════════════════
-       MODIFICA 2: GRIGLIA DI SFONDO GENERALE
-       Ristretta da 20px a 10px per punti più vicini e densi
+       GRIGLIA DI SFONDO GENERALE
     ═══════════════════════════════════ */
     .grid-overlay-dark {
       position: fixed;
@@ -59,7 +58,7 @@
       z-index: 1; 
       opacity: 0.14;
       background-image: radial-gradient(#080808 1px, transparent 1px);
-      background-size: 10px 10px; /* Griglia più stretta */
+      background-size: 10px 10px;
       mix-blend-mode: multiply; 
     }
     
@@ -116,7 +115,6 @@
       z-index: 10;
     }
 
-    /* Immagine di sfondo dell'Hero */
     .hero::after {
       content: '';
       position: absolute;
@@ -131,12 +129,11 @@
       z-index: 1;
     }
 
-    /* MODIFICA 1: GRIGLIA FOTO HERO LESS BRIGHT
-       Abbassata l'opacità del bianco a 0.06 per non sparare visivamente */
+    /* AGGIORNATO: Intensità della griglia foto portata a 0.10 */
     .hero-grid-texture {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
       background-size: 8px 8px;
       pointer-events: none;
       z-index: 2;
@@ -235,15 +232,19 @@
       font-size: 0.62rem;
       letter-spacing: 6px;
       text-transform: uppercase;
+      vertical-align: middle;
     }
 
-    /* MODIFICA 3: SEPARATORE TICKER PIÙ SOTTILE
-       Forzato a non essere bold e alleggerito di spessore */
+    /* AGGIORNATO: Font del separatore ingrandito e centrato verticalmente */
     .ticker-track .dot { 
-      margin: 0 20px; 
+      margin: 0 18px; 
       opacity: 0.5; 
+      font-size: 1.1rem !important; /* Più grande */
       font-weight: normal !important;
       display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+      transform: translateY(-1px); /* Centratura millimetrica */
     }
 
     @keyframes ticker {
@@ -471,6 +472,7 @@
       }
       .ticker .ticker-track .dot {
         margin: 0 8px !important;
+        font-size: 0.8rem !important;
       }
       
       .section-header { padding: 20px; }
