@@ -256,6 +256,8 @@
        SECTION HEADER
     ═══════════════════════════════════ */
     .section-header {
+      max-width: 1280px; /* AGGIORNATO: Larghezza massima allineata all'Hero */
+      margin: 0 auto;    /* AGGIORNATO: Centra l'intestazione della sezione */
       padding: 28px 40px 20px;
       border-bottom: 2px solid var(--black);
       display: flex;
@@ -281,8 +283,8 @@
     ═══════════════════════════════════ */
     .records-wrap {
       padding: 40px;
-      max-width: 1280px; /* AGGIORNATO: Allineato perfettamente all'Hero */
-      margin: 0 auto;
+      max-width: 1280px; /* Allineato perfettamente alla larghezza dell'Hero */
+      margin: 0 auto;    /* AGGIORNATO: Forza l'intero blocco a posizionarsi esattamente al centro della pagina */
       position: relative; 
       overflow: hidden;
       z-index: 20;
@@ -290,11 +292,11 @@
 
     .records-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      /* AGGIORNATO: repeat(4, 1fr) fa sì che le 4 copertine si distribuiscano equamente occupando tutto lo spazio senza sbilanciarsi a sinistra */
+      grid-template-columns: repeat(4, 1fr); 
       gap: 36px;
       position: relative; 
       z-index: 25;
-      justify-content: center; /* AGGIORNATO: Centra i dischi sullo schermo */
     }
     
     /* ═══════════════════════════════════
@@ -418,7 +420,8 @@
        FOOTER
     ═══════════════════════════════════ */
     footer {
-      margin-top: 72px;
+      max-width: 1280px; /* AGGIORNATO: Allineato all'Hero */
+      margin: 72px auto 0; /* AGGIORNATO: Centrato nella pagina */
       border-top: 3px solid var(--black);
       padding: 28px 40px;
       display: flex;
@@ -478,11 +481,14 @@
       
       .section-header { padding: 20px; }
       .records-wrap { padding: 24px 20px; }
-      .records-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+      
+      /* AGGIORNATO: Su smartphone la griglia passa a 2 colonne per far vedere bene le copertine */
+      .records-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } 
+      
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; margin-top: 40px; }
       
       .hero-tagline {        
-        white-space: normal !important; /* AGGIORNATO: Permette il corretto a capo su mobile */     
+        white-space: normal !important; /* Permette il corretto a capo su mobile dopo "youth," */     
         font-size: 0.85rem;        
       }
     }
