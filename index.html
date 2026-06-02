@@ -55,13 +55,13 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 999; /* Portata sopra a tutto così copre in modo uniforme senza spezzarsi */
+      z-index: 1;
       opacity: 0.15;
       background-image: radial-gradient(#080808 1px, transparent 1px);
       background-size: 20px 20px;
       mix-blend-mode: multiply; 
     }
-
+    
     /* ═══════════════════════════════════
        NAV
     ═══════════════════════════════════ */
@@ -72,9 +72,9 @@
       justify-content: flex-end; 
       align-items: center;
       background: var(--white);
-      position: sticky;
       top: 0;
       z-index: 500;
+      position: relative; 
       overflow: hidden;
     }
     
@@ -127,8 +127,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* NOTA: Il vecchio blocco hero::before che creava il conflitto della doppia griglia è stato rimosso */
     
     .hero-vignette {
       position: absolute;
@@ -271,7 +269,7 @@
       position: relative; 
       z-index: 20;
     }
-
+    
     /* ═══════════════════════════════════
        RECORD CARD
     ═══════════════════════════════════ */
@@ -435,7 +433,7 @@
         background-position: -23vw -74%;
       }
       
-      /* Nota: rimosso anche da qui il blocco .hero::before mobile per evitare doppie griglie su smartphone */
+      /* RIMOSSA la seconda griglia sovrapposta (.hero::before) che rompeva il design mobile */
       
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
@@ -443,11 +441,11 @@
       .mobile-only { display: inline; }
       
       .ticker .ticker-track span {
-        font-size: 0.29rem !important; 
-        letter-spacing: 0.5px !important;
+        font-size: 0.55rem !important; /* Reso leggermente più leggibile rispetto a 0.29rem */
+        letter-spacing: 2px !important;
       }
       .ticker .ticker-track .dot {
-        margin: 0 4px !important;
+        margin: 0 8px !important;
       }
       
       .section-header { padding: 20px; }
@@ -457,7 +455,7 @@
       
       .hero-tagline {        
         white-space: normal;     
-        font-size: 0.75rem;        
+        font-size: 0.85rem;        
       }
     }
 
@@ -513,147 +511,60 @@
 
   <div class="records-wrap">
     <div class="records-grid">
+      
       <div class="record-card">
         <div class="record-cover">
-          <img src="images/records/theclash.jpg" alt="The Clash - The Clash">
-        </div>
-        <div class="record-info">
-          <div class="record-band">The Clash</div>
-          <div class="record-title">The Clash</div>
-          <div class="record-meta">1977 &bull; LP &bull; UK</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <img src="images/records/sexpistols.jpg" alt="Sex Pistols - Never Mind The Bollocks">
+          <div class="cover-placeholder">
+            <div class="ph-band">Sex Pistols</div>
+            <div class="ph-year">77</div>
+          </div>
         </div>
         <div class="record-info">
           <div class="record-band">Sex Pistols</div>
-          <div class="record-title">Never Mind The Bollocks</div>
-          <div class="record-meta">1977 &bull; LP &bull; UK</div>
+          <div class="record-title">Never Mind the Bollocks</div>
+          <div class="record-meta">UK • LP • 1977</div>
         </div>
       </div>
 
       <div class="record-card">
         <div class="record-cover">
-          <img src="images/records/damned.jpg" alt="The Damned - Damned Damned Damned">
+          <div class="cover-placeholder">
+            <div class="ph-band">The Clash</div>
+            <div class="ph-year">77</div>
+          </div>
+        </div>
+        <div class="record-info">
+          <div class="record-band">The Clash</div>
+          <div class="record-title">The Clash (Self Titled)</div>
+          <div class="record-meta">UK • LP • 1977</div>
+        </div>
+      </div>
+
+      <div class="record-card">
+        <div class="record-cover">
+          <div class="cover-placeholder">
+            <div class="ph-band">The Damned</div>
+            <div class="ph-year">77</div>
+          </div>
         </div>
         <div class="record-info">
           <div class="record-band">The Damned</div>
           <div class="record-title">Damned Damned Damned</div>
-          <div class="record-meta">1977 &bull; LP &bull; UK</div>
+          <div class="record-meta">UK • LP • 1977</div>
         </div>
       </div>
 
       <div class="record-card">
         <div class="record-cover">
-          <img src="images/records/ramones.jpg" alt="Ramones - Rocket To Russia">
-        </div>
-        <div class="record-info">
-          <div class="record-band">Ramones</div>
-          <div class="record-title">Rocket To Russia</div>
-          <div class="record-meta">1977 &bull; LP &bull; USA</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <img src="images/records/deadboys.jpg" alt="Dead Boys - Young Loud and Snotty">
+          <div class="cover-placeholder">
+            <div class="ph-band">Dead Boys</div>
+            <div class="ph-year">77</div>
+          </div>
         </div>
         <div class="record-info">
           <div class="record-band">Dead Boys</div>
           <div class="record-title">Young Loud and Snotty</div>
-          <div class="record-meta">1977 &bull; LP &bull; USA</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <img src="images/records/saints.jpg" alt="The Saints - (I'm) Stranded">
-        </div>
-        <div class="record-info">
-          <div class="record-band">The Saints</div>
-          <div class="record-title">(I'm) Stranded</div>
-          <div class="record-meta">1977 &bull; LP &bull; Australia</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <img src="images/records/jam.jpg" alt="The Jam - In The City">
-        </div>
-        <div class="record-info">
-          <div class="record-band">The Jam</div>
-          <div class="record-title">In The City</div>
-          <div class="record-meta">1977 &bull; LP &bull; UK</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <img src="images/records/adverts.jpg" alt="The Adverts - Crossing the Red Sea">
-        </div>
-        <div class="record-info">
-          <div class="record-band">The Adverts</div>
-          <div class="record-title">Crossing the Red Sea</div>
-          <div class="record-meta">1978 &bull; LP &bull; UK</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <div class="cover-placeholder">
-            <div class="ph-band">Generation X</div>
-            <div class="ph-year">1977</div>
-          </div>
-        </div>
-        <div class="record-info">
-          <div class="record-band">Generation X</div>
-          <div class="record-title">Your Generation</div>
-          <div class="record-meta">1977 &bull; 7" &bull; UK</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <div class="cover-placeholder">
-            <div class="ph-band">X-Ray Spex</div>
-            <div class="ph-year">1977</div>
-          </div>
-        </div>
-        <div class="record-info">
-          <div class="record-band">X-Ray Spex</div>
-          <div class="record-title">Oh Bondage Up Yours!</div>
-          <div class="record-meta">1977 &bull; 7" &bull; UK</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <div class="cover-placeholder">
-            <div class="ph-band">The Heartbreakers</div>
-            <div class="ph-year">1977</div>
-          </div>
-        </div>
-        <div class="record-info">
-          <div class="record-band">The Heartbreakers</div>
-          <div class="record-title">L.A.M.F.</div>
-          <div class="record-meta">1977 &bull; LP &bull; UK/USA</div>
-        </div>
-      </div>
-
-      <div class="record-card">
-        <div class="record-cover">
-          <div class="cover-placeholder">
-            <div class="ph-band">Wire</div>
-            <div class="ph-year">1977</div>
-          </div>
-        </div>
-        <div class="record-info">
-          <div class="record-band">Wire</div>
-          <div class="record-title">Pink Flag</div>
-          <div class="record-meta">1977 &bull; LP &bull; UK</div>
+          <div class="record-meta">US • LP • 1977</div>
         </div>
       </div>
 
