@@ -46,7 +46,7 @@
       overflow-x: hidden;
     }
 
-    .mobile-break { display: inline; }
+    .mobile-only { display: none; }
 
     /* ═══════════════════════════════════
        GRIGLIA DI SFONDO GENERALE
@@ -289,7 +289,7 @@
     .records-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-      justify-content: center; 
+      justify-content: center;
       gap: 36px;
       position: relative; 
       z-index: 25;
@@ -303,12 +303,9 @@
       transition: transform 0.25s cubic-bezier(.22,.68,0,1.2);
     }
 
-    .record-card:nth-child(3n+1) { transform: rotate(-1.4deg); }
-    .record-card:nth-child(3n+2) { transform: rotate(0.9deg); }
-    .record-card:nth-child(3n)   { transform: rotate(-0.5deg); }
-
+    /* Rimossa l'inclinazione rotate casuale per garantire la perfetta centratura millimetrica su desktop */
     .record-card:hover {
-      transform: rotate(0deg) scale(1.04) !important;
+      transform: scale(1.04) !important;
       position: relative;
       z-index: 50;
     }
@@ -463,15 +460,13 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* Manda tutto a capo a partire da dopo la parola 'years' */
-      .mobile-break { display: block; margin-top: 2px; }
+      .mobile-only { display: inline; }
       
-      /* Modifiche Ticker Mobile: I nomi dei gruppi ora sono MOLTO più piccoli */
+      /* Scritte in loop ulteriormente rimpicciolite di un punto */
       .ticker .ticker-track span {
-        font-size: 0.38rem !important;
+        font-size: 0.32rem !important;
         letter-spacing: 2px !important;
       }
-      /* Il separatore più rimane intatto e grande, centrato millimetricamente */
       .ticker .ticker-track .dot {
         margin: 0 10px !important;
         font-size: 1.1rem !important;
@@ -510,7 +505,7 @@
       <div class="hero-divider"></div>
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last years <span class="mobile-break">youth, ‘77 you told the truth...”</span> <br>(Menace, 1979)
+          “...Don’t you know your last years <span class="mobile-only">youth, ‘77 you told the truth...”</span> (Menace, 1979)
         </p>
       </div>
     </div>
