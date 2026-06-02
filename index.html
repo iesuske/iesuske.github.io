@@ -456,8 +456,9 @@
       .hero::after {
         background-size: 209% auto;
         background-position: -23vw -74%;
-      } /* <-- CHIUSA CORRETTAMENTE LA GRAFFA */
+      } /* Graffa chiusa correttamente */
       
+      /* GRIGLIA PER MOBILE: Più fitta ma quasi invisibile (3%) per non disturbare */
       .hero::before {
         content: '';
         position: absolute;
@@ -465,11 +466,10 @@
         pointer-events: none;
         z-index: 1;
         background-image:
-        repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 8px),
-        repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 8px);
-        background-size: 8px 8px;
+          repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0 1px, transparent 1px 4px),
+          repeating-linear-gradient(-45deg, rgba(0,0,0,0.03) 0 1px, transparent 1px 4px);
+        background-size: 6px 6px;
         mix-blend-mode: multiply;
-        opacity: 0.95;
       }
       
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
