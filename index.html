@@ -46,9 +46,9 @@
       overflow-x: hidden;
     }
 
-    /* Gestione pulita del ritorno a capo condizionale */
-    .desktop-inline { display: inline; }
+    /* Gestione dei ritorni a capo condizionali */
     .mobile-break { display: none; }
+    .desktop-break { display: block; }
 
     /* ═══════════════════════════════════
        GRIGLIA DI SFONDO GENERALE
@@ -204,7 +204,7 @@
       white-space: nowrap;
       font-style: italic;
       opacity: 0.75;
-      max-width: 700px; /* Aumentato per non troncare la frase su desktop */
+      max-width: 850px;
       line-height: 1.7;
     }
 
@@ -305,7 +305,6 @@
       transition: transform 0.25s cubic-bezier(.22,.68,0,1.2);
     }
 
-    /* Rimossa l'inclinazione asimmetrica per garantire una centratura geometrica perfetta */
     .record-card:hover {
       transform: scale(1.04) !important;
       position: relative;
@@ -462,17 +461,15 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* Forza il blocco a capo unicamente su dispositivi mobile */
-      .desktop-inline { display: inline; }
+      /* Inversione dei break su Mobile: la firma NON va a capo da sola, la frase SI dopo "last years" */
+      .desktop-break { display: none; }
       .mobile-break { display: block; margin: 0; padding: 0; content: ""; }
       
-      /* Scritte dei gruppi nel loop ancora più piccole e pulite */
+      /* Scritte del ticker rimpicciolite */
       .ticker .ticker-track span {
         font-size: 0.32rem !important;
         letter-spacing: 2px !important;
       }
-      
-      /* Il separatore più rimane intatto, grande e bilanciato */
       .ticker .ticker-track .dot {
         margin: 0 10px !important;
         font-size: 1.1rem !important;
@@ -481,7 +478,7 @@
       
       .section-header { padding: 20px; }
       
-      /* Bilanciamento simmetrico millimetrico dei margini laterali delle copertine */
+      /* Centratura millimetrica della griglia dischi mobile */
       .records-wrap { padding: 24px 20px; width: 100%; }
       .records-grid { 
         grid-template-columns: repeat(2, 1fr); 
@@ -519,7 +516,7 @@
       <div class="hero-divider"></div>
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last years<span class="mobile-break"></span> <span class="desktop-inline">youth, ‘77 you told the truth...” (Menace, 1979)</span>
+          “...Don’t you know your last years<span class="mobile-break"></span> youth, ‘77 you told the truth...”<span class="desktop-break"></span>(Menace, 1979)
         </p>
       </div>
     </div>
