@@ -49,22 +49,22 @@
     .mobile-only { display: none; }
 
     /* ═══════════════════════════════════
-       GRIGLIA DI SFONDO GENERALE (CONTINUA)
-       Visibile ovunque, anche nell'header e sezioni
+       MODIFICA 2: GRIGLIA DI SFONDO GENERALE
+       Ristretta da 20px a 10px per punti più vicini e densi
     ═══════════════════════════════════ */
     .grid-overlay-dark {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 1; 
-      opacity: 0.15;
+      opacity: 0.14;
       background-image: radial-gradient(#080808 1px, transparent 1px);
-      background-size: 20px 20px;
+      background-size: 10px 10px; /* Griglia più stretta */
       mix-blend-mode: multiply; 
     }
     
     /* ═══════════════════════════════════
-       NAV (Trasparente per mostrare la griglia nell'header)
+       NAV
     ═══════════════════════════════════ */
     nav {
       border-bottom: var(--border);
@@ -72,7 +72,7 @@
       display: flex;
       justify-content: flex-end; 
       align-items: center;
-      background: transparent; /* Sfondo trasparente per la griglia */
+      background: transparent;
       top: 0;
       z-index: 20;
       position: relative; 
@@ -116,7 +116,7 @@
       z-index: 10;
     }
 
-    /* L'immagine di sfondo */
+    /* Immagine di sfondo dell'Hero */
     .hero::after {
       content: '';
       position: absolute;
@@ -131,11 +131,12 @@
       z-index: 1;
     }
 
-    /* RIPRISTINATA: Griglia bellissima retinata solo per la foto dell'hero */
+    /* MODIFICA 1: GRIGLIA FOTO HERO LESS BRIGHT
+       Abbassata l'opacità del bianco a 0.06 per non sparare visivamente */
     .hero-grid-texture {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
       background-size: 8px 8px;
       pointer-events: none;
       z-index: 2;
@@ -236,11 +237,13 @@
       text-transform: uppercase;
     }
 
-    /* Ripristinate le croci punk come separatori */
+    /* MODIFICA 3: SEPARATORE TICKER PIÙ SOTTILE
+       Forzato a non essere bold e alleggerito di spessore */
     .ticker-track .dot { 
       margin: 0 20px; 
-      opacity: 0.6; 
-      font-weight: normal;
+      opacity: 0.5; 
+      font-weight: normal !important;
+      display: inline-block;
     }
 
     @keyframes ticker {
@@ -367,7 +370,6 @@
       letter-spacing: -3px;
     }
 
-    /* Rigature interne alla copertina stile fotocopia */
     .record-cover::after {
       content: '';
       position: absolute;
@@ -511,22 +513,22 @@
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>SEX PISTOLS</span><span class="dot">✚</span>
-      <span>THE CLASH</span><span class="dot">✚</span>
-      <span>THE DAMNED</span><span class="dot">✚</span>
-      <span>SHAM 69</span><span class="dot">✚</span>
-      <span>DEAD BOYS</span><span class="dot">✚</span>
-      <span>MENACE</span><span class="dot">✚</span>
-      <span>NEW YORK DOLLS</span><span class="dot">✚</span>
-      <span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="dot">✚</span>
-      <span>STIFF LITTLE FINGERS</span><span class="dot">✚</span>
-      <span>BUZZCOCKS</span><span class="dot">✚</span>
-      <span>SUICIDE</span><span class="dot">✚</span>
-      <span>999</span><span class="dot">✚</span>
-      <span>THE ADVERTS</span><span class="dot">✚</span>
-      <span>THE BOYS</span><span class="dot">✚</span>
-      <span>ANGELIC UPSTARTS</span><span class="dot">✚</span>
-      <span>THE ELECTRIC CHAIRS</span><span class="dot">✚</span>
+      <span>SEX PISTOLS</span><span class="dot">+</span>
+      <span>THE CLASH</span><span class="dot">+</span>
+      <span>THE DAMNED</span><span class="dot">+</span>
+      <span>SHAM 69</span><span class="dot">+</span>
+      <span>DEAD BOYS</span><span class="dot">+</span>
+      <span>MENACE</span><span class="dot">+</span>
+      <span>NEW YORK DOLLS</span><span class="dot">+</span>
+      <span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="dot">+</span>
+      <span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
+      <span>BUZZCOCKS</span><span class="dot">+</span>
+      <span>SUICIDE</span><span class="dot">+</span>
+      <span>999</span><span class="dot">+</span>
+      <span>THE ADVERTS</span><span class="dot">+</span>
+      <span>THE BOYS</span><span class="dot">+</span>
+      <span>ANGELIC UPSTARTS</span><span class="dot">+</span>
+      <span>THE ELECTRIC CHAIRS</span><span class="dot">+</span>
     </div>
   </div>
 
