@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[GLUE &amp; CHAOS] — My 1977 Punk Vinyl Archive</title>
+  <title>[GLUE &amp; CHAOS] — 1977 Punk Vinyl Archive</title>
   <style>
 
     /* ═══════════════════════════════════
@@ -85,7 +85,7 @@
       border-bottom: var(--border);
       padding: 14px 40px;
       display: flex;
-      justify-content: flex-end; /* Allinea il menu a destra ora che la sinistra è vuota */
+      justify-content: space-between;
       align-items: center;
       background: var(--white);
       position: sticky;
@@ -474,7 +474,7 @@
         background-position: -23vw -74%;
       }
       
-      /* RETINATURA ANNI 70 MOBILE: Resa più visibile con punti bianchi, opacità al 14% e grandezza 6px */
+      /* RETINATURA ANNI 70 MOBILE: Resa ottimizzata e pulita */
       .hero::before {
         content: '';
         position: absolute;
@@ -493,13 +493,13 @@
       /* Attiva l'a capo condizionale solo su dispositivi mobili */
       .mobile-only { display: inline; }
       
-      /* TICKER SU MOBILE: ULTERIORE RIDUZIONE DEL FONT A 0.28rem E LETTER-SPACING A 2px */
+      /* TICKER SU MOBILE: RIDUZIONE STRUTTURALE (Font 0.22rem, Lettere fitte e margini stretti) */
       .ticker-track span {
-        font-size: 0.28rem !important; 
-        letter-spacing: 2px !important;
+        font-size: 0.22rem !important; 
+        letter-spacing: 1.5px !important;
       }
       .ticker-track .dot {
-        margin: 0 8px;
+        margin: 0 5px;
       }
       
       .section-header { padding: 20px; }
@@ -517,6 +517,10 @@
 <body>
 
   <nav>
+    <div>
+      <span class="nav-logo">[Glue &amp; Chaos]</span>
+      <a href="mailto:maxximo@gmail.com?subject=From the site [Glue%26Chaos]" class="nav-sub" title="maxximo@gmail.com" target="_blank">Massimo Redaelli</a>
+    </div>
     <ul class="nav-links">
       <li><a href="#" title="About">About</a></li>
     </ul>
@@ -526,7 +530,7 @@
     <div class="hero-vignette"></div>
     <div class="hero-inner">
 
-      <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
+      <p class="hero-eyebrow">1977 Punk Vinyl Archive-</p>
 
       <h1 class="hero-title">
         [Glue<br>
@@ -643,7 +647,7 @@
 
   <footer>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
-    <span class="footer-copy">My 1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
+    <span class="footer-copy">1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
   </footer>
 
 </body>
