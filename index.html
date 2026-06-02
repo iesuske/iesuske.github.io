@@ -46,8 +46,6 @@
       overflow-x: hidden;
     }
 
-    .mobile-only { display: none; }
-
     /* ═══════════════════════════════════
        GRIGLIA DI SFONDO GENERALE
     ═══════════════════════════════════ */
@@ -201,8 +199,20 @@
       font-size: 1.20rem;
       font-style: italic;
       opacity: 0.75;
-      max-width: 650px; /* Abbastanza largo per tenere tutto su una riga sola su desktop */
+      max-width: 900px;
       line-height: 1.7;
+    }
+
+    /* Di base (su Desktop) le parti della citazione stanno affiancate */
+    .hero-tagline .part1,
+    .hero-tagline .part2 {
+      display: inline;
+    }
+
+    /* La firma va sempre a capo, sia su Desktop che su Mobile */
+    .hero-tagline .autore-sempre-capo {
+      display: block;
+      margin-top: 6px;
     }
 
     /* ═══════════════════════════════════
@@ -464,8 +474,6 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      .mobile-only { display: none !important; } /* Rimosso l'uso del tag br */
-      
       .ticker .ticker-track span {
         font-size: 0.35rem !important;
         letter-spacing: 2px !important;
@@ -484,7 +492,16 @@
       
       .hero-tagline {        
         font-size: 0.85rem;        
-        max-width: 250px !important; /* Costringe geometricamente il testo ad andare a capo dopo youth, */
+        max-width: none !important; 
+      }
+
+      /* Solo su mobile, spezza la citazione a metà dopo "years" */
+      .hero-tagline .part1 {
+        display: block !important;
+        margin-bottom: 2px;
+      }
+      .hero-tagline .part2 {
+        display: block !important;
       }
     } 
     
@@ -508,7 +525,11 @@
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
       <div class="hero-divider"></div>
       <div class="hero-bottom">
-        <p class="hero-tagline">“...Don’t you know your last years youth, ’77 you told the truth...” (Menace, 1979)</p>
+        <p class="hero-tagline">
+          <span class="part1">“...Don’t you know your last years</span> 
+          <span class="part2">youth, ’77 you told the truth...”</span> 
+          <span class="autore-sempre-capo">(Menace, 1979)</span>
+        </p>
       </div>
     </div>
   </section>
