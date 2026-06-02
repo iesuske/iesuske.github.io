@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link class="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <meta charset="UTF-8">
@@ -166,18 +166,16 @@
       z-index: 0;
     }
 
-    /* GRIGLIA PER DESKTOP: Linee chiare sottili ma visibili su monitor PC */
+    /* RETINATURA ANNI 70 DESKTOP: Effetto retino tipografico pulito (punti fini distanziati) */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       pointer-events: none;
       z-index: 1; 
-      background-image:
-        repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0 1.5px, transparent 1.5px 7px),
-        repeating-linear-gradient(-45deg, rgba(255,255,255,0.08) 0 1.5px, transparent 1.5px 7px);
-      background-size: 14px 14px;
-      mix-blend-mode: overlay;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 15%, transparent 16%);
+      background-size: 8px 8px;
+      background-position: 0 0;
       opacity: 1;
     }
 
@@ -471,26 +469,24 @@
       .hero::after {
         background-size: 209% auto;
         background-position: -23vw -74%;
-      } /* Graffa chiusa correttamente */
+      }
       
-      /* GRIGLIA PER MOBILE: Più fitta ma quasi invisibile (3%) per non disturbare */
+      /* RETINATURA ANNI 70 MOBILE: Punti scuriti al minimo (3% opacità) per non disturbare lo schermo piccolo */
       .hero::before {
         content: '';
         position: absolute;
         inset: 0;
         pointer-events: none;
         z-index: 1;
-        background-image:
-          repeating-linear-gradient(45deg, rgba(0,0,0,0.03) 0 1px, transparent 1px 4px),
-          repeating-linear-gradient(-45deg, rgba(0,0,0,0.03) 0 1px, transparent 1px 4px);
-        background-size: 6px 6px;
-        mix-blend-mode: multiply;
+        background-image: radial-gradient(rgba(0, 0, 0, 0.03) 15%, transparent 16%);
+        background-size: 5px 5px;
+        background-position: 0 0;
+        opacity: 1;
       }
       
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* Dimensione testo ticker ottimizzata per mobile (0.6rem invece di 0.30rem) */
       .ticker-track span {
         font-size: 0.6rem !important; 
         letter-spacing: 3px !important;
