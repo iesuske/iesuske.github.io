@@ -45,9 +45,6 @@
       overflow-x: hidden;
     }
 
-    /* Gestione dinamica dell'a capo solo su mobile */
-    .mobile-only { display: none; }
-
     /* ═══════════════════════════════════
        GRAIN XEROX OVERLAY — DUE LAYER
     ═══════════════════════════════════ */
@@ -85,32 +82,12 @@
       border-bottom: var(--border);
       padding: 14px 40px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end; 
       align-items: center;
       background: var(--white);
       position: sticky;
       top: 0;
       z-index: 500;
-    }
-
-    .nav-logo {
-      font-family: 'TR', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 3px;
-      text-decoration: none;
-      color: var(--black);
-      font-weight: bold;
-    }
-
-    .nav-sub {
-      display: block;
-      font-size: 0.55rem;
-      letter-spacing: 4px;
-      text-transform: none;
-      opacity: 0.6;
-      color: var(--black);
-      margin-top: 2px;
-      text-decoration: none;
     }
     
     .nav-links {
@@ -169,7 +146,7 @@
       z-index: 0;
     }
 
-    /* RETINATURA ANNI 70 DESKTOP: Effetto retino tipografico pulito (punti fini distanziati) */
+    /* RETINATURA ANNI 70 DESKTOP */
     .hero::before {
       content: '';
       position: absolute;
@@ -182,7 +159,7 @@
       opacity: 1;
     }
 
-    /* Vignettatura — scurisce i bordi della foto */
+    /* Vignettatura */
     .hero-vignette {
       position: absolute;
       inset: 0;
@@ -203,6 +180,7 @@
       z-index: 2;
     }
 
+    /* Forzatura azzeramento spazio tra ultima lettera e trattino */
     .hero-eyebrow {
       font-size: 0.62rem;
       letter-spacing: 7px;
@@ -211,6 +189,11 @@
       margin-bottom: 20px;
       padding-left: 14px;
       border-left: 3px solid var(--white);
+    }
+
+    .hero-eyebrow span {
+      letter-spacing: 0 !important;
+      display: inline-block;
     }
 
     .hero-title {
@@ -487,18 +470,10 @@
         opacity: 1;
       }
       
-      /* CORREZIONE DISTANZIAMENTO TRATTINO SU MOBILE */
-      .hero-eyebrow {
-        letter-spacing: 3px !important;
-      }
-      
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* Attiva l'a capo condizionale solo su dispositivi mobili */
-      .mobile-only { display: inline; }
-      
-      /* TICKER SU MOBILE: CALIBRATO A 0.5rem E LEGGIBILE */
+      /* TICKER SU MOBILE AUMENTATO A 0.5rem COME DA RICHIESTA */
       .ticker-track span {
         font-size: 0.5rem !important; 
         letter-spacing: 2px !important;
@@ -522,10 +497,6 @@
 <body>
 
   <nav>
-    <div>
-      <span class="nav-logo">[Glue &amp; Chaos]</span>
-      <a href="mailto:maxximo@gmail.com?subject=From the site [Glue%26Chaos]" class="nav-sub" title="maxximo@gmail.com" target="_blank">Massimo Redaelli</a>
-    </div>
     <ul class="nav-links">
       <li><a href="#" title="About">About</a></li>
     </ul>
@@ -535,7 +506,7 @@
     <div class="hero-vignette"></div>
     <div class="hero-inner">
 
-      <p class="hero-eyebrow">1977 Punk Vinyl Archive-</p>
+      <p class="hero-eyebrow">1977 Punk Vinyl Archiv<span>e-</span></p>
 
       <h1 class="hero-title">
         [Glue<br>
@@ -546,7 +517,7 @@
 
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last years youth,<br class="mobile-only"> ‘77 you told the truth...” <br>(Menace, 1979)
+          “...Don’t you know your last years youth, ‘77 you told the truth...” <br>(Menace, 1979)
         </p>
       </div>
     </div>
