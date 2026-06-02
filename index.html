@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[GLUE &amp; CHAOS] — 1977 Punk Vinyl Archive</title>
+  <title>[GLUE &amp; CHAOS] — My 1977 Punk Vinyl Archive</title>
   <style>
 
     /* ═══════════════════════════════════
@@ -44,6 +44,9 @@
       line-height: 1.5;
       overflow-x: hidden;
     }
+
+    /* Gestione dinamica dell'a capo solo su mobile */
+    .mobile-only { display: none; }
 
     /* ═══════════════════════════════════
        GRAIN XEROX OVERLAY — DUE LAYER
@@ -471,15 +474,15 @@
         background-position: -23vw -74%;
       }
       
-      /* RETINATURA ANNI 70 MOBILE: Punti scuriti al minimo (3% opacità) per non disturbare lo schermo piccolo */
+      /* RETINATURA ANNI 70 MOBILE: Resa più visibile con punti bianchi, opacità al 14% e grandezza 6px */
       .hero::before {
         content: '';
         position: absolute;
         inset: 0;
         pointer-events: none;
         z-index: 1;
-        background-image: radial-gradient(rgba(0, 0, 0, 0.03) 15%, transparent 16%);
-        background-size: 5px 5px;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.14) 15%, transparent 16%);
+        background-size: 6px 6px;
         background-position: 0 0;
         opacity: 1;
       }
@@ -487,13 +490,16 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* RIDUZIONE FONT TICKER SU MOBILE */
+      /* Attiva l'a capo condizionale solo su dispositivi mobili */
+      .mobile-only { display: inline; }
+      
+      /* TICKER SU MOBILE: ULTERIORE RIDUZIONE DEL FONT A 0.35rem */
       .ticker-track span {
-        font-size: 0.45rem !important; 
+        font-size: 0.35rem !important; 
         letter-spacing: 3px !important;
       }
       .ticker-track .dot {
-        margin: 0 10px;
+        margin: 0 8px;
       }
       
       .section-header { padding: 20px; }
@@ -520,7 +526,7 @@
     <div class="hero-vignette"></div>
     <div class="hero-inner">
 
-      <p class="hero-eyebrow">1977 Punk Vinyl Archive &mdash;</p>
+      <p class="hero-eyebrow">My 1977 Punk Vinyl Archive &mdash;</p>
 
       <h1 class="hero-title">
         [Glue<br>
@@ -531,7 +537,7 @@
 
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last years youth, ‘77 you told the truth...” <br>(Menace, 1979)
+          “...Don’t you know your last years youth,<br class="mobile-only"> ‘77 you told the truth...” <br>(Menace, 1979)
         </p>
       </div>
     </div>
@@ -637,7 +643,7 @@
 
   <footer>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
-    <span class="footer-copy">1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
+    <span class="footer-copy">My 1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
   </footer>
 
 </body>
