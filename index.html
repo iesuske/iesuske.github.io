@@ -48,7 +48,7 @@
 
     /* Gestione dei ritorni a capo condizionali */
     .mobile-break { display: none; }
-    .desktop-break { display: block; }
+    .always-break { display: block; }
 
     /* ═══════════════════════════════════
        GRIGLIA DI SFONDO GENERALE
@@ -461,8 +461,7 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* Inversione dei break su Mobile: la firma NON va a capo da sola, la frase SI dopo "last years" */
-      .desktop-break { display: none; }
+      /* Attivazione del doppio blocco a capo su Mobile */
       .mobile-break { display: block; margin: 0; padding: 0; content: ""; }
       
       /* Scritte del ticker rimpicciolite */
@@ -516,7 +515,7 @@
       <div class="hero-divider"></div>
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last years<span class="mobile-break"></span> youth, ‘77 you told the truth...”<span class="desktop-break"></span>(Menace, 1979)
+          “...Don’t you know your last years<span class="mobile-break"></span> youth, ‘77 you told the truth...”<span class="always-break"></span>(Menace, 1979)
         </p>
       </div>
     </div>
