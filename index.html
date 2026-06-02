@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[GLUE & CHAOS] — 1977 Punk Vinyl Archive</title>
+  <title>[GLUE &amp; CHAOS] — 1977 Punk Vinyl Archive</title>
   <style>
 
     /* ═══════════════════════════════════
@@ -96,6 +96,7 @@
       letter-spacing: 3px;
       text-decoration: none;
       color: var(--black);
+      font-weight: bold;
     }
 
     .nav-sub {
@@ -106,6 +107,7 @@
       opacity: 0.6;
       color: var(--black);
       margin-top: 2px;
+      text-decoration: none;
     }
     
     .nav-links {
@@ -158,40 +160,13 @@
       background-size: 70% auto;
       background-position: 37vw 50%;
       background-repeat: no-repeat;
-
       opacity: 1;
       filter: sepia(60%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Media query per mobile */
-    @media (max-width: 768px) {
-      .hero::after {
-        background-size: 209% auto;
-        background-position: -23vw -74%;
-    }
-      
-      /* Retinatura diagonale incrociata leggera — inserire subito dopo .hero::after */
-      .hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 1; /* sotto .hero-inner (che ha z-index:2) */
-        background-image:
-        repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 8px),
-        repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 8px);
-        background-size: 8px 8px;
-        mix-blend-mode: multiply;
-        opacity: 0.95;
-    }
-      .ticker-track span {
-        font-size: 0.30rem !important;
-        letter-spacing: 3px !important;
-      }
-    }
-/* Vignettatura — scurisce i bordi della foto */
+    /* Vignettatura — scurisce i bordi della foto */
     .hero-vignette {
       position: absolute;
       inset: 0;
@@ -309,13 +284,6 @@
       letter-spacing: 6px;
       text-transform: uppercase;
       font-weight: 700;
-    }
-
-    .section-sub {
-      font-size: 0.62rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.4;
     }
 
     /* ═══════════════════════════════════
@@ -484,8 +452,35 @@
       nav { padding: 12px 20px; }
       .nav-links { gap: 18px; }
       .hero { padding: 40px 20px 36px; }
+      
+      .hero::after {
+        background-size: 209% auto;
+        background-position: -23vw -74%;
+      } /* <-- CHIUSA CORRETTAMENTE LA GRAFFA */
+      
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image:
+        repeating-linear-gradient(45deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 8px),
+        repeating-linear-gradient(-45deg, rgba(0,0,0,0.04) 0 4px, transparent 4px 8px);
+        background-size: 8px 8px;
+        mix-blend-mode: multiply;
+        opacity: 0.95;
+      }
+      
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
+      
+      /* Dimensione testo ticker ottimizzata per mobile (0.6rem invece di 0.30rem) */
+      .ticker-track span {
+        font-size: 0.6rem !important; 
+        letter-spacing: 3px !important;
+      }
+      
       .section-header { padding: 20px; }
       .records-wrap { padding: 24px 20px; }
       .records-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -500,23 +495,21 @@
 </head>
 <body>
 
-  <!-- ═══ NAV ═══ -->
   <nav>
     <div>
-      <span class="footer-logo">[Glue&amp;Chaos]</span>
+      <span class="nav-logo">[Glue &amp; Chaos]</span>
       <a href="mailto:maxximo@gmail.com?subject=From the site [Glue%26Chaos]" class="nav-sub" title="maxximo@gmail.com" target="_blank">Massimo Redaelli</a>
     </div>
     <ul class="nav-links">
-    <li><a href="#" title="About">About</a></li>
+      <li><a href="#" title="About">About</a></li>
     </ul>
   </nav>
 
-  <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero-vignette"></div>
     <div class="hero-inner">
 
-      <p class="hero-eyebrow">1977 Punk Vinyl Archive &mdash; </p>
+      <p class="hero-eyebrow">1977 Punk Vinyl Archive &mdash;</p>
 
       <h1 class="hero-title">
         [Glue<br>
@@ -529,17 +522,14 @@
         <p class="hero-tagline">
           “...Don’t you know your last years youth, ‘77 you told the truth...” (Menace, 1979)
         </p>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══ TICKER ═══ -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track"><span>SEX PISTOLS</span><span class="dot">✦</span><span>THE CLASH</span><span class="dot">✦</span><span>THE DAMNED</span><span class="dot">✦</span><span>SHAM 69</span><span class="dot">✦</span><span>DEAD BOYS</span><span class="dot">✦</span><span>MENACE</span><span class="dot">✦</span><span>NEW YORK DOLLS</span><span class="dot">✦</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="dot">✦</span><span>STIFF LITTLE FINGERS</span><span class="dot">✦</span><span>BUZZCOCKS</span><span class="dot">✦</span><span>SUICIDE</span><span class="dot">✦</span><span>999</span><span class="dot">✦</span><span>THE ADVERTS</span><span class="dot">✦</span><span>THE BOYS</span><span class="dot">✦</span><span>ANGELIC UPSTARTS</span><span class="dot">✦</span><span>THE ELECTRIC CHAIRS</span><span class="dot">✦</span><span>SEX PISTOLS</span><span class="dot">✦</span><span>THE CLASH</span><span class="dot">✦</span><span>THE DAMNED</span><span class="dot">✦</span><span>SHAM 69</span><span class="dot">✦</span><span>DEAD BOYS</span><span class="dot">✦</span><span>MENACE</span><span class="dot">✦</span><span>NEW YORK DOLLS</span><span class="dot">✦</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="dot">✦</span><span>STIFF LITTLE FINGERS</span><span class="dot">✦</span><span>BUZZCOCKS</span><span class="dot">✦</span><span>SUICIDE</span><span class="dot">✦</span><span>999</span><span class="dot">✦</span><span>THE ADVERTS</span><span class="dot">✦</span><span>THE BOYS</span><span class="dot">✦</span><span>ANGELIC UPSTARTS</span><span class="dot">✦</span><span>THE ELECTRIC CHAIRS</span><span class="dot">✦</span></div>
   </div>
 
-  <!-- ═══ ULTIMI ARRIVI ═══ -->
   <div class="section-header">
     <span class="section-label">&#9733; Latest Arrivals</span>
   </div>
@@ -634,7 +624,6 @@
     </div>
   </div>
 
-  <!-- ═══ FOOTER ═══ -->
   <footer>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
     <span class="footer-copy">1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
