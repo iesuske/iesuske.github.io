@@ -77,7 +77,25 @@
         rgba(0,0,0,0.012) 4px
       );
     }
-
+    
+    /* ═══════════════════════════════════
+       GRIGLIA DARK (Per sezioni a sfondo bianco)
+    ═══════════════════════════════════ */
+    .grid-overlay-dark {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.08;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        #080808 3px,
+        #080808 4px
+      );
+    }
+    
     /* ═══════════════════════════════════
        NAV
     ═══════════════════════════════════ */
@@ -538,7 +556,8 @@
     </div>
   </div>
 
-  <div class="section-header">
+  <div class="section-header" style="position: relative; overflow: hidden;">
+    <div class="grid-overlay-dark"></div>
     <span class="section-label">&#9733; Latest Arrivals</span>
   </div>
 
@@ -632,7 +651,8 @@
     </div>
   </div>
 
-  <footer>
+  <footer style="position: relative; overflow: hidden;">
+    <div class="grid-overlay-dark"></div>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
     <span class="footer-copy">My 1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
   </footer>
