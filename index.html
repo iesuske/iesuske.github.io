@@ -481,16 +481,17 @@
       .section-header { padding: 20px; }
       .records-wrap { padding: 24px 20px; }
       
-      /* AGGIORNATO: Su smartphone la griglia passa a 2 colonne per far vedere bene le copertine */
       .records-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } 
       
       footer { padding: 24px 20px; flex-direction: column; text-align: center; margin-top: 40px; }
       
       .hero-tagline {        
         font-size: 0.85rem;        
+        max-width: none; /* Sblocca la larghezza su mobile */
       }
+    } /* Chiude la media query correttamente */
     
-      </style>
+  </style>
 </head>
 <body>
 
