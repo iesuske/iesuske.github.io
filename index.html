@@ -166,6 +166,21 @@
       z-index: 0;
     }
 
+    /* GRIGLIA PER DESKTOP: Linee chiare sottili ma visibili su monitor PC */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1; 
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0 1.5px, transparent 1.5px 7px),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.08) 0 1.5px, transparent 1.5px 7px);
+      background-size: 14px 14px;
+      mix-blend-mode: overlay;
+      opacity: 1;
+    }
+
     /* Vignettatura — scurisce i bordi della foto */
     .hero-vignette {
       position: absolute;
