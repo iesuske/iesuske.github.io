@@ -180,7 +180,6 @@
       z-index: 2;
     }
 
-    /* Forzatura azzeramento spazio tra ultima lettera e trattino */
     .hero-eyebrow {
       font-size: 0.62rem;
       letter-spacing: 7px;
@@ -473,13 +472,13 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* TICKER SU MOBILE AUMENTATO A 0.5rem COME DA RICHIESTA */
-      .ticker-track span {
-        font-size: 0.5rem !important; 
-        letter-spacing: 2px !important;
+      /* TICKER SU MOBILE: RIDOTTO A 0.4rem E RE-IMPOSTATA LA SINTASSI CORRETTA */
+      .ticker .ticker-track span {
+        font-size: 0.4rem !important; 
+        letter-spacing: 1px !important;
       }
-      .ticker-track .dot {
-        margin: 0 12px;
+      .ticker .ticker-track .dot {
+        margin: 0 8px !important;
       }
       
       .section-header { padding: 20px; }
