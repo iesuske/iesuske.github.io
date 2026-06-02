@@ -63,15 +63,23 @@
       background-size: 200px;
     }
 
-    /* NUOVA GRIGLIA PUNK DOT-MATRIX */
+    /* Vecchia versione da sostituire: */
+    /* .grid-overlay-dark { ... } */
+
+    /* Nuova versione corretta: */
     .grid-overlay-dark {
-      position: absolute;
-      inset: 0;
+      /* Cambia absolute in fixed */
+      position: fixed; 
+      /* Assicura che copra tutto lo schermo */
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       pointer-events: none;
-      z-index: 10;
-      opacity: 0.20;
+      z-index: 0; /* Mettila dietro a tutto */
+      opacity: 0.15;
       background-image: radial-gradient(#080808 1px, transparent 1px);
-      background-size: 12px 12px;
+      background-size: 20px 20px;
     }
 
     /* ═══════════════════════════════════
@@ -509,9 +517,13 @@
   </style>
 </head>
 <body>
+  <div class="grid-overlay-dark"></div>
 
   <nav>
-    <div class="grid-overlay-dark"></div>
+    <ul class="nav-links">
+...
+
+  <nav>
     <ul class="nav-links">
       <li><a href="#" title="About">About</a></li>
     </ul>
@@ -543,12 +555,10 @@
   </div>
 
   <div class="section-header">
-    <div class="grid-overlay-dark"></div>
     <span class="section-label">&#9733; Latest Arrivals</span>
   </div>
 
   <div class="records-wrap">
-    <div class="grid-overlay-dark"></div>
     <div class="records-grid">
 
       <div class="record-card">
@@ -639,7 +649,6 @@
   </div>
 
   <footer>
-    <div class="grid-overlay-dark"></div>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
     <span class="footer-copy">My 1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
   </footer>
