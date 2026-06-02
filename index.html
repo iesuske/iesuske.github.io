@@ -64,11 +64,16 @@
     }
 
     /* Versione corretta: Griglia Fissa Globale */
+    /* 1. Rimuovi o disabilita il body::before se interferisce */
+    /* 2. Mantieni la griglia come unico overlay globale */
     .grid-overlay-dark {
-      position: fixed; /* Fissa rispetto alla finestra */
-      inset: 0;
-      pointer-events: none;
-      z-index: 0; /* Dietro a tutto */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none; /* Fondamentale: permette di cliccare sotto */
+      z-index: 9999;        /* Portala davanti a tutto per vederla ovunque */
       opacity: 0.15;
       background-image: radial-gradient(#080808 1px, transparent 1px);
       background-size: 20px 20px;
