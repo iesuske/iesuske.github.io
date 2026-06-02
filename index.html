@@ -463,15 +463,15 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* Forza il ritorno a capo solo su mobile a partire dalla parola 'years' */
+      /* Manda tutto a capo a partire da dopo la parola 'years' */
       .mobile-break { display: block; margin-top: 2px; }
       
-      /* Modifiche Ticker Mobile: SOLO i nomi dei gruppi vengono rimpiccioliti */
+      /* Modifiche Ticker Mobile: I nomi dei gruppi ora sono MOLTO più piccoli */
       .ticker .ticker-track span {
-        font-size: 0.48rem !important;
+        font-size: 0.38rem !important;
         letter-spacing: 2px !important;
       }
-      /* Il separatore più rimane intatto e grande come richiesto */
+      /* Il separatore più rimane intatto e grande, centrato millimetricamente */
       .ticker .ticker-track .dot {
         margin: 0 10px !important;
         font-size: 1.1rem !important;
@@ -510,7 +510,7 @@
       <div class="hero-divider"></div>
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last <span class="mobile-break">years youth, ‘77 you told the truth...”</span> <br>(Menace, 1979)
+          “...Don’t you know your last years <span class="mobile-break">youth, ‘77 you told the truth...”</span> <br>(Menace, 1979)
         </p>
       </div>
     </div>
