@@ -201,7 +201,8 @@
       font-size: 1.20rem;
       font-style: italic;
       opacity: 0.75;
-      max-width: 480px; /* Allargato leggermente per dare più respiro su desktop ed evitare rotture precoci */
+      max-width: none; /* Rimosso il blocco per farlo distendere completamente su desktop */
+      white-space: nowrap; /* Costringe il testo desktop a stare su una riga sola */
       line-height: 1.7;
     }
 
@@ -484,6 +485,7 @@
       
       .hero-tagline {        
         font-size: 0.85rem;        
+        white-space: normal !important; /* Permette l'andare a capo su mobile */
         max-width: none !important; 
       }
     } 
