@@ -234,7 +234,7 @@
     }
 
     /* ═══════════════════════════════════
-       TICKER MANIFESTO — MODIFICATO (CROCE)
+       TICKER MANIFESTO
     ═══════════════════════════════════ */
     .ticker {
       background: var(--black);
@@ -251,6 +251,7 @@
       display: inline-block;
       animation: ticker 42s linear infinite;
       will-change: transform;
+      font-family: 'TR', sans-serif; /* Assicurato font TR qui */
     }
 
     .ticker-track span {
@@ -259,7 +260,13 @@
       text-transform: uppercase;
     }
 
-    .ticker-track .cross { margin: 0 20px; opacity: 0.4; display: inline-block; font-size: 0.8rem; }
+    /* Modifica richiesta: '+' invece di dot, con font TR */
+    .ticker-track .cross { 
+      margin: 0 20px; 
+      opacity: 0.6; 
+      display: inline-block; 
+      font-size: 0.8rem;
+    }
 
     @keyframes ticker {
       from { transform: translateX(0); }
@@ -473,7 +480,6 @@
       
       .mobile-only { display: inline; }
       
-      /* TICKER MOBILE ANCORA RIDOTTO */
       .ticker .ticker-track span {
         font-size: 0.29rem !important; 
         letter-spacing: 0.5px !important;
@@ -526,7 +532,10 @@
   </section>
 
   <div class="ticker" aria-hidden="true">
-    <div class="ticker-track"><span>SEX PISTOLS</span><span class="cross">+</span><span>THE CLASH</span><span class="cross">+</span><span>THE DAMNED</span><span class="cross">+</span><span>SHAM 69</span><span class="cross">+</span><span>DEAD BOYS</span><span class="cross">+</span><span>MENACE</span><span class="cross">+</span><span>NEW YORK DOLLS</span><span class="cross">+</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="cross">+</span><span>STIFF LITTLE FINGERS</span><span class="cross">+</span><span>BUZZCOCKS</span><span class="cross">+</span><span>SUICIDE</span><span class="cross">+</span><span>999</span><span class="cross">+</span><span>THE ADVERTS</span><span class="cross">+</span><span>THE BOYS</span><span class="cross">+</span><span>ANGELIC UPSTARTS</span><span class="cross">+</span><span>THE ELECTRIC CHAIRS</span><span class="cross">+</span><span>SEX PISTOLS</span><span class="cross">+</span><span>THE CLASH</span><span class="cross">+</span><span>THE DAMNED</span><span class="cross">+</span><span>SHAM 69</span><span class="cross">+</span><span>DEAD BOYS</span><span class="cross">+</span><span>MENACE</span><span class="cross">+</span><span>NEW YORK DOLLS</span><span class="cross">+</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="cross">+</span><span>STIFF LITTLE FINGERS</span><span class="cross">+</span><span>BUZZCOCKS</span><span class="cross">+</span><span>SUICIDE</span><span class="cross">+</span><span>999</span><span class="cross">+</span><span>THE ADVERTS</span><span class="cross">+</span><span>THE BOYS</span><span class="cross">+</span><span>ANGELIC UPSTARTS</span><span class="cross">+</span><span>THE ELECTRIC CHAIRS</span><span class="cross">+</span></div>
+    <div class="ticker-track">
+      <span>SEX PISTOLS</span><span class="cross">+</span><span>THE CLASH</span><span class="cross">+</span><span>THE DAMNED</span><span class="cross">+</span><span>SHAM 69</span><span class="cross">+</span><span>DEAD BOYS</span><span class="cross">+</span><span>MENACE</span><span class="cross">+</span><span>NEW YORK DOLLS</span><span class="cross">+</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="cross">+</span><span>STIFF LITTLE FINGERS</span><span class="cross">+</span><span>BUZZCOCKS</span><span class="cross">+</span><span>SUICIDE</span><span class="cross">+</span><span>999</span><span class="cross">+</span><span>THE ADVERTS</span><span class="cross">+</span><span>THE BOYS</span><span class="cross">+</span><span>ANGELIC UPSTARTS</span><span class="cross">+</span><span>THE ELECTRIC CHAIRS</span><span class="cross">+</span>
+      <span>SEX PISTOLS</span><span class="cross">+</span><span>THE CLASH</span><span class="cross">+</span><span>THE DAMNED</span><span class="cross">+</span><span>SHAM 69</span><span class="cross">+</span><span>DEAD BOYS</span><span class="cross">+</span><span>MENACE</span><span class="cross">+</span><span>NEW YORK DOLLS</span><span class="cross">+</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="cross">+</span><span>STIFF LITTLE FINGERS</span><span class="cross">+</span><span>BUZZCOCKS</span><span class="cross">+</span><span>SUICIDE</span><span class="cross">+</span><span>999</span><span class="cross">+</span><span>THE ADVERTS</span><span class="cross">+</span><span>THE BOYS</span><span class="cross">+</span><span>ANGELIC UPSTARTS</span><span class="cross">+</span><span>THE ELECTRIC CHAIRS</span><span class="cross">+</span>
+    </div>
   </div>
 
   <div class="section-header">
