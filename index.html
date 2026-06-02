@@ -49,7 +49,7 @@
     .mobile-only { display: none; }
 
     /* ═══════════════════════════════════
-       GRAIN XEROX OVERLAY — DUE LAYER
+       TEXTURES (XEROX & DARK GRID)
     ═══════════════════════════════════ */
     body::before {
       content: '';
@@ -63,39 +63,17 @@
       background-size: 200px;
     }
 
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 8999;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0,0,0,0.012) 3px,
-        rgba(0,0,0,0.012) 4px
-      );
-    }
-    
-    /* ═══════════════════════════════════
-       GRIGLIA DARK (Per sezioni a sfondo bianco)
-    ═══════════════════════════════════ */
+    /* NUOVA GRIGLIA PUNK DOT-MATRIX */
     .grid-overlay-dark {
       position: absolute;
       inset: 0;
       pointer-events: none;
       z-index: 10;
       opacity: 0.08;
-      background-image: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        #080808 3px,
-        #080808 4px
-      );
+      background-image: radial-gradient(#080808 1px, transparent 1px);
+      background-size: 12px 12px;
     }
-    
+
     /* ═══════════════════════════════════
        NAV
     ═══════════════════════════════════ */
@@ -109,12 +87,16 @@
       position: sticky;
       top: 0;
       z-index: 500;
+      position: relative; 
+      overflow: hidden;
     }
     
     .nav-links {
       list-style: none;
       display: flex;
       gap: 36px;
+      position: relative;
+      z-index: 20;
     }
 
     .nav-links a {
@@ -269,7 +251,6 @@
       display: inline-block;
       animation: ticker 42s linear infinite;
       will-change: transform;
-      font-family: 'TR', sans-serif; /* Assicurato font TR qui */
     }
 
     .ticker-track span {
@@ -278,13 +259,7 @@
       text-transform: uppercase;
     }
 
-    /* Modifica richiesta: '+' invece di dot, con font TR */
-    .ticker-track .cross { 
-      margin: 0 20px; 
-      opacity: 0.6; 
-      display: inline-block; 
-      font-size: 0.8rem;
-    }
+    .ticker-track .dot { margin: 0 20px; opacity: 0.4; }
 
     @keyframes ticker {
       from { transform: translateX(0); }
@@ -300,6 +275,8 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      position: relative; 
+      overflow: hidden;
     }
 
     .section-label {
@@ -307,6 +284,8 @@
       letter-spacing: 6px;
       text-transform: uppercase;
       font-weight: 700;
+      position: relative; 
+      z-index: 20;
     }
 
     /* ═══════════════════════════════════
@@ -316,12 +295,16 @@
       padding: 40px;
       max-width: 1360px;
       margin: 0 auto;
+      position: relative; 
+      overflow: hidden;
     }
 
     .records-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
       gap: 36px;
+      position: relative; 
+      z-index: 20;
     }
 
     /* ═══════════════════════════════════
@@ -453,12 +436,16 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
+      position: relative; 
+      overflow: hidden;
     }
 
     .footer-logo {
       font-family: 'TR', sans-serif;
       font-size: 1.1rem;
       letter-spacing: 2px;
+      position: relative; 
+      z-index: 20;
     }
 
     .footer-copy {
@@ -466,6 +453,8 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       opacity: 0.38;
+      position: relative; 
+      z-index: 20;
     }
 
     /* ═══════════════════════════════════
@@ -502,9 +491,8 @@
         font-size: 0.29rem !important; 
         letter-spacing: 0.5px !important;
       }
-      .ticker .ticker-track .cross {
+      .ticker .ticker-track .dot {
         margin: 0 4px !important;
-        font-size: 0.4rem !important;
       }
       
       .section-header { padding: 20px; }
@@ -523,6 +511,7 @@
 <body>
 
   <nav>
+    <div class="grid-overlay-dark"></div>
     <ul class="nav-links">
       <li><a href="#" title="About">About</a></li>
     </ul>
@@ -550,18 +539,16 @@
   </section>
 
   <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>SEX PISTOLS</span><span class="cross">+</span><span>THE CLASH</span><span class="cross">+</span><span>THE DAMNED</span><span class="cross">+</span><span>SHAM 69</span><span class="cross">+</span><span>DEAD BOYS</span><span class="cross">+</span><span>MENACE</span><span class="cross">+</span><span>NEW YORK DOLLS</span><span class="cross">+</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="cross">+</span><span>STIFF LITTLE FINGERS</span><span class="cross">+</span><span>BUZZCOCKS</span><span class="cross">+</span><span>SUICIDE</span><span class="cross">+</span><span>999</span><span class="cross">+</span><span>THE ADVERTS</span><span class="cross">+</span><span>THE BOYS</span><span class="cross">+</span><span>ANGELIC UPSTARTS</span><span class="cross">+</span><span>THE ELECTRIC CHAIRS</span><span class="cross">+</span>
-      <span>SEX PISTOLS</span><span class="cross">+</span><span>THE CLASH</span><span class="cross">+</span><span>THE DAMNED</span><span class="cross">+</span><span>SHAM 69</span><span class="cross">+</span><span>DEAD BOYS</span><span class="cross">+</span><span>MENACE</span><span class="cross">+</span><span>NEW YORK DOLLS</span><span class="cross">+</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="cross">+</span><span>STIFF LITTLE FINGERS</span><span class="cross">+</span><span>BUZZCOCKS</span><span class="cross">+</span><span>SUICIDE</span><span class="cross">+</span><span>999</span><span class="cross">+</span><span>THE ADVERTS</span><span class="cross">+</span><span>THE BOYS</span><span class="cross">+</span><span>ANGELIC UPSTARTS</span><span class="cross">+</span><span>THE ELECTRIC CHAIRS</span><span class="cross">+</span>
-    </div>
+    <div class="ticker-track"><span>SEX PISTOLS</span><span class="dot">✦</span><span>THE CLASH</span><span class="dot">✦</span><span>THE DAMNED</span><span class="dot">✦</span><span>SHAM 69</span><span class="dot">✦</span><span>DEAD BOYS</span><span class="dot">✦</span><span>MENACE</span><span class="dot">✦</span><span>NEW YORK DOLLS</span><span class="dot">✦</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="dot">✦</span><span>STIFF LITTLE FINGERS</span><span class="dot">✦</span><span>BUZZCOCKS</span><span class="dot">✦</span><span>SUICIDE</span><span class="dot">✦</span><span>999</span><span class="dot">✦</span><span>THE ADVERTS</span><span class="dot">✦</span><span>THE BOYS</span><span class="dot">✦</span><span>ANGELIC UPSTARTS</span><span class="dot">✦</span><span>THE ELECTRIC CHAIRS</span><span class="dot">✦</span><span>SEX PISTOLS</span><span class="dot">✦</span><span>THE CLASH</span><span class="dot">✦</span><span>THE DAMNED</span><span class="dot">✦</span><span>SHAM 69</span><span class="dot">✦</span><span>DEAD BOYS</span><span class="dot">✦</span><span>MENACE</span><span class="dot">✦</span><span>NEW YORK DOLLS</span><span class="dot">✦</span><span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="dot">✦</span><span>STIFF LITTLE FINGERS</span><span class="dot">✦</span><span>BUZZCOCKS</span><span class="dot">✦</span><span>SUICIDE</span><span class="dot">✦</span><span>999</span><span class="dot">✦</span><span>THE ADVERTS</span><span class="dot">✦</span><span>THE BOYS</span><span class="dot">✦</span><span>ANGELIC UPSTARTS</span><span class="dot">✦</span><span>THE ELECTRIC CHAIRS</span><span class="dot">✦</span></div>
   </div>
 
-  <div class="section-header" style="position: relative; overflow: hidden;">
+  <div class="section-header">
     <div class="grid-overlay-dark"></div>
     <span class="section-label">&#9733; Latest Arrivals</span>
   </div>
 
   <div class="records-wrap">
+    <div class="grid-overlay-dark"></div>
     <div class="records-grid">
 
       <div class="record-card">
@@ -651,7 +638,7 @@
     </div>
   </div>
 
-  <footer style="position: relative; overflow: hidden;">
+  <footer>
     <div class="grid-overlay-dark"></div>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
     <span class="footer-copy">My 1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
