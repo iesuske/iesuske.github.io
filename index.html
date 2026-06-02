@@ -474,15 +474,15 @@
         background-position: -23vw -74%;
       }
       
-      /* RETINATURA ANNI 70 MOBILE: Resa ottimizzata e pulita */
+      /* RETINATURA ANNI 70 MOBILE: Punti ottimizzati (3% opacità) per non disturbare lo schermo piccolo */
       .hero::before {
         content: '';
         position: absolute;
         inset: 0;
         pointer-events: none;
         z-index: 1;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.14) 15%, transparent 16%);
-        background-size: 6px 6px;
+        background-image: radial-gradient(rgba(0, 0, 0, 0.03) 15%, transparent 16%);
+        background-size: 5px 5px;
         background-position: 0 0;
         opacity: 1;
       }
@@ -493,7 +493,7 @@
       /* Attiva l'a capo condizionale solo su dispositivi mobili */
       .mobile-only { display: inline; }
       
-      /* TICKER SU MOBILE: RIDUZIONE STRUTTURALE (Font 0.22rem, Lettere fitte e margini stretti) */
+      /* TICKER SU MOBILE: SUPER MINI (Font 0.22rem, Lettere fitte e margini stretti) */
       .ticker-track span {
         font-size: 0.22rem !important; 
         letter-spacing: 1.5px !important;
