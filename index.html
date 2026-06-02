@@ -129,7 +129,6 @@
       z-index: 1;
     }
 
-    /* AGGIORNATO: Intensità della griglia foto portata a 0.10 */
     .hero-grid-texture {
       position: absolute;
       inset: 0;
@@ -202,7 +201,7 @@
       font-size: 1.20rem;
       font-style: italic;
       opacity: 0.75;
-      max-width: 380px;
+      max-width: 480px; /* Allargato leggermente per dare più respiro su desktop ed evitare rotture precoci */
       line-height: 1.7;
     }
 
@@ -234,16 +233,15 @@
       vertical-align: middle;
     }
 
-    /* AGGIORNATO: Font del separatore ingrandito e centrato verticalmente */
     .ticker-track .dot { 
       margin: 0 18px; 
       opacity: 0.5; 
-      font-size: 1.1rem !important; /* Più grande */
+      font-size: 1.1rem !important; 
       font-weight: normal !important;
       display: inline-block;
       vertical-align: middle;
       line-height: 1;
-      transform: translateY(-1px); /* Centratura millimetrica */
+      transform: translateY(-1px); 
     }
 
     @keyframes ticker {
@@ -255,8 +253,8 @@
        SECTION HEADER
     ═══════════════════════════════════ */
     .section-header {
-      max-width: 1280px; /* AGGIORNATO: Larghezza massima allineata all'Hero */
-      margin: 0 auto;    /* AGGIORNATO: Centra l'intestazione della sezione */
+      max-width: 1280px; 
+      margin: 0 auto;    
       padding: 28px 40px 20px;
       border-bottom: 2px solid var(--black);
       display: flex;
@@ -282,8 +280,8 @@
     ═══════════════════════════════════ */
     .records-wrap {
       padding: 40px;
-      max-width: 1280px; /* Allineato perfettamente alla larghezza dell'Hero */
-      margin: 0 auto;    /* AGGIORNATO: Forza l'intero blocco a posizionarsi esattamente al centro della pagina */
+      max-width: 1280px; 
+      margin: 0 auto;    
       position: relative; 
       overflow: hidden;
       z-index: 20;
@@ -291,7 +289,6 @@
 
     .records-grid {
       display: grid;
-      /* AGGIORNATO: repeat(4, 1fr) fa sì che le 4 copertine si distribuiscano equamente occupando tutto lo spazio senza sbilanciarsi a sinistra */
       grid-template-columns: repeat(4, 1fr); 
       gap: 36px;
       position: relative; 
@@ -419,8 +416,8 @@
        FOOTER
     ═══════════════════════════════════ */
     footer {
-      max-width: 1280px; /* AGGIORNATO: Allineato all'Hero */
-      margin: 72px auto 0; /* AGGIORNATO: Centrato nella pagina */
+      max-width: 1280px; 
+      margin: 72px auto 0; 
       border-top: 3px solid var(--black);
       padding: 28px 40px;
       display: flex;
@@ -467,7 +464,7 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      .mobile-only { display: inline; }
+      .mobile-only { display: inline !important; }
       
       .ticker .ticker-track span {
         font-size: 0.35rem !important;
@@ -487,9 +484,9 @@
       
       .hero-tagline {        
         font-size: 0.85rem;        
-        max-width: none; /* Sblocca la larghezza su mobile */
+        max-width: none !important; 
       }
-    } /* Chiude la media query correttamente */
+    } 
     
   </style>
 </head>
@@ -507,13 +504,11 @@
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
     <div class="hero-inner">
-      <p class="hero-eyebrow">My 1977 Punk Vinyl Archiv<span>e-</span></p>
+      <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
       <div class="hero-divider"></div>
       <div class="hero-bottom">
-        <p class="hero-tagline">
-          “...Don’t you know your last years youth,<br class="mobile-only"> ‘77 you told the truth...” <br>(Menace, 1979)
-        </p>
+        <p class="hero-tagline">“...Don’t you know your last years youth,<br class="mobile-only">’77 you told the truth...”<br>(Menace, 1979)</p>
       </div>
     </div>
   </section>
