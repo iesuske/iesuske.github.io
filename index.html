@@ -46,9 +46,7 @@
       overflow-x: hidden;
     }
 
-    /* Gestione dei ritorni a capo condizionali */
-    .mobile-break { display: none; }
-    .always-break { display: block; }
+    .mobile-only { display: none; }
 
     /* ═══════════════════════════════════
        GRIGLIA DI SFONDO GENERALE
@@ -131,6 +129,7 @@
       z-index: 1;
     }
 
+    /* AGGIORNATO: Intensità della griglia foto portata a 0.10 */
     .hero-grid-texture {
       position: absolute;
       inset: 0;
@@ -204,7 +203,7 @@
       white-space: nowrap;
       font-style: italic;
       opacity: 0.75;
-      max-width: 850px;
+      max-width: 380px;
       line-height: 1.7;
     }
 
@@ -236,15 +235,16 @@
       vertical-align: middle;
     }
 
+    /* AGGIORNATO: Font del separatore ingrandito e centrato verticalmente */
     .ticker-track .dot { 
       margin: 0 18px; 
       opacity: 0.5; 
-      font-size: 1.1rem !important; 
+      font-size: 1.1rem !important; /* Più grande */
       font-weight: normal !important;
       display: inline-block;
       vertical-align: middle;
       line-height: 1;
-      transform: translateY(-1px); 
+      transform: translateY(-1px); /* Centratura millimetrica */
     }
 
     @keyframes ticker {
@@ -291,7 +291,6 @@
     .records-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-      justify-content: center;
       gap: 36px;
       position: relative; 
       z-index: 25;
@@ -305,8 +304,12 @@
       transition: transform 0.25s cubic-bezier(.22,.68,0,1.2);
     }
 
+    .record-card:nth-child(3n+1) { transform: rotate(-1.4deg); }
+    .record-card:nth-child(3n+2) { transform: rotate(0.9deg); }
+    .record-card:nth-child(3n)   { transform: rotate(-0.5deg); }
+
     .record-card:hover {
-      transform: scale(1.04) !important;
+      transform: rotate(0deg) scale(1.04) !important;
       position: relative;
       z-index: 50;
     }
@@ -461,31 +464,20 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      /* Attivazione del doppio blocco a capo su Mobile */
-      .mobile-break { display: block; margin: 0; padding: 0; content: ""; }
+      .mobile-only { display: inline; }
       
-      /* Scritte del ticker rimpicciolite */
       .ticker .ticker-track span {
-        font-size: 0.32rem !important;
+        font-size: 0.55rem !important;
         letter-spacing: 2px !important;
       }
       .ticker .ticker-track .dot {
-        margin: 0 10px !important;
-        font-size: 1.1rem !important;
-        transform: translateY(-1px);
+        margin: 0 8px !important;
+        font-size: 0.8rem !important;
       }
       
       .section-header { padding: 20px; }
-      
-      /* Centratura millimetrica della griglia dischi mobile */
-      .records-wrap { padding: 24px 20px; width: 100%; }
-      .records-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 20px; 
-        width: 100%;
-        margin: 0 auto;
-      }
-      
+      .records-wrap { padding: 24px 20px; }
+      .records-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
       footer { padding: 24px 20px; flex-direction: column; text-align: center; }
       
       .hero-tagline {        
@@ -515,7 +507,7 @@
       <div class="hero-divider"></div>
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last years<span class="mobile-break"></span> youth, ‘77 you told the truth...”<span class="always-break"></span>(Menace, 1979)
+          “...Don’t you know your last years youth,<br class="mobile-only"> ‘77 you told the truth...” <br>(Menace, 1979)
         </p>
       </div>
     </div>
@@ -523,6 +515,23 @@
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
+      <span>SEX PISTOLS</span><span class="dot">+</span>
+      <span>THE CLASH</span><span class="dot">+</span>
+      <span>THE DAMNED</span><span class="dot">+</span>
+      <span>SHAM 69</span><span class="dot">+</span>
+      <span>DEAD BOYS</span><span class="dot">+</span>
+      <span>MENACE</span><span class="dot">+</span>
+      <span>NEW YORK DOLLS</span><span class="dot">+</span>
+      <span>RICHARD HELL &amp; THE VOIDOIDS</span><span class="dot">+</span>
+      <span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
+      <span>BUZZCOCKS</span><span class="dot">+</span>
+      <span>SUICIDE</span><span class="dot">+</span>
+      <span>999</span><span class="dot">+</span>
+      <span>THE ADVERTS</span><span class="dot">+</span>
+      <span>THE BOYS</span><span class="dot">+</span>
+      <span>ANGELIC UPSTARTS</span><span class="dot">+</span>
+      <span>THE ELECTRIC CHAIRS</span><span class="dot">+</span>
+      
       <span>SEX PISTOLS</span><span class="dot">+</span>
       <span>THE CLASH</span><span class="dot">+</span>
       <span>THE DAMNED</span><span class="dot">+</span>
