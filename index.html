@@ -201,8 +201,7 @@
       font-size: 1.20rem;
       font-style: italic;
       opacity: 0.75;
-      max-width: none; /* Rimosso il blocco per farlo distendere completamente su desktop */
-      white-space: nowrap; /* Costringe il testo desktop a stare su una riga sola */
+      max-width: 650px; /* Abbastanza largo per tenere tutto su una riga sola su desktop */
       line-height: 1.7;
     }
 
@@ -465,7 +464,7 @@
       .hero-title { font-size: clamp(3.2rem, 18vw, 5rem); letter-spacing: -1px; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
       
-      .mobile-only { display: inline !important; }
+      .mobile-only { display: none !important; } /* Rimosso l'uso del tag br */
       
       .ticker .ticker-track span {
         font-size: 0.35rem !important;
@@ -485,8 +484,7 @@
       
       .hero-tagline {        
         font-size: 0.85rem;        
-        white-space: normal !important; /* Permette l'andare a capo su mobile */
-        max-width: none !important; 
+        max-width: 250px !important; /* Costringe geometricamente il testo ad andare a capo dopo youth, */
       }
     } 
     
@@ -510,7 +508,7 @@
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
       <div class="hero-divider"></div>
       <div class="hero-bottom">
-        <p class="hero-tagline">“...Don’t you know your last years youth,<br class="mobile-only">’77 you told the truth...”<br>(Menace, 1979)</p>
+        <p class="hero-tagline">“...Don’t you know your last years youth, ’77 you told the truth...” (Menace, 1979)</p>
       </div>
     </div>
   </section>
