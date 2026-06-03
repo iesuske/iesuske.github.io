@@ -75,6 +75,12 @@
       position: relative; 
       overflow: hidden;
     }
+
+    .nav-links {
+      list-style: none; /* Rimuove definitivamente il pallino */
+      display: flex;
+      gap: 24px;
+    }
     
     .nav-links a {
       font-family: 'TR', sans-serif;
@@ -87,42 +93,20 @@
       padding-bottom: 2px;
       border-bottom: 2px solid transparent;
       transition: border-color 0.15s;
-  /* Rende l'elemento cliccabile e reattivo al focus nativo */
-      outline: none; 
     }
 
-/* 1. Comportamento Desktop: hover normale con il mouse */
+    /* Su Desktop: sottolineatura all'hover del mouse */
     @media (hover: hover) and (pointer: fine) {
-    .nav-links a:hover { 
-      border-bottom: 2px solid var(--black); 
-    }
-    }
-
-/* 2. Soluzione per Mobile (Safari e Chrome): 
-   Mostra la linea quando viene toccato (focus), 
-   ma la fa sparire non appena si tocca un qualsiasi altro punto del corpo della pagina (body) */
-.nav-links a:focus {
-  border-bottom: 2px solid var(--black);
-}
-
-body:has(a:focus) a:not(:focus) {
-  border-bottom: 2px solid transparent;
-}
-
-    .nav-links a {
-      font-family: 'TR', sans-serif;
-      font-weight: 700;
-      font-size: 0.68rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--black);
-      padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.15s;
+      .nav-links a:hover { 
+        border-bottom: 2px solid var(--black); 
+      }
     }
 
-    .nav-links a:hover { border-bottom: 2px solid var(--black); }
+    /* Su Mobile: si sottolinea solo nel momento esatto in cui tocchi, 
+       evitando che Safari mantenga lo stato attivo dopo il click */
+    .nav-links a:active {
+      border-bottom: 2px solid var(--black);
+    }
 
     /* ═══════════════════════════════════
        HERO
