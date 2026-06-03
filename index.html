@@ -44,7 +44,7 @@
       font-size: 14px;
       line-height: 1.5;
       overflow-x: hidden;
-      -webkit-tap-highlight-color: transparent; /* Pulisce il flash sui browser touch */
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* ═══════════════════════════════════
@@ -62,7 +62,7 @@
     }
     
     /* ═══════════════════════════════════
-       NAV
+       NAV & DROPDOWN (STILE FANZINE PUNK)
     ═══════════════════════════════════ */
     nav {
       border-bottom: var(--border);
@@ -72,17 +72,19 @@
       align-items: center;
       background: transparent;
       top: 0;
-      z-index: 20;
+      z-index: 100; /* Alzato per stare sopra a tutto */
       position: relative; 
-      overflow: hidden;
+      overflow: visible; /* Fondamentale per far uscire la tendina! */
     }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 24px;
+      gap: 14px; /* Ridotto leggermente per far spazio ai rettangoli */
+      align-items: center;
     }
     
+    /* Link principali: Effetto ritaglio fanzine di base */
     .nav-links a {
       font-family: 'TR', sans-serif;
       font-weight: 700;
@@ -91,26 +93,83 @@
       text-transform: uppercase;
       text-decoration: none;
       color: var(--black);
-      padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.15s;
-      outline: none; 
+      padding: 6px 12px;
+      background: transparent;
+      display: inline-block;
+      transition: background-color 0.12s, color 0.12s;
+      outline: none;
     }
 
-    /* Desktop: sottolineatura all'hover del mouse */
+    /* Hover desktop e attivazione mobile/touch */
     @media (hover: hover) and (pointer: fine) {
-      .nav-links a:hover { 
-        border-bottom: 2px solid var(--black); 
+      .nav-links a:hover,
+      .dropdown:hover .dropdown-trigger {
+        background-color: var(--black);
+        color: var(--white);
       }
     }
+    .nav-links a.touched,
+    .dropdown.open .dropdown-trigger {
+      background-color: var(--black);
+      color: var(--white);
+    }
 
-    /* Mobile / Touch: Sottolineatura istantanea solo al tocco grazie alla classe JS */
-    .nav-links a.touched {
-      border-bottom: 2px solid var(--black);
+    /* Struttura contenitore tendina */
+    .dropdown {
+      position: relative;
+    }
+
+    /* Il sottomenu: un blocco nero asimmetrico e grezzo */
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px); /* Distaccato leggermente sotto il menu */
+      right: 0;
+      background-color: var(--black);
+      list-style: none;
+      padding: 6px 0;
+      display: none; /* Nascosto di base */
+      min-width: 160px;
+      border: 2px solid var(--black);
+      z-index: 110;
+      
+      /* Tocco punk: un taglio netto, squadrato e leggermente "storto" visivamente */
+      box-shadow: 5px 5px 0px var(--black); 
+    }
+
+    /* Mostra tendina al passaggio del mouse su Desktop */
+    @media (hover: hover) and (pointer: fine) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+    /* Mostra tendina su Mobile quando ha la classe aperta */
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+
+    /* Voci interne (E-mail / Instagram) */
+    .dropdown-menu li a {
+      color: var(--white);
+      padding: 8px 16px;
+      display: block;
+      font-family: 'TR', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.1s, color 0.1s;
+      background: transparent;
+    }
+
+    /* Inversione fanzine interna: sfondo bianco sporco, testo nero */
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a.touched {
+      background-color: var(--white);
+      color: var(--black);
     }
 
     /* ═══════════════════════════════════
-       HERO (Sezione Principale)
+       HERO
     ═══════════════════════════════════ */
     .hero {
       background: var(--black);
@@ -123,14 +182,13 @@
       z-index: 10;
     }
 
-    /* Gestione dello sfondo con i ragazzi urlanti */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.2) 70%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
-      background-size: cover;       /* Riempie lo spazio senza deformarsi */
-      background-position: center;   /* Resta centrato su iPad e Desktop */
+      background-size: cover;       
+      background-position: center;   
       background-repeat: no-repeat;
       opacity: 1;
       filter: sepia(60%);
@@ -174,7 +232,7 @@
 
     .hero-title {
       font-family: 'TR', sans-serif;
-      font-size: clamp(3.8rem, 12vw, 11rem); /* Ridotto leggermente il minimo per farlo respirare su iPad */
+      font-size: clamp(3.8rem, 12vw, 11rem); 
       line-height: 0.88;
       text-transform: uppercase;
       letter-spacing: -3px;
@@ -303,7 +361,6 @@
 
     .records-grid {
       display: grid;
-      /* Calcola in automatico le colonne: minimo 220px a disco, si adatta da sola ovunque */
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
       gap: 36px;
       position: relative; 
@@ -464,18 +521,14 @@
     }
 
     /* ═══════════════════════════════════
-       RESPONSIVE (SMARTPHONE & TABLET VERTICALE)
+       RESPONSIVE (SMARTPHONE & TABLET)
     ═══════════════════════════════════ */
     @media (max-width: 768px) {
       nav { padding: 12px 20px; }
-      .nav-links { gap: 18px; }
+      .nav-links { gap: 8px; }
       
       .hero { padding: 40px 20px 36px; }
-      
-      /* Forza lo sfondo a posizionarsi bene a destra per liberare spazio ai testi a 768px */
-      .hero::after {
-        background-position: 65% center;
-      }
+      .hero::after { background-position: 65% center; }
       
       .hero-divider { width: 60%; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
@@ -517,6 +570,14 @@
   <nav>
     <ul class="nav-links">
       <li><a href="#" title="About">About</a></li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-trigger" title="Contatti">Contatti</a>
+        <ul class="dropdown-menu">
+          <li><a href="mailto:tuamail@esempio.com">E-mail</a></li>
+          <li><a href="https://instagram.com/tuoprofilo" target="_blank">Instagram</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
 
@@ -648,19 +709,37 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const links = document.querySelectorAll('.nav-links a');
+      const links = document.querySelectorAll('.nav-links a:not(.dropdown-trigger)');
+      const dropdown = document.querySelector('.dropdown');
+      const trigger = document.querySelector('.dropdown-trigger');
+      const subLinks = document.querySelectorAll('.dropdown-menu a');
       
+      // 1. Gestione feedback tattile link normali (About)
       links.forEach(link => {
-        link.addEventListener('touchstart', () => {
-          link.classList.add('touched');
-        }, { passive: true });
-
-        link.addEventListener('touchend', () => {
-          setTimeout(() => link.classList.remove('touched'), 150);
-        }, { passive: true });
+        link.addEventListener('touchstart', () => link.classList.add('touched'), { passive: true });
+        link.addEventListener('touchend', () => setTimeout(() => link.classList.remove('touched'), 150), { passive: true });
       });
 
+      // 2. Gestione feedback tattile link interni alla tendina
+      subLinks.forEach(link => {
+        link.addEventListener('touchstart', () => link.classList.add('touched'), { passive: true });
+        link.addEventListener('touchend', () => setTimeout(() => link.classList.remove('touched'), 150), { passive: true });
+      });
+
+      // 3. Gestione Dropdown per Mobile (al tocco apre/chiude la tendina)
+      trigger.addEventListener('click', (e) => {
+        // Se siamo su un dispositivo touch, blocchiamo il click nativo per gestire l'apertura
+        if (window.matchMedia('(pointer: coarse)').matches) {
+          e.preventDefault();
+          dropdown.classList.toggle('open');
+        }
+      });
+
+      // 4. Chiude il menu se l'utente tocca un qualsiasi altro punto vuoto del sito
       document.body.addEventListener('touchstart', (e) => {
+        if (!e.target.closest('.dropdown')) {
+          dropdown.classList.remove('open');
+        }
         if (!e.target.closest('.nav-links')) {
           links.forEach(link => link.classList.remove('touched'));
         }
