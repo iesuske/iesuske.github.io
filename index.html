@@ -10,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>[GLUE &amp; CHAOS] — My 1977 Punk Vinyl Archive</title>
   <style>
-
     /* ═══════════════════════════════════
        FONT PERSONALIZZATO
     ═══════════════════════════════════ */
@@ -69,7 +68,6 @@
     }
 
     .nav-links { list-style: none; display: flex; align-items: center; }
-
     .dropdown { position: relative; }
     
     .dropdown-trigger {
@@ -97,17 +95,13 @@
       }
     }
 
-    .dropdown.open .dropdown-menu { display: block; }
+    /* Stato Aperto (Mobile/JS) */
+    .dropdown.open .dropdown-menu { display: block !important; }
     .dropdown.open .dropdown-trigger {
       background-color: var(--black);
       color: var(--white);
     }
 
-    .dropdown.open .dropdown-menu {
-      display: block !important;
-      pointer-events: auto;
-    }
-        
     .dropdown-menu {
       position: absolute;
       top: 100%; 
@@ -133,8 +127,7 @@
       transition: background-color 0.1s, color 0.1s;
     }
 
-    .dropdown-menu li a:hover,
-    .dropdown-menu li a.touched {
+    .dropdown-menu li a:active {
       background-color: var(--white);
       color: var(--black);
     }
@@ -211,9 +204,7 @@
     }
 
     .ticker-track { display: inline-block; animation: ticker 42s linear infinite; }
-
     .ticker-track span { font-size: 0.62rem; letter-spacing: 6px; text-transform: uppercase; vertical-align: middle; }
-
     .ticker-track .dot { margin: 0 18px; opacity: 0.5; font-size: 1.1rem; display: inline-block; vertical-align: middle; }
 
     @keyframes ticker {
@@ -231,9 +222,6 @@
 
     .section-label { font-size: 0.62rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; }
 
-    /* ═══════════════════════════════════
-       GRIGLIA DISCHI CORRETTA
-    ═══════════════════════════════════ */
     .records-wrap {
       padding: 40px;
       max-width: 1280px; 
@@ -244,10 +232,9 @@
 
     .records-grid {
       display: grid;
-      /* Modificato: ora crea 4 colonne fisse su desktop, riducendosi su mobile */
       grid-template-columns: repeat(auto-fit, minmax(200px, 280px)); 
       gap: 40px;
-      justify-content: center; /* Centra i dischi se sono pochi */
+      justify-content: center;
       position: relative; 
       z-index: 25;
     }
@@ -261,17 +248,27 @@
     .record-card:nth-child(3n+2) { transform: rotate(0.9deg); }
     .record-card:nth-child(3n)   { transform: rotate(-0.5deg); }
 
-    /* Hover Effetto Colore - SOLO DESKTOP */
+    /* Effetto Colore - Desktop (Hover) */
     @media (hover: hover) and (pointer: fine) {
-    .record-card:hover {
+      .record-card:hover {
+        transform: rotate(0deg) scale(1.04) !important;
+        position: relative;
+        z-index: 50;
+      }
+      .record-card:hover .record-cover img {
+        filter: grayscale(0%) contrast(1) brightness(1);
+      }
+    }
+
+    /* Effetto Colore - Mobile (Tramite classe .active aggiunta via JS) */
+    .record-card.active {
       transform: rotate(0deg) scale(1.04) !important;
       position: relative;
       z-index: 50;
     }
-    .record-card:hover .record-cover img {
+    .record-card.active .record-cover img {
       filter: grayscale(0%) contrast(1) brightness(1);
-      }
-      }
+    }
 
     .record-cover {
       width: 100%; aspect-ratio: 1 / 1; border: 3px solid var(--black);
@@ -282,7 +279,7 @@
       width: 100%; height: 100%; object-fit: cover; display: block;
       filter: grayscale(100%) contrast(1.15) brightness(0.95);
       transition: filter 0.3s;
-      -webkit-touch-callout: none;
+      pointer-events: none; /* Evita conflitti col tap */
     }
 
     .cover-placeholder {
@@ -312,7 +309,6 @@
       .ticker .ticker-track span { font-size: 0.35rem !important; }
       footer { flex-direction: column; text-align: center; }
     } 
-    
   </style>
 </head>
 <body>
@@ -385,7 +381,7 @@
         </div>
       </div>
 
-      </div>
+    </div>
   </div>
 
   <footer>
@@ -395,27 +391,47 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. GESTIONE DROPDOWN (ABOUT ME)
     const dropdown = document.querySelector('.dropdown');
     const trigger = document.querySelector('.dropdown-trigger');
     
-    // Gestione del Tap su Mobile
     trigger.addEventListener('click', (e) => {
-      // Se siamo su un dispositivo touch (pointer: coarse)
       if (window.matchMedia('(pointer: coarse)').matches) {
         e.preventDefault();
-        e.stopPropagation(); // Evita che il click risalga al body immediatamente
+        e.stopPropagation();
         dropdown.classList.toggle('open');
       }
     });
 
-    // Chiudi il menu se si tocca fuori
+    // 2. GESTIONE COPERTINE DISCHI (MOBILE)
+    const cards = document.querySelectorAll('.record-card');
+    cards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (window.matchMedia('(pointer: coarse)').matches) {
+          // Se clicco su una carta non attiva, la coloro e blocco altri eventi
+          if (!this.classList.contains('active')) {
+            cards.forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            e.stopPropagation();
+          }
+        }
+      });
+    });
+
+    // 3. CHIUSURA GLOBALE (SE SI TOCCA FUORI)
     document.addEventListener('touchstart', (e) => {
+      // Chiudi dropdown
       if (!dropdown.contains(e.target)) {
         dropdown.classList.remove('open');
       }
+      // Rimuovi colore dai dischi
+      if (!e.target.closest('.record-card')) {
+        cards.forEach(c => c.classList.remove('active'));
+      }
     }, { passive: true });
 
-    // Desktop: Rimuovi la classe open se il mouse esce (per pulizia)
+    // Desktop cleanup
     dropdown.addEventListener('mouseleave', () => {
       dropdown.classList.remove('open');
     });
