@@ -62,7 +62,7 @@
     }
     
     /* ═══════════════════════════════════
-       NAV & DROPDOWN (STILE FANZINE PUNK)
+       NAV & TENDINA "ABOUT" DROPDOWN
     ═══════════════════════════════════ */
     nav {
       border-bottom: var(--border);
@@ -72,20 +72,23 @@
       align-items: center;
       background: transparent;
       top: 0;
-      z-index: 100; /* Alzato per stare sopra a tutto */
+      z-index: 100; 
       position: relative; 
-      overflow: visible; /* Fondamentale per far uscire la tendina! */
+      overflow: visible; /* Permette alla tendina di uscire fuori dal menu */
     }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 14px; /* Ridotto leggermente per far spazio ai rettangoli */
       align-items: center;
     }
+
+    .dropdown {
+      position: relative;
+    }
     
-    /* Link principali: Effetto ritaglio fanzine di base */
-    .nav-links a {
+    /* Il pulsante principale "ABOUT" */
+    .dropdown-trigger {
       font-family: 'TR', sans-serif;
       font-weight: 700;
       font-size: 0.68rem;
@@ -98,56 +101,48 @@
       display: inline-block;
       transition: background-color 0.12s, color 0.12s;
       outline: none;
+      cursor: pointer;
     }
 
-    /* Hover desktop e attivazione mobile/touch */
+    /* Effetto fanzine (testo bianco su rettangolo nero) all'hover o quando è aperto */
     @media (hover: hover) and (pointer: fine) {
-      .nav-links a:hover,
+      .dropdown-trigger:hover,
       .dropdown:hover .dropdown-trigger {
         background-color: var(--black);
         color: var(--white);
       }
     }
-    .nav-links a.touched,
     .dropdown.open .dropdown-trigger {
       background-color: var(--black);
       color: var(--white);
     }
 
-    /* Struttura contenitore tendina */
-    .dropdown {
-      position: relative;
-    }
-
-    /* Il sottomenu: un blocco nero asimmetrico e grezzo */
+    /* Il sottomenu a tendina nero e pulito (E-mail / Instagram) */
     .dropdown-menu {
       position: absolute;
-      top: calc(100% + 8px); /* Distaccato leggermente sotto il menu */
+      top: 100%; 
       right: 0;
       background-color: var(--black);
       list-style: none;
       padding: 6px 0;
       display: none; /* Nascosto di base */
-      min-width: 160px;
+      min-width: 150px;
       border: 2px solid var(--black);
       z-index: 110;
-      
-      /* Tocco punk: un taglio netto, squadrato e leggermente "storto" visivamente */
-      box-shadow: 5px 5px 0px var(--black); 
     }
 
-    /* Mostra tendina al passaggio del mouse su Desktop */
+    /* Mostra il sottomenu al passaggio del mouse su Desktop */
     @media (hover: hover) and (pointer: fine) {
       .dropdown:hover .dropdown-menu {
         display: block;
       }
     }
-    /* Mostra tendina su Mobile quando ha la classe aperta */
+    /* Mostra il sottomenu al tocco su Mobile/Tablet */
     .dropdown.open .dropdown-menu {
       display: block;
     }
 
-    /* Voci interne (E-mail / Instagram) */
+    /* Link interni alla tendina (Email e Instagram) */
     .dropdown-menu li a {
       color: var(--white);
       padding: 8px 16px;
@@ -161,7 +156,7 @@
       background: transparent;
     }
 
-    /* Inversione fanzine interna: sfondo bianco sporco, testo nero */
+    /* Hover interno: inverte i colori (sfondo bianco sporco, testo nero) */
     .dropdown-menu li a:hover,
     .dropdown-menu li a.touched {
       background-color: var(--white);
@@ -169,7 +164,7 @@
     }
 
     /* ═══════════════════════════════════
-       HERO
+       HERO (CON LO SFONDO ORIGINALE RIPRISTINATO!)
     ═══════════════════════════════════ */
     .hero {
       background: var(--black);
@@ -182,13 +177,14 @@
       z-index: 10;
     }
 
+    /* Ripristinate al 100% le tue dimensioni e posizioni di partenza */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.2) 70%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
-      background-size: cover;       
-      background-position: center;   
+      background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
+      background-position: 37vw 50%;
+      background-size: 70% auto;
       background-repeat: no-repeat;
       opacity: 1;
       filter: sepia(60%);
@@ -232,7 +228,7 @@
 
     .hero-title {
       font-family: 'TR', sans-serif;
-      font-size: clamp(3.8rem, 12vw, 11rem); 
+      font-size: clamp(4.5rem, 12vw, 11rem); 
       line-height: 0.88;
       text-transform: uppercase;
       letter-spacing: -3px;
@@ -348,7 +344,7 @@
     }
 
     /* ═══════════════════════════════════
-       GRIGLIA DISCHI FLUIDA AUTOMATICA
+       GRIGLIA DISCHI (FLUIDA PER ADATTARSI A OGNI SCREEN)
     ═══════════════════════════════════ */
     .records-wrap {
       padding: 40px;
@@ -521,14 +517,18 @@
     }
 
     /* ═══════════════════════════════════
-       RESPONSIVE (SMARTPHONE & TABLET)
+       RESPONSIVE (SMARTPHONE & PORTRAIT TABLET)
     ═══════════════════════════════════ */
     @media (max-width: 768px) {
       nav { padding: 12px 20px; }
-      .nav-links { gap: 8px; }
       
       .hero { padding: 40px 20px 36px; }
-      .hero::after { background-position: 65% center; }
+      
+      /* Sul mobile sovrascriviamo lo sfondo per farlo stare dentro lo schermo */
+      .hero::after {
+        background-size: 209% auto;
+        background-position: -23vw -74%;
+      }
       
       .hero-divider { width: 60%; }
       .hero-bottom { flex-direction: column; align-items: flex-start; }
@@ -569,10 +569,8 @@
 
   <nav>
     <ul class="nav-links">
-      <li><a href="#" title="About">About</a></li>
-      
       <li class="dropdown">
-        <a href="#" class="dropdown-trigger" title="Contatti">Contatti</a>
+        <a href="#" class="dropdown-trigger" title="About">About</a>
         <ul class="dropdown-menu">
           <li><a href="mailto:tuamail@esempio.com">E-mail</a></li>
           <li><a href="https://instagram.com/tuoprofilo" target="_blank">Instagram</a></li>
@@ -709,39 +707,26 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const links = document.querySelectorAll('.nav-links a:not(.dropdown-trigger)');
       const dropdown = document.querySelector('.dropdown');
       const trigger = document.querySelector('.dropdown-trigger');
       const subLinks = document.querySelectorAll('.dropdown-menu a');
       
-      // 1. Gestione feedback tattile link normali (About)
-      links.forEach(link => {
-        link.addEventListener('touchstart', () => link.classList.add('touched'), { passive: true });
-        link.addEventListener('touchend', () => setTimeout(() => link.classList.remove('touched'), 150), { passive: true });
-      });
-
-      // 2. Gestione feedback tattile link interni alla tendina
+      // 1. Feedback tattile per i link interni (E-mail / Instagram) al tocco
       subLinks.forEach(link => {
         link.addEventListener('touchstart', () => link.classList.add('touched'), { passive: true });
         link.addEventListener('touchend', () => setTimeout(() => link.classList.remove('touched'), 150), { passive: true });
       });
 
-      // 3. Gestione Dropdown per Mobile (al tocco apre/chiude la tendina)
+      // 2. Click/Tocco su "ABOUT" apre e chiude la tendina
       trigger.addEventListener('click', (e) => {
-        // Se siamo su un dispositivo touch, blocchiamo il click nativo per gestire l'apertura
-        if (window.matchMedia('(pointer: coarse)').matches) {
-          e.preventDefault();
-          dropdown.classList.toggle('open');
-        }
+        e.preventDefault(); // Blocca l'ancora vuota
+        dropdown.classList.toggle('open');
       });
 
-      // 4. Chiude il menu se l'utente tocca un qualsiasi altro punto vuoto del sito
+      // 3. Chiude la tendina se l'utente tocca un qualsiasi punto vuoto della pagina
       document.body.addEventListener('touchstart', (e) => {
         if (!e.target.closest('.dropdown')) {
           dropdown.classList.remove('open');
-        }
-        if (!e.target.closest('.nav-links')) {
-          links.forEach(link => link.classList.remove('touched'));
         }
       }, { passive: true });
     });
