@@ -104,18 +104,22 @@
       cursor: pointer;
     }
 
-    /* Effetto fanzine (testo bianco su rettangolo nero) all'hover o quando è aperto */
+    /* Mostra la tendina al passaggio del mouse su Desktop */
     @media (hover: hover) and (pointer: fine) {
-      .dropdown-trigger:hover,
-      .dropdown:hover .dropdown-trigger {
-        background-color: var(--black);
-        color: var(--white);
-      }
+    .dropdown:hover .dropdown-menu {
+      display: block;
     }
-    .dropdown.open .dropdown-trigger {
+    /* Quando il mouse è sopra, il trigger About deve restare nero */
+    .dropdown:hover .dropdown-trigger {
       background-color: var(--black);
       color: var(--white);
     }
+    }
+
+/* Questa serve per il mobile */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
 
     /* Il sottomenu a tendina nero e pulito (E-mail / Instagram) */
     .dropdown-menu {
@@ -705,31 +709,42 @@
     <span class="footer-copy">My 1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const dropdown = document.querySelector('.dropdown');
-      const trigger = document.querySelector('.dropdown-trigger');
-      const subLinks = document.querySelectorAll('.dropdown-menu a');
-      
-      // 1. Feedback tattile per i link interni (E-mail / Instagram) al tocco
-      subLinks.forEach(link => {
-        link.addEventListener('touchstart', () => link.classList.add('touched'), { passive: true });
-        link.addEventListener('touchend', () => setTimeout(() => link.classList.remove('touched'), 150), { passive: true });
-      });
-
-      // 2. Click/Tocco su "ABOUT" apre e chiude la tendina
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault(); // Blocca l'ancora vuota
-        dropdown.classList.toggle('open');
-      });
-
-      // 3. Chiude la tendina se l'utente tocca un qualsiasi punto vuoto della pagina
-      document.body.addEventListener('touchstart', (e) => {
-        if (!e.target.closest('.dropdown')) {
-          dropdown.classList.remove('open');
-        }
-      }, { passive: true });
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.querySelector('.dropdown');
+    const trigger = document.querySelector('.dropdown-trigger');
+    const subLinks = document.querySelectorAll('.dropdown-menu a');
+    
+    // 1. Feedback tattile per i link interni (E-mail / Instagram)
+    subLinks.forEach(link => {
+      link.addEventListener('touchstart', () => link.classList.add('touched'), { passive: true });
+      link.addEventListener('touchend', () => setTimeout(() => link.classList.remove('touched'), 150), { passive: true });
     });
-  </script>
+
+    // 2. Gestione intelligente apertura/chiusura
+    trigger.addEventListener('click', (e) => {
+      // Se è un dispositivo TOUCH (niente mouse), gestiamo il toggle del click
+      if (window.matchMedia('(pointer: coarse)').matches) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+      } else {
+        // Se c'è il MOUSE, il click non deve fare nulla (ci pensa l'hover del CSS)
+        // Possiamo opzionalmente fargli seguire un link se About avesse una pagina
+      }
+    });
+
+    // 3. Chiude la tendina se l'utente sposta il mouse fuori dall'area dropdown (per sicurezza)
+    dropdown.addEventListener('mouseleave', () => {
+      dropdown.classList.remove('open');
+    });
+
+    // 4. Chiude la tendina se tocchi fuori (su iPad/Mobile)
+    document.body.addEventListener('touchstart', (e) => {
+      if (!e.target.closest('.dropdown')) {
+        dropdown.classList.remove('open');
+      }
+    }, { passive: true });
+  });
+</script>
 </body>
 </html>
