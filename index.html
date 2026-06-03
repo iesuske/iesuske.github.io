@@ -392,29 +392,28 @@
   document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
     const trigger = document.querySelector('.dropdown-trigger');
-    const subLinks = document.querySelectorAll('.dropdown-menu a');
     
-    subLinks.forEach(link => {
-      link.addEventListener('touchstart', () => link.classList.add('touched'), { passive: true });
-      link.addEventListener('touchend', () => setTimeout(() => link.classList.remove('touched'), 150), { passive: true });
-    });
-
+    // Gestione del Tap su Mobile
     trigger.addEventListener('click', (e) => {
+      // Se siamo su un dispositivo touch (pointer: coarse)
       if (window.matchMedia('(pointer: coarse)').matches) {
         e.preventDefault();
+        e.stopPropagation(); // Evita che il click risalga al body immediatamente
         dropdown.classList.toggle('open');
       }
     });
 
-    dropdown.addEventListener('mouseleave', () => {
-      dropdown.classList.remove('open');
-    });
-
-    document.body.addEventListener('touchstart', (e) => {
-      if (!e.target.closest('.dropdown')) {
+    // Chiudi il menu se si tocca fuori
+    document.addEventListener('touchstart', (e) => {
+      if (!dropdown.contains(e.target)) {
         dropdown.classList.remove('open');
       }
     }, { passive: true });
+
+    // Desktop: Rimuovi la classe open se il mouse esce (per pulizia)
+    dropdown.addEventListener('mouseleave', () => {
+      dropdown.classList.remove('open');
+    });
   });
 </script>
 </body>
