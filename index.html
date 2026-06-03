@@ -44,6 +44,8 @@
       font-size: 14px;
       line-height: 1.5;
       overflow-x: hidden;
+      /* Rimuove il fastidioso lampo grigio nativo dei browser mobile al tocco */
+      -webkit-tap-highlight-color: transparent; 
     }
 
     /* ═══════════════════════════════════
@@ -77,7 +79,7 @@
     }
 
     .nav-links {
-      list-style: none; /* Rimuove definitivamente il pallino */
+      list-style: none;
       display: flex;
       gap: 24px;
     }
@@ -95,17 +97,19 @@
       transition: border-color 0.15s;
     }
 
-    /* Su Desktop: sottolineatura all'hover del mouse */
+    /* Su Desktop: sottolineatura classica al passaggio del mouse */
     @media (hover: hover) and (pointer: fine) {
       .nav-links a:hover { 
         border-bottom: 2px solid var(--black); 
       }
     }
 
-    /* Su Mobile: si sottolinea solo nel momento esatto in cui tocchi, 
-       evitando che Safari mantenga lo stato attivo dopo il click */
-    .nav-links a:active {
+    /* Su Mobile: la sottolineatura si attiva quando aggiungiamo la classe tramite tocco,
+       oppure quando il link è cliccato/focalizzato */
+    .nav-links a.touched,
+    .nav-links a:focus {
       border-bottom: 2px solid var(--black);
+      outline: none;
     }
 
     /* ═══════════════════════════════════
@@ -651,5 +655,33 @@
     <span class="footer-logo">[Glue &amp; Chaos]</span>
     <span class="footer-copy">My 1977 Punk Vinyl Archive &mdash; No Copyright, No Future</span>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.nav-links a');
+      
+      links.forEach(link => {
+        // Quando il dito tocca il link, forziamo la sottolineatura
+        link.addEventListener('touchstart', () => {
+          link.classList.add('touched');
+        }, { passive: true });
+
+        // Quando il dito si stacca o l'azione si interrompe, puliamo subito la sottolineatura
+        link.addEventListener('touched', () => {
+          link.classList.remove('touched');
+        }, { passive: true });
+      });
+
+      // Se l'utente clicca in un qualsiasi punto vuoto del body, forziamo la rimozione del focus da tutti i link
+      document.body.addEventListener('touchstart', (e) => {
+        if (!e.target.closest('.nav-links')) {
+          links.forEach(link => {
+            link.classList.remove('touched');
+            link.blur();
+          });
+        }
+      }, { passive: true });
+    });
+  </script>
 </body>
 </html>
