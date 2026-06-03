@@ -312,7 +312,8 @@
 
     .records-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); 
+    /* Sostituiamo le 4 colonne fisse con una disposizione fluida automatica */
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
       gap: 36px;
       position: relative; 
       z-index: 25;
