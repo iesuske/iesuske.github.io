@@ -192,7 +192,7 @@
     .mobile-break { display: none; }
 
     /* ═══════════════════════════════════
-       TICKER (Loop Infinito senza spazi)
+       TICKER
     ═══════════════════════════════════ */
     .ticker {
       background: var(--black); color: var(--white);
@@ -214,7 +214,7 @@
     }
 
     /* ═══════════════════════════════════
-       RECORDS GRID
+       RECORDS GRID (Ripristinato Effetto)
     ═══════════════════════════════════ */
     .section-header {
       max-width: 1280px; margin: 0 auto; padding: 28px 40px 20px;
@@ -245,18 +245,19 @@
       transition: transform 0.25s cubic-bezier(.22,.68,0,1.2);
     }
 
+    /* Rotazioni ripristinate */
     .record-card:nth-child(3n+1) { transform: rotate(-1.4deg); }
     .record-card:nth-child(3n+2) { transform: rotate(0.9deg); }
     .record-card:nth-child(3n)   { transform: rotate(-0.5deg); }
 
-    .record-card.active .record-cover img,
+    /* Effetto Hover e Active (Colore e raddrizzamento) */
     @media (hover: hover) and (pointer: fine) {
-      .record-card:hover .record-cover img {
-        filter: grayscale(0%) contrast(1) brightness(1);
-      }
       .record-card:hover {
         transform: rotate(0deg) scale(1.04) !important;
         z-index: 50;
+      }
+      .record-card:hover .record-cover img {
+        filter: grayscale(0%) contrast(1) brightness(1);
       }
     }
 
@@ -416,10 +417,13 @@
       });
     });
 
-    // Reset dropdown se si tocca fuori (ma non i dischi)
+    // Reset se si tocca fuori
     document.addEventListener('touchstart', (e) => {
       if (!dropdown.contains(e.target)) {
         dropdown.classList.remove('open');
+      }
+      if (!e.target.closest('.record-card')) {
+        cards.forEach(c => c.classList.remove('active'));
       }
     }, { passive: true });
 
