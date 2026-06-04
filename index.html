@@ -49,10 +49,8 @@
     }
     .dropdown-menu {
       position: absolute; top: 100%; right: 0; background-color: var(--black);
-      padding: 0; display: none; min-width: 160px; border: 3px solid var(--black); z-index: 300;
+      padding: 6px 0; display: none; min-width: 160px; border: 2px solid var(--black); z-index: 300;
     }
-    .dropdown-menu li { border-bottom: 2px dashed var(--white); }
-    .dropdown-menu li:last-child { border-bottom: none; }
     .dropdown.open .dropdown-menu { display: block !important; }
     
     @media (hover: hover) {
@@ -61,28 +59,27 @@
     }
     .dropdown-menu li a {
       color: var(--white); padding: 12px 20px; display: block; font-size: 0.65rem;
-      letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: opacity 0.3s;
+      letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
     }
-    .dropdown-menu li a:hover { opacity: 0.6; }
 
     .hero {
       background: var(--black); color: var(--white); padding: 72px 40px 56px;
       border-bottom: 5px solid var(--black); position: relative; overflow: hidden; min-height: 550px; z-index: 10;
     }
 
-    /* FIRMA LATERALE NELLA BANDA NERA */
+    /* FIRMA LATERALE OTTIMIZZATA PER MOBILE */
     .hero-signature {
       position: absolute;
-      left: 10px;
+      left: 4px; /* Avvicinata al bordo sinistro */
       bottom: 40px;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       font-weight: 700;
       color: var(--white);
-      opacity: 0.35;
+      opacity: 0.25; /* Più tenue */
       z-index: 20;
       pointer-events: none;
       white-space: nowrap;
@@ -158,10 +155,10 @@
 
     @media (max-width: 768px) {
       .hero { padding: 40px 20px 36px; min-height: 500px; }
-      .hero-signature { left: 8px; bottom: 30px; font-size: 0.5rem; opacity: 0.25; }
+      .hero-signature { left: 4px; bottom: 30px; font-size: 0.5rem; opacity: 0.2; }
       .hero::after { background-size: 209% auto; background-position: -23vw -74%; }
       .hero-title { font-size: 4.2rem; }
-      .hero-tagline { font-size: 0.95rem; line-height: 1.5; } /* RISOLTO: TESTO RIDOTTO PER IPHONE */
+      .hero-tagline { font-size: 0.95rem; line-height: 1.5; }
       .mobile-only-br { display: inline; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
