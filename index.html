@@ -1,248 +1,170 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>[GLUE &amp; CHAOS] — My 1977 Punk Vinyl Archive</title>
-  <style>
-    @font-face {
-      font-family: 'TR';
-      src: url('fonts/TR.ttf') format('truetype');
-      font-weight: normal; font-style: normal;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glue & Chaos | Punk Vinyl Archive</title>
+    <style>
+        /* 1. RESET E BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :root {
-      --black:  #080808;
-      --white:  #f4f1e8;
-      --border: 3px solid #080808;
-    }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace; /* Sostituisci con la tua font se diversa */
+            overflow-x: hidden;
+            min-height: 100vh;
+            /* La griglia di puntini di fondo */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        /* 2. HEADER BIANCO */
+        header {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            border-bottom: 1px solid #000;
+            /* Puntini neri su fondo bianco */
+            background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 15px 15px;
+        }
 
-    body {
-      background: var(--white);
-      color: var(--black);
-      font-family: 'TR', sans-serif;
-      overflow-x: hidden;
-      -webkit-tap-highlight-color: transparent;
-    }
+        header a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
 
-    /* NAV */
-    nav {
-      border-bottom: var(--border); padding: 14px 40px;
-      display: flex; justify-content: flex-end; z-index: 200; position: relative; 
-    }
-    .dropdown { position: relative; list-style: none; }
-    .dropdown-trigger {
-      font-family: 'TR', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 4px;
-      text-transform: uppercase; text-decoration: none; color: var(--black); padding: 6px 12px; cursor: pointer;
-    }
-    .dropdown-menu {
-      position: absolute; top: 100%; right: 0; background-color: var(--black);
-      padding: 6px 0; display: none; min-width: 160px; border: 2px solid var(--black); z-index: 300;
-    }
-    .dropdown.open .dropdown-menu { display: block !important; }
-    
-    @media (hover: hover) {
-      .dropdown:hover .dropdown-menu { display: block; }
-      .dropdown:hover .dropdown-trigger { background: var(--black); color: var(--white); }
-    }
-    .dropdown-menu li a {
-      color: var(--white); padding: 12px 20px; display: block; font-size: 0.65rem;
-      letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
-    }
+        /* 3. HERO SECTION */
+        .hero {
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 80vh;
+            position: relative;
+        }
 
-    /* HERO */
-    .hero {
-      background: var(--black); color: var(--white); padding: 60px 40px 40px;
-      border-bottom: 5px solid var(--black); position: relative; overflow: hidden; min-height: 550px; z-index: 10;
-    }
+        .subtitle {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
 
-    .hero-signature {
-      position: absolute;
-      left: 6px;
-      top: 35%; /* Alzata per non finire troppo in basso */
-      transform: translateY(-50%) rotate(180deg); 
-      writing-mode: vertical-rl;
-      font-size: 0.55rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--white);
-      opacity: 0.35;
-      z-index: 20;
-      pointer-events: none;
-      white-space: nowrap;
-    }
+        .main-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            font-weight: 900;
+            /* Effetto "distrutto" semplice se non hai il font custom */
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+        }
 
-    .hero::after {
-      content: ''; position: absolute; inset: 0;
-      background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
-      background-position: 37vw 50%; background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
-    }
+        .main-title span {
+            display: block;
+        }
 
-    .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 4; }
-    
-    .hero-eyebrow { 
-      font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; 
-      margin-bottom: 12px; border-left: 3px solid var(--white); 
-      padding-left: 14px; margin-left: 15px;
-      white-space: nowrap; /* Tutta su una riga */
-    }
-    .hero-title { font-size: clamp(4rem, 12vw, 11rem); line-height: 0.85; text-transform: uppercase; letter-spacing: -3px; margin-left: 15px; }
-    .hero-title .line2 { opacity: 0.28; display: block; }
-    
-    /* Ridotto lo spazio tra titolo e citazione */
-    .hero-divider { width: 35%; height: 1px; background: rgba(255,255,255,0.18); margin: 18px 0 18px; margin-left: 15px; }
-    
-    .hero-tagline { 
-      font-size: 1.15rem; font-style: italic; opacity: 0.78; max-width: 900px; 
-      line-height: 1.5; padding-left: 15px; 
-    }
-    .hero-tagline .autore { display: block; margin-top: 5px; font-style: normal; opacity: 0.8; }
+        .main-title .glue {
+            color: #fff;
+            border: 4px solid #fff;
+            display: inline-block;
+            padding: 0 20px;
+        }
 
-    /* TICKER */
-    .ticker {
-      background: var(--black); color: var(--white); border-top: 3px solid var(--black);
-      border-bottom: 3px solid var(--black); padding: 14px 0; overflow: hidden; white-space: nowrap; position: relative; z-index: 20;
-    }
-    .ticker-track { display: inline-block; animation: ticker-move 40s linear infinite; }
-    .ticker-track span { font-size: 0.62rem; letter-spacing: 6px; text-transform: uppercase; vertical-align: middle; }
-    .ticker-track .dot { margin: 0 18px; opacity: 0.5; font-size: 1.1rem; vertical-align: middle; }
-    @keyframes ticker-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .main-title .chaos {
+            color: rgba(255, 255, 255, 0.3); /* Effetto trasparenza dello screen */
+        }
 
-    /* RECORDS GRID - PULITA */
-    .section-header {
-      max-width: 1280px; margin: 0 auto; padding: 28px 40px 20px;
-      border-bottom: 2px solid var(--black); text-align: center; z-index: 20; position: relative;
-    }
-    .section-label { font-size: 0.72rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; }
-    
-    .records-wrap { padding: 40px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 20; }
-    .records-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; justify-content: center; }
-    
-    .record-card { cursor: pointer; transition: transform 0.25s cubic-bezier(.22,.68,0,1.2); }
-    .record-card:nth-child(1) { transform: rotate(-1.4deg); }
-    .record-card:nth-child(2) { transform: rotate(1.2deg); }
-    .record-card:nth-child(3) { transform: rotate(-0.8deg); }
-    .record-card:nth-child(4) { transform: rotate(1.5deg); }
-    
-    .record-card:hover, .record-card.active { transform: rotate(0deg) scale(1.04) !important; z-index: 50; }
-    .record-cover { width: 100%; aspect-ratio: 1/1; border: 3px solid var(--black); overflow: hidden; margin-bottom: 12px; background: #eee; }
-    .record-cover img { width: 100%; height: 100%; object-fit: cover; } /* Niente grayscale, colori attivi */
-    
-    .record-band { font-weight: 700; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
-    .record-title { font-size: 0.68rem; font-style: italic; opacity: 0.8; margin-bottom: 6px; }
-    .record-meta { font-size: 0.62rem; letter-spacing: 1px; opacity: 0.5; font-weight: 700; text-transform: uppercase; }
+        .quote {
+            max-width: 500px;
+            font-style: italic;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 20px;
+            color: #999;
+        }
 
-    footer {
-      max-width: 1280px; margin: 30px auto 0; border-top: 3px solid var(--black);
-      padding: 20px 40px 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; z-index: 20; position: relative;
-    }
-    .footer-logo { font-size: 0.95rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-    .footer-credits { font-size: 0.62rem; color: var(--white); background: var(--black); padding: 4px 12px; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; }
+        /* 4. FOOTER TICKER (Bands) */
+        .ticker-wrap {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000;
+            border-top: 1px solid #333;
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
 
-    @media (max-width: 768px) {
-      .hero { padding: 40px 20px 30px; min-height: 500px; }
-      .hero-inner { padding-left: 20px; } 
-      .hero-eyebrow, .hero-title, .hero-divider, .hero-tagline { margin-left: 10px; }
-      .hero-signature { left: 4px; top: 40%; font-size: 0.48rem; }
-      .hero::after { background-size: 210% auto; background-position: -20vw -60%; }
-      .hero-title { font-size: 4rem; }
-      .hero-tagline { font-size: 0.98rem; padding-left: 10px; }
-      .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
-    } 
-  </style>
+        .ticker {
+            display: inline-block;
+            animation: marquee 40s linear infinite;
+        }
+
+        .ticker span {
+            display: inline-block;
+            padding: 0 20px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Overlay per texture fanzine (opzionale) */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.2;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <div class="dropdown">
-      <a class="dropdown-trigger">About Me</a>
-      <ul class="dropdown-menu">
-        <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
-        <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
-      </ul>
+
+    <div class="overlay"></div>
+
+    <header>
+        <a href="#">ABOUT ME</a>
+    </header>
+
+    <main class="hero">
+        <p class="subtitle">| MY - 1977 - PUNK - VINYL - ARCHIVE -</p>
+        
+        <h1 class="main-title">
+            <span class="glue">[GLUE.</span>
+            <span class="chaos">& CHAOS]</span>
+        </h1>
+
+        <div class="quote">
+            “...Don't you know your last year's youth, '77 you told the truth...” <br>
+            <strong>(Menace, 1979)</strong>
+        </div>
+    </main>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>NY DOLLS +</span> <span>BUZZCOCKS +</span> <span>SUICIDE +</span> <span>999 +</span> <span>THE ADVERTS +</span> <span>SEX PISTOLS +</span> <span>THE CLASH +</span> <span>THE DAMNED +</span> <span>SHAM 69 +</span> <span>DEAD BOYS +</span> <span>MENACE +</span> <span>ELTON MONTELLO +</span>
+            <span>NY DOLLS +</span> <span>BUZZCOCKS +</span> <span>SUICIDE +</span> <span>999 +</span> <span>THE ADVERTS +</span> <span>SEX PISTOLS +</span> <span>THE CLASH +</span> <span>THE DAMNED +</span> <span>SHAM 69 +</span> <span>DEAD BOYS +</span> <span>MENACE +</span> <span>ELTON MONTELLO +</span>
+        </div>
     </div>
-  </nav>
 
-  <section class="hero">
-    <div class="hero-signature">Massimo Redaelli 2026</div>
-    <div class="hero-inner">
-      <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
-      <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
-      <div class="hero-divider"></div>
-      <p class="hero-tagline">
-        “...Don’t you know your last years youth, ’77 you told the truth...” 
-        <span class="autore">(Menace, 1979)</span>
-      </p>
-    </div>
-  </section>
-
-  <div class="ticker">
-    <div class="ticker-track">
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
-    </div>
-  </div>
-
-  <div class="section-header">
-    <span class="section-label">&#9733; MY PERSONAL UK/US PUNK COLLECTION, ORIGINAL VINYL COPIES FROM 1977 TO 1979 &#9733;</span>
-  </div>
-
-  <div class="records-wrap">
-    <div class="records-grid">
-      <div class="record-card">
-        <div class="record-cover"><img src="images/theelectricchairsa.jpg" alt="The Electric Chairs"></div>
-        <div class="record-band">The Electric Chairs</div>
-        <div class="record-title">The Electric Chairs</div>
-        <div class="record-meta">UK • LP • 1978</div>
-      </div>
-      <div class="record-card">
-        <div class="record-cover"><img src="images/eltonmotelloa.jpg" alt="Elton Montello"></div>
-        <div class="record-band">Elton Montello</div>
-        <div class="record-title">Victim Of Time</div>
-        <div class="record-meta">UK • LP • 1979</div>
-      </div>
-      <div class="record-card">
-        <div class="record-cover"><img src="images/heartbreakersa.jpg" alt="The Heartbreakers"></div>
-        <div class="record-band">The Heartbreakers</div>
-        <div class="record-title">L.A.M.F.</div>
-        <div class="record-meta">UK • LP • 1977</div>
-      </div>
-      <div class="record-card">
-        <div class="record-cover"><img src="images/thedronesa.jpg" alt="The Drones"></div> 
-        <div class="record-band">The Drones</div>
-        <div class="record-title">Further Temptations</div>
-        <div class="record-meta">AU • LP • 1977</div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <span class="footer-logo">[Glue &amp; Chaos]</span>
-    <span class="footer-credits">NO COPYRIGHT, NO FUTURE</span>
-  </footer>
-
-  <script>
-    const dropdown = document.querySelector('.dropdown');
-    const trigger = document.querySelector('.dropdown-trigger');
-    const cards = document.querySelectorAll('.record-card');
-
-    trigger.addEventListener('click', (e) => {
-      if (window.matchMedia('(pointer: coarse)').matches) {
-        e.preventDefault();
-        dropdown.classList.toggle('open');
-      }
-    });
-
-    document.addEventListener('touchstart', (e) => {
-      if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
-      if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
-    });
-  </script>
 </body>
 </html>
