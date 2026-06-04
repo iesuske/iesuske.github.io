@@ -340,7 +340,7 @@
       <div class="hero-divider"></div>
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last <br class="mobile-break">years youth, ’77 you told the truth...” 
+          “...Don’t you know your last years <br class="mobile-break">youth, ’77 you told the truth...” 
           <span class="autore-sempre-capo">(Menace, 1979)</span>
         </p>
       </div>
@@ -413,11 +413,9 @@
     cards.forEach(card => {
       card.addEventListener('click', function(e) {
         if (window.matchMedia('(pointer: coarse)').matches) {
-          // Se la carta è già attiva, la togliamo (torna B/N)
           if (this.classList.contains('active')) {
             this.classList.remove('active');
           } else {
-            // Spegniamo le altre e accendiamo questa
             cards.forEach(c => c.classList.remove('active'));
             this.classList.add('active');
           }
@@ -431,10 +429,8 @@
       if (!dropdown.contains(e.target)) {
         dropdown.classList.remove('open');
       }
-      // Rimosso reset delle card per permettere di restare colorate se si tocca fuori
     }, { passive: true });
 
-    // Desktop cleanup
     dropdown.addEventListener('mouseleave', () => {
       dropdown.classList.remove('open');
     });
