@@ -83,6 +83,7 @@
     .hero {
       background: var(--black); color: var(--white); padding: 72px 40px 56px;
       border-bottom: 5px solid var(--black); overflow: hidden; min-height: 550px;
+      position: relative;
     }
     .hero::after {
       content: '';
@@ -103,18 +104,20 @@
     }
     .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 4; }
     
-    /* FIRMA VISIBILE */
+    /* FIRMA VERTICALE LATO SINISTRO */
     .hero-signature {
-        position: absolute; 
-        top: 20px; 
-        left: 20px; 
-        color: #ffffff; 
-        font-size: 0.7rem; 
-        letter-spacing: 2px;
-        text-transform: uppercase; 
-        z-index: 999;
-        font-weight: bold;
-        opacity: 0.9;
+        position: absolute;
+        top: 200px;
+        left: 20px;
+        color: #ffffff;
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        z-index: 99;
+        opacity: 0.8;
+        pointer-events: none;
     }
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
@@ -240,6 +243,7 @@
       .hero-tagline { font-size: 1.05rem; line-height: 1.5; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
+      .hero-signature { display: none; }
     } 
   </style>
 </head>
@@ -259,7 +263,7 @@
   <section class="hero">
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
-    <div class="hero-signature">MASSIMO REDAELLI 2026</div>
+    <div class="hero-signature">MASSIMO REDAELLI</div>
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
@@ -273,8 +277,6 @@
 
   <div class="ticker">
     <div class="ticker-track">
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
       <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
       <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
     </div>
