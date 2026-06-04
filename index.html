@@ -32,7 +32,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Griglia di sfondo */
     .grid-bg {
       position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.14;
       background-image: radial-gradient(#080808 1px, transparent 1px);
@@ -95,7 +94,7 @@
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
-    /* TICKER FIX */
+    /* TICKER */
     .ticker {
       background: var(--black); color: var(--white); border-top: 3px solid var(--black);
       border-bottom: 3px solid var(--black); padding: 14px 0; overflow: hidden;
@@ -159,21 +158,33 @@
     .record-title { font-size: 0.68rem; font-style: italic; opacity: 0.8; margin-bottom: 6px; }
     .record-meta { font-size: 0.62rem; letter-spacing: 1px; opacity: 0.5; font-weight: 700; text-transform: uppercase; }
 
-    /* FOOTER CENTRATO E COLORE GLUE */
+    /* FOOTER MODIFICATO: PIU' VICINO ALLA LINEA E CENTRATO */
     footer {
-      max-width: 1280px; margin: 72px auto 0; border-top: 3px solid var(--black);
-      padding: 40px; 
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 12px;
+      max-width: 1280px; 
+      margin: 40px auto 0; /* Margine ridotto per farlo salire */
+      border-top: 3px solid var(--black);
+      padding: 20px 40px 60px; /* Padding ridotto in alto */
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
     }
-    .footer-logo { font-size: 1rem; font-weight: 700; letter-spacing: 2px; }
+    .footer-logo { 
+      font-size: 0.95rem; 
+      font-weight: 700; 
+      letter-spacing: 2px; 
+      text-transform: uppercase;
+    }
     .footer-credits {
-        font-size: 0.65rem; 
-        color: var(--white); /* Colore Bianco Sporco come GLUE */
-        background: var(--black); /* Sfondo nero per farla risaltare */
-        padding: 4px 10px;
+        font-size: 0.62rem; 
+        color: var(--white); /* Colore Bianco Sporco GLUE */
+        background: var(--black); 
+        padding: 4px 12px;
         letter-spacing: 4px;
         text-transform: uppercase;
+        font-weight: 700;
     }
 
     @media (max-width: 1024px) {
