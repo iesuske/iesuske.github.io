@@ -103,12 +103,20 @@
     }
     .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 4; }
     
-    /* FIRMA */
+    /* FIRMA CORRETTA E POSIZIONATA */
     .hero-signature {
-        position: absolute; left: -20px; top: 120px;
-        color: #ffffff; font-size: 0.6rem; letter-spacing: 3px;
-        text-transform: uppercase; transform: rotate(-90deg);
-        transform-origin: left top; opacity: 0.6; z-index: 5;
+        position: absolute; 
+        top: 20px; 
+        left: -20px; 
+        color: #ffffff; 
+        font-size: 0.65rem; 
+        letter-spacing: 3px;
+        text-transform: uppercase; 
+        transform: rotate(-90deg);
+        transform-origin: left top; 
+        opacity: 0.8; 
+        z-index: 99;
+        white-space: nowrap;
     }
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
@@ -235,7 +243,7 @@
       .hero-tagline { font-size: 1.05rem; line-height: 1.5; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
-      .hero-signature { display: none; } /* Nasconde la firma su mobile per non creare disordine */
+      .hero-signature { display: none; }
     } 
   </style>
 </head>
