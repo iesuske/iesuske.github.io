@@ -84,7 +84,10 @@
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
     .hero-divider { width: 40%; height: 1px; background: rgba(255,255,255,0.18); margin: 36px 0 28px; }
-    .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.7; }
+    
+    /* FIX TAGLINE MOBILE */
+    .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.5; }
+    .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; }
 
     .ticker {
       background: var(--black); color: var(--white); border-top: 3px solid var(--black);
@@ -103,7 +106,6 @@
     
     .records-wrap { padding: 40px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 20; }
     
-    /* GRIGLIA AGGIORNATA A 4 COLONNE */
     .records-grid { 
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
@@ -135,9 +137,10 @@
     }
 
     @media (max-width: 768px) {
-      .hero { padding: 40px 20px 36px; min-height: 550px; }
+      .hero { padding: 40px 20px 36px; min-height: 500px; }
       .hero::after { background-size: 209% auto; background-position: -23vw -74%; }
       .hero-title { font-size: 4.5rem; }
+      .hero-tagline { font-size: 1.05rem; line-height: 1.4; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       footer { flex-direction: column; text-align: center; gap: 15px; }
@@ -163,7 +166,10 @@
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
       <div class="hero-divider"></div>
-      <p class="hero-tagline">“...Don’t you know your last years youth, ’77 you told the truth...” <br> (Menace, 1979)</p>
+      <p class="hero-tagline">
+        “...Don’t you know your last years youth, ’77 you told the truth...” 
+        <span class="autore">(Menace, 1979)</span>
+      </p>
     </div>
   </section>
 
