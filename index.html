@@ -192,7 +192,7 @@
     .mobile-break { display: none; }
 
     /* ═══════════════════════════════════
-       TICKER (Loop infinito sistemato)
+       TICKER
     ═══════════════════════════════════ */
     .ticker {
       background: var(--black); color: var(--white);
@@ -218,10 +218,20 @@
     ═══════════════════════════════════ */
     .section-header {
       max-width: 1280px; margin: 0 auto; padding: 28px 40px 20px;
-      border-bottom: 2px solid var(--black); display: flex; justify-content: space-between; z-index: 20; position: relative;
+      border-bottom: 2px solid var(--black); 
+      display: flex; 
+      justify-content: center; /* Scritta centrata */
+      text-align: center;
+      z-index: 20; position: relative;
     }
 
-    .section-label { font-size: 0.62rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 700; line-height: 1.4; }
+    .section-label { 
+      font-size: 0.72rem; /* Font aumentato di 1 punto */
+      letter-spacing: 6px; 
+      text-transform: uppercase; 
+      font-weight: 700; 
+      line-height: 1.5; 
+    }
 
     .records-wrap {
       padding: 40px;
@@ -245,6 +255,7 @@
       transition: transform 0.25s cubic-bezier(.22,.68,0,1.2);
     }
 
+    /* Effetti di rotazione casuale */
     .record-card:nth-child(3n+1) { transform: rotate(-1.4deg); }
     .record-card:nth-child(3n+2) { transform: rotate(0.9deg); }
     .record-card:nth-child(3n)   { transform: rotate(-0.5deg); }
@@ -384,17 +395,6 @@
         </div>
       </div>
 
-      <div class="record-card">
-        <div class="record-cover">
-          <img src="images/theclasha.jpg" alt="The Clash">
-        </div> 
-        <div class="record-info">
-          <div class="record-band">The Clash</div>
-          <div class="record-title">The Clash (Self Titled)</div>
-          <div class="record-meta">UK • LP • 1977</div>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -418,7 +418,7 @@
       }
     });
 
-    // Tap copertine: toggle colore solo sulla stessa
+    // Tap copertine: toggle colore
     cards.forEach(card => {
       card.addEventListener('click', function(e) {
         if (window.matchMedia('(pointer: coarse)').matches) {
