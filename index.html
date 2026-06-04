@@ -67,10 +67,10 @@
       border-bottom: 5px solid var(--black); position: relative; overflow: hidden; min-height: 550px; z-index: 10;
     }
 
-    /* FIRMA LATERALE OTTIMIZZATA PER MOBILE */
+    /* FIRMA LATERALE - POSIZIONE FISSA AL BORDO */
     .hero-signature {
       position: absolute;
-      left: 4px; /* Avvicinata al bordo sinistro */
+      left: 6px;
       bottom: 40px;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
@@ -79,7 +79,7 @@
       text-transform: uppercase;
       font-weight: 700;
       color: var(--white);
-      opacity: 0.25; /* Più tenue */
+      opacity: 0.3;
       z-index: 20;
       pointer-events: none;
       white-space: nowrap;
@@ -100,12 +100,22 @@
       z-index: 3;
     }
     .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 4; }
-    .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
-    .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
-    .hero-title .line2 { opacity: 0.28; display: block; }
-    .hero-divider { width: 40%; height: 1px; background: rgba(255,255,255,0.18); margin: 36px 0 28px; }
     
-    .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.6; }
+    /* SPAZIATURA AUMENTATA PER NON SOVRAPPORRE LA FIRMA */
+    .hero-eyebrow { 
+      font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; 
+      margin-bottom: 20px; border-left: 3px solid var(--white); 
+      padding-left: 14px; margin-left: 10px; 
+    }
+    .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; margin-left: 10px; }
+    .hero-title .line2 { opacity: 0.28; display: block; }
+    .hero-divider { width: 40%; height: 1px; background: rgba(255,255,255,0.18); margin: 36px 0 28px; margin-left: 10px; }
+    
+    /* TAGLINE STACCATA DAL BORDO */
+    .hero-tagline { 
+      font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; 
+      line-height: 1.6; padding-left: 10px; 
+    }
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
@@ -149,16 +159,16 @@
     .footer-logo { font-size: 0.95rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
     .footer-credits { font-size: 0.62rem; color: var(--white); background: var(--black); padding: 4px 12px; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; }
 
-    @media (max-width: 1024px) {
-      .records-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
     @media (max-width: 768px) {
       .hero { padding: 40px 20px 36px; min-height: 500px; }
+      /* SPAZIATURA MOBILE OTTIMIZZATA */
+      .hero-inner { padding-left: 15px; } 
+      .hero-eyebrow, .hero-title, .hero-divider, .hero-tagline { margin-left: 5px; }
+      
       .hero-signature { left: 4px; bottom: 30px; font-size: 0.5rem; opacity: 0.2; }
       .hero::after { background-size: 209% auto; background-position: -23vw -74%; }
       .hero-title { font-size: 4.2rem; }
-      .hero-tagline { font-size: 0.95rem; line-height: 1.5; }
+      .hero-tagline { font-size: 0.95rem; line-height: 1.5; padding-left: 5px; }
       .mobile-only-br { display: inline; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
