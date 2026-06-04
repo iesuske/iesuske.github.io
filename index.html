@@ -120,14 +120,21 @@
     .record-card:nth-child(4) { transform: rotate(1.5deg); }
     
     .record-card:hover, .record-card.active { transform: rotate(0deg) scale(1.04) !important; z-index: 50; }
-    .record-card:hover img, .record-card.active img { filter: grayscale(0%) contrast(1) brightness(1); }
-
-    .record-cover { width: 100%; aspect-ratio: 1/1; border: 3px solid var(--black); overflow: hidden; margin-bottom: 12px; background: #000; }
-    .record-cover img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.15); transition: 0.3s; }
+    
+    /* EFFETTO COVER: Bianco e Nero di base, Colore al passaggio */
+    .record-cover { width: 100%; aspect-ratio: 1/1; border: 3px solid var(--black); overflow: hidden; margin-bottom: 12px; background: var(--black); }
+    .record-cover img { 
+      width: 100%; height: 100%; object-fit: cover; 
+      filter: grayscale(100%); 
+      opacity: 1; /* Rimosso trasparenza */
+      transition: filter 0.4s ease, transform 0.4s ease; 
+    }
+    .record-card:hover img, .record-card.active img { 
+      filter: grayscale(0%); 
+    }
     
     .record-band { font-weight: 700; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
     .record-title { font-size: 0.68rem; font-style: italic; opacity: 0.8; margin-bottom: 6px; }
-    
     .record-meta { font-size: 0.62rem; letter-spacing: 1px; opacity: 0.5; font-weight: 700; text-transform: uppercase; }
 
     footer {
@@ -143,7 +150,7 @@
       .hero { padding: 40px 20px 36px; min-height: 500px; }
       .hero::after { background-size: 209% auto; background-position: -23vw -74%; }
       .hero-title { font-size: 4.5rem; }
-      .mobile-only-br { display: inline; }
+      .mobile-only-br { display: inline; } /* Attiva gli a capo su mobile */
       .hero-tagline { font-size: 1.05rem; line-height: 1.5; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
@@ -171,8 +178,8 @@
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
       <div class="hero-divider"></div>
       <p class="hero-tagline">
-        “...Don’t you know your last<br class="mobile-only-br"> years youth, ’77 you told the truth...” 
-        <span class="autore">(Menace, 1979)</span>
+        “...Don’t you know your last<br class="mobile-only-br"> years youth, ’77 you told<br class="mobile-only-br"> the truth...” 
+        <span class="autore"><br class="mobile-only-br">(Menace, 1979)</span>
       </p>
     </div>
   </section>
@@ -214,7 +221,10 @@
         <div class="record-title">Further Temptations</div>
         <div class="record-meta">AU • LP • 1977</div>
       </div>
-    </div> </div> <footer>
+    </div>
+  </div>
+
+  <footer>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
     <span style="font-size:0.6rem; opacity:0.4; letter-spacing: 3px;">NO COPYRIGHT, NO FUTURE</span>
   </footer>
