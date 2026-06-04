@@ -236,23 +236,30 @@
     }
 
     @media (max-width: 768px) {
-      .hero { padding: 40px 20px 36px; min-height: 500px; }
-      .hero::after { background-size: 209% auto; background-position: -23vw -74%; }
-      .hero-title { font-size: 4.5rem; }
+      .hero { padding: 40px 20px 36px; min-height: 450px; }
+      /* Ripristino sfondo ragazzi urlanti su iPad */
+      .hero::after { 
+        background-size: 150% auto; 
+        background-position: 50% 50%; 
+        opacity: 0.8;
+      }
+      .hero-title { font-size: 3.8rem; }
       .mobile-only-br { display: inline; }
-      .hero-tagline { font-size: 1.05rem; line-height: 1.5; }
+      .hero-tagline { font-size: 0.95rem; line-height: 1.4; max-width: 100%; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
-      /* CORREZIONE MOBILE: Firma visibile in basso */
+      
+      /* FIRMA CORRETTA PER IPAD/MOBILE */
       .hero-signature {
         display: block !important;
         position: absolute;
         top: auto;
         bottom: 20px;
         left: 20px;
-        transform: rotate(0deg);
-        font-size: 0.6rem;
-        opacity: 0.6;
+        transform: rotate(0deg); /* Orizzontale */
+        font-size: 0.55rem;
+        opacity: 0.7;
+        z-index: 100;
       }
     } 
   </style>
