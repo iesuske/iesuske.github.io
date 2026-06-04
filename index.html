@@ -94,38 +94,30 @@
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
-    /* TICKER FIX RADICALE */
+    /* TICKER DEFINITIVO */
     .ticker {
       background: var(--black); color: var(--white); border-top: 3px solid var(--black);
       border-bottom: 3px solid var(--black); padding: 14px 0; overflow: hidden;
-      display: flex;
     }
     .ticker-track { 
-      display: flex; 
-      flex-shrink: 0;
-      width: max-content;
-      animation: ticker-move 30s linear infinite; 
-    }
-    .ticker-content {
-      display: flex;
-      flex-shrink: 0;
+      display: inline-block; 
       white-space: nowrap;
-      padding-right: 0;
+      animation: ticker-move 40s linear infinite; 
     }
     .ticker-track span { 
       font-size: 0.62rem; letter-spacing: 6px; text-transform: uppercase; 
-      display: flex; align-items: center;
+      vertical-align: middle;
     }
     .ticker-track .dot { 
       margin: 0 18px; 
       opacity: 0.5; 
       font-size: 1rem; 
-      display: flex; align-items: center;
+      vertical-align: middle;
     }
     
     @keyframes ticker-move { 
-      from { transform: translateX(0); } 
-      to { transform: translateX(-50%); } 
+      0% { transform: translateX(0); } 
+      100% { transform: translateX(-50%); } 
     }
 
     .section-header {
@@ -173,6 +165,14 @@
       max-width: 1280px; margin: 72px auto 0; border-top: 3px solid var(--black);
       padding: 28px 40px; display: flex; justify-content: space-between; align-items: center;
     }
+    /* Colore NO COPYRIGHT NO FUTURE uguale a GLUE */
+    .footer-credits {
+        font-size: 0.6rem; 
+        color: var(--white); /* Colore della scritta GLUE */
+        opacity: 0.6; /* Un po' di trasparenza per non sparare troppo */
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
 
     @media (max-width: 1024px) {
       .records-grid { grid-template-columns: repeat(2, 1fr); }
@@ -219,12 +219,8 @@
 
   <div class="ticker">
     <div class="ticker-track">
-      <div class="ticker-content">
-        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
-      </div>
-      <div class="ticker-content">
-        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
-      </div>
+      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
+      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
     </div>
   </div>
 
@@ -263,7 +259,7 @@
 
   <footer>
     <span class="footer-logo">[Glue &amp; Chaos]</span>
-    <span style="font-size:0.6rem; opacity:0.4; letter-spacing: 3px;">NO COPYRIGHT, NO FUTURE</span>
+    <span class="footer-credits">NO COPYRIGHT, NO FUTURE</span>
   </footer>
 
   <script>
