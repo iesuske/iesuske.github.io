@@ -102,6 +102,15 @@
       z-index: 3;
     }
     .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 4; }
+    
+    /* FIRMA */
+    .hero-signature {
+        position: absolute; left: -20px; top: 120px;
+        color: #ffffff; font-size: 0.6rem; letter-spacing: 3px;
+        text-transform: uppercase; transform: rotate(-90deg);
+        transform-origin: left top; opacity: 0.6; z-index: 5;
+    }
+
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
@@ -111,7 +120,7 @@
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
-    /* TICKER ALLINEATO */
+    /* TICKER */
     .ticker {
       background: var(--black);
       color: var(--white); 
@@ -226,6 +235,7 @@
       .hero-tagline { font-size: 1.05rem; line-height: 1.5; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
+      .hero-signature { display: none; } /* Nasconde la firma su mobile per non creare disordine */
     } 
   </style>
 </head>
@@ -245,6 +255,7 @@
   <section class="hero">
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
+    <div class="hero-signature">Massimo Redaelli 2026</div>
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
