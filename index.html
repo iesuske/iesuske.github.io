@@ -46,7 +46,7 @@
     nav {
       border-bottom: var(--border); padding: 14px 40px;
       display: flex; justify-content: flex-end; 
-      z-index: 1000; /* Valore altissimo per far stare il menu sopra tutto */
+      z-index: 1000; 
     }
     .dropdown { position: relative; list-style: none; }
     .dropdown-trigger {
@@ -95,14 +95,29 @@
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
+    /* TICKER FIX DEFINITIVO */
     .ticker {
       background: var(--black); color: var(--white); border-top: 3px solid var(--black);
-      border-bottom: 3px solid var(--black); padding: 14px 0; overflow: hidden; white-space: nowrap;
+      border-bottom: 3px solid var(--black); padding: 14px 0; overflow: hidden;
     }
-    .ticker-track { display: inline-block; animation: ticker-move 30s linear infinite; }
+    .ticker-track { 
+      display: flex; 
+      width: max-content;
+      animation: ticker-move 40s linear infinite; 
+    }
+    .ticker-content {
+      display: flex;
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding-right: 0px;
+    }
     .ticker-track span { font-size: 0.62rem; letter-spacing: 6px; text-transform: uppercase; }
     .ticker-track .dot { margin: 0 18px; opacity: 0.5; font-size: 1.1rem; }
-    @keyframes ticker-move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    
+    @keyframes ticker-move { 
+      0% { transform: translateX(0); } 
+      100% { transform: translateX(-50%); } 
+    }
 
     .section-header {
       max-width: 1280px; margin: 0 auto; padding: 28px 40px 20px;
@@ -195,8 +210,12 @@
 
   <div class="ticker">
     <div class="ticker-track">
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
+      <div class="ticker-content">
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
+      </div>
+      <div class="ticker-content">
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
+      </div>
     </div>
   </div>
 
