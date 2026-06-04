@@ -194,6 +194,9 @@
 
     .hero-tagline .autore-sempre-capo { display: block; margin-top: 6px; }
 
+    /* Forza il break solo su mobile */
+    .mobile-break { display: none; }
+
     /* ═══════════════════════════════════
        TICKER
     ═══════════════════════════════════ */
@@ -279,7 +282,7 @@
       width: 100%; height: 100%; object-fit: cover; display: block;
       filter: grayscale(100%) contrast(1.15) brightness(0.95);
       transition: filter 0.3s;
-      pointer-events: none; /* Evita conflitti col tap */
+      pointer-events: none; 
     }
 
     .cover-placeholder {
@@ -306,6 +309,7 @@
       .hero { padding: 40px 20px 36px; }
       .hero::after { background-size: 209% auto; background-position: -23vw -74%; }
       .hero-tagline { font-size: 0.95rem; }
+      .mobile-break { display: block; }
       .ticker .ticker-track span { font-size: 0.35rem !important; }
       footer { flex-direction: column; text-align: center; }
     } 
@@ -336,7 +340,7 @@
       <div class="hero-divider"></div>
       <div class="hero-bottom">
         <p class="hero-tagline">
-          “...Don’t you know your last years youth, ’77 you told the truth...” 
+          “...Don’t you know your last <br class="mobile-break">years youth, ’77 you told the truth...” 
           <span class="autore-sempre-capo">(Menace, 1979)</span>
         </p>
       </div>
@@ -392,10 +396,11 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. GESTIONE DROPDOWN (ABOUT ME)
     const dropdown = document.querySelector('.dropdown');
     const trigger = document.querySelector('.dropdown-trigger');
+    const cards = document.querySelectorAll('.record-card');
     
+    // 1. DROPDOWN (ABOUT ME)
     trigger.addEventListener('click', (e) => {
       if (window.matchMedia('(pointer: coarse)').matches) {
         e.preventDefault();
@@ -404,31 +409,29 @@
       }
     });
 
-    // 2. GESTIONE COPERTINE DISCHI (MOBILE)
-    const cards = document.querySelectorAll('.record-card');
+    // 2. DISCHI (Toggle colore solo tappare la stessa cover)
     cards.forEach(card => {
       card.addEventListener('click', function(e) {
         if (window.matchMedia('(pointer: coarse)').matches) {
-          // Se clicco su una carta non attiva, la coloro e blocco altri eventi
-          if (!this.classList.contains('active')) {
+          // Se la carta è già attiva, la togliamo (torna B/N)
+          if (this.classList.contains('active')) {
+            this.classList.remove('active');
+          } else {
+            // Spegniamo le altre e accendiamo questa
             cards.forEach(c => c.classList.remove('active'));
             this.classList.add('active');
-            e.stopPropagation();
           }
+          e.stopPropagation();
         }
       });
     });
 
-    // 3. CHIUSURA GLOBALE (SE SI TOCCA FUORI)
+    // 3. CHIUSURA GLOBALE (Solo per Dropdown)
     document.addEventListener('touchstart', (e) => {
-      // Chiudi dropdown
       if (!dropdown.contains(e.target)) {
         dropdown.classList.remove('open');
       }
-      // Rimuovi colore dai dischi
-      if (!e.target.closest('.record-card')) {
-        cards.forEach(c => c.classList.remove('active'));
-      }
+      // Rimosso reset delle card per permettere di restare colorate se si tocca fuori
     }, { passive: true });
 
     // Desktop cleanup
