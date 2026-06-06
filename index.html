@@ -194,7 +194,7 @@
       opacity: 0.5;
       font-size: 1rem; 
       padding-right: 18px;
-      line-flex: 1;
+      line-height: 1;
       display: inline-flex;
       align-items: center;
     }
@@ -278,7 +278,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MOBILE CON SCALATURA E MASSIMO SPOSTAMENTO DELLA FOTO VERSO IL BASSO */
+    /* SPECIFICHE MOBILE CON SCALATURA E SPOSTAMENTO EFFETTIVO DELLA FOTO VERSO IL BASSO */
     @media (max-width: 768px) {
       .hero { 
         padding: 25px 24px 35px; 
@@ -288,10 +288,11 @@
         justify-content: flex-start; 
       }
       .hero::after { 
-        background-size: cover;
-        /* Impostato a 30% 100%: spinge l'immagine completamente verso il basso,
-           ancorandola alla base del box per massimizzare la zona scura superiore sotto la scritta CHAOS */
-        background-position: 30% 100%; 
+        /* Cambiato da "cover" a "140% auto": questo ingrandisce leggermente la foto permettendo lo scorrimento */
+        background-size: 140% auto;
+        /* "center 25%" sposta l'inquadratura verso l'alto dell'immagine, spingendo la folla e i volti verso il basso, 
+           lasciando lo sfondo nero pulito dietro la scritta CHAOS */
+        background-position: center 25%; 
         opacity: 0.75;
       }
       
