@@ -271,17 +271,17 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE CORRETTE E COMPATTATE LATO MOBILE (IPHONE 12 E SIMILI) */
+    /* SPECIFICHE MOBILE CON SPOSTAMENTO DEL TESTO IN ALTO */
     @media (max-width: 768px) {
       .hero { 
-        padding: 40px 24px 35px; 
-        min-height: 460px; /* Ripristina l'altezza fissa per non far rimpicciolire l'immagine */
+        padding: 25px 24px 35px; /* Ridotto il padding superiore per agganciare subito il testo in alto */
+        min-height: 460px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start; /* Sposta stabilmente tutto il blocco scritte verso l'alto */
       }
       .hero::after { 
-        background-size: cover; /* Forza la foto a coprire l'intera area */
+        background-size: cover;
         background-position: 65% center; 
         opacity: 0.75;
       }
@@ -295,19 +295,19 @@
       
       .hero-divider {
         width: 50%;
-        margin: 16px 0 14px 0; /* Riduce drasticamente lo spazio sotto la linea */
+        margin: 16px 0 14px 0;
       }
 
       .hero-tagline { 
         font-size: 0.92rem; 
-        line-height: 1.25; /* Stringe l'interlinea della citazione (RIGA ROSSA SUPERIORE) */
+        line-height: 1.25;
         max-width: 100%; 
         margin: 0;
         padding: 0;
       }
       .hero-tagline .autore { 
         display: block; 
-        margin-top: 2px; /* Attacca l'autore subito sotto la citazione (RIGA ROSSA INFERIORE) */
+        margin-top: 2px;
       }
       
       .ticker-item span { font-size: 0.35rem !important; }
