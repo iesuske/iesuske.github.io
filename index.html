@@ -278,7 +278,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MOBILE CON SCALATURA E ABBASSAMENTO DECISIVO DELLA FOTO */
+    /* SPECIFICHE MOBILE CON SPOSTAMENTO EFFETTIVO DELLA FOTO A DESTRA E IN BASSO */
     @media (max-width: 768px) {
       .hero { 
         padding: 25px 24px 35px; 
@@ -288,8 +288,8 @@
         justify-content: flex-start; 
       }
       .hero::after { 
-        background-size: 160% auto;
-        background-position: 65% 100%;
+        background-size: cover;
+        background-position: 30% 85%; /* Sposta l'inquadratura in basso per liberare la scritta CHAOS */
         opacity: 0.75;
       }
       
@@ -339,7 +339,7 @@
       }
       .section-label {
         display: block !important;
-        font-size: 0.52rem !important; /* Adesso è identico al font-size del ticker su mobile */
+        font-size: 0.52rem !important; 
         letter-spacing: 2px !important;
         text-align: center !important; 
         text-wrap: balance !important; 
