@@ -102,7 +102,15 @@
       background: radial-gradient(ellipse at 25% center, transparent 40%, rgba(8,8,8,0.60) 75%, rgba(8,8,8,0.85) 100%);
       z-index: 3;
     }
-    .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 4; }
+    
+    /* MODIFICA STRUTTURALE: Spostiamo globalmente verso l'alto l'intero blocco dei testi della Hero */
+    .hero-inner { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      position: relative; 
+      z-index: 4; 
+      transform: translateY(-20px); /* Alza in modo sicuro tutto il blocco */
+    }
     
     /* FIRMA */
     .hero-signature {
@@ -124,11 +132,10 @@
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
-    /* APPLICATO TRASLATEY: Sposta fisicamente in alto tutta l'area selezionata di un mezzo invio abbondante */
     .hero-divider { 
       width: 40%; 
       height: 4px; 
-      margin: 22px 0 24px; 
+      margin: 22px 0 24px; /* Mantiene lo spazio di 1 tab visivo sotto il titolo */
       opacity: 0.4;
       background: repeating-linear-gradient(
         90deg,
@@ -143,7 +150,6 @@
       );
       mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
       -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
-      transform: translateY(-24px);
     }
     
     .hero-tagline { 
@@ -152,7 +158,6 @@
       opacity: 0.75; 
       max-width: 900px; 
       line-height: 1.6; 
-      transform: translateY(-24px); /* Segue la riga tratteggiata verso l'alto */
     }
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
@@ -270,13 +275,13 @@
         background-position: 50% 50%; 
         opacity: 0.8;
       }
+      
+      /* Annulla la traslazione globale su mobile/tablet per preservare lo spazio */
+      .hero-inner { transform: translateY(0); }
+      
       .hero-title { font-size: 3.8rem; }
       .mobile-only-br { display: inline; }
-      
-      /* Annulla lo spostamento verticale su mobile per non sfasciare gli spazi stretti */
-      .hero-divider { transform: translateY(0); }
-      .hero-tagline { transform: translateY(0); font-size: 0.95rem; line-height: 1.4; max-width: 100%; }
-      
+      .hero-tagline { font-size: 0.95rem; line-height: 1.4; max-width: 100%; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
@@ -314,13 +319,11 @@
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
-      
       <div class="hero-divider"></div>
       <p class="hero-tagline">
         “...Don’t you know your last<br class="mobile-only-br"> years youth, ’77 you told<br class="mobile-only-br"> the truth...” 
         <span class="autore"><br class="mobile-only-br">(Menace, 1979)</span>
       </p>
-
     </div>
   </section>
 
