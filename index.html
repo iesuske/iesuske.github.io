@@ -166,18 +166,18 @@
       display: flex;
     }
     
-    /* TRACCIA DI SCORRIMENTO PERFETTAMENTE FLUIDA */
+    /* TRACCIA DI SCORRIMENTO */
     .ticker-track { 
       display: flex;
       width: max-content;
-      animation: ticker-move 28s linear infinite;
     }
 
-    /* SINGOLO BLOCCO DI BAND */
+    /* SINGOLO BLOCCO DI BAND: Spostando esattamente un intero blocco (-100%), la transizione è impeccabile */
     .ticker-item {
       display: flex;
       align-items: center;
       flex-shrink: 0;
+      animation: ticker-move-item 16s linear infinite;
     }
 
     .ticker-item span { 
@@ -198,9 +198,10 @@
       align-items: center;
     }
     
-    @keyframes ticker-move { 
+    /* Animazione corretta basata sul singolo item per eliminare i buchi neri */
+    @keyframes ticker-move-item { 
       0% { transform: translate3d(0, 0, 0); } 
-      100% { transform: translate3d(-50%, 0, 0); } 
+      100% { transform: translate3d(-100%, 0, 0); } 
     }
 
     .section-header {
@@ -331,6 +332,9 @@
 
   <div class="ticker">
     <div class="ticker-track">
+      <div class="ticker-item">
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
+      </div>
       <div class="ticker-item">
         <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
       </div>
