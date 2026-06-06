@@ -155,7 +155,7 @@
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
-    /* CONTENITORE TICKER GENERALE */
+    /* CONTENITORE TICKER */
     .ticker {
       background: var(--black);
       color: var(--white); 
@@ -163,18 +163,24 @@
       border-bottom: 3px solid var(--black); 
       padding: 14px 0; 
       overflow: hidden;
-      white-space: nowrap;
+      display: flex;
     }
     
-    /* TRACCIA DI SCORRIMENTO BLINDATA CONTRO I RITORNI A CAPO */
+    /* TRACCIA DI SCORRIMENTO AGGANCIA I DUE BLOCCHI AFFIANCATI */
     .ticker-track { 
-      display: inline-flex;
-      align-items: center;
-      white-space: nowrap;
+      display: flex;
       width: max-content;
-      animation: ticker-move 32s linear infinite;
+      animation: ticker-move 28s linear infinite;
     }
-    .ticker-track span { 
+
+    /* SINGOLO BLOCCO DI BAND */
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .ticker-item span { 
       display: inline-block;
       font-size: 0.62rem; 
       letter-spacing: 6px; 
@@ -183,7 +189,7 @@
       line-height: 1;
       white-space: nowrap;
     }
-    .ticker-track .dot { 
+    .ticker-item .dot { 
       opacity: 0.5;
       font-size: 1rem; 
       padding-right: 18px;
@@ -192,9 +198,10 @@
       align-items: center;
     }
     
+    /* Muovendo il 100% di un singolo ticker-item, il loop si aggancia al millesimo senza buchi neri */
     @keyframes ticker-move { 
-      0% { transform: translateX(0); } 
-      100% { transform: translateX(-50%); } 
+      0% { transform: translate3d(0, 0, 0); } 
+      100% { transform: translate3d(-50%, 0, 0); } 
     }
 
     .section-header {
@@ -278,7 +285,7 @@
       .hero-title { font-size: 3.8rem; }
       .mobile-only-br { display: inline; }
       .hero-tagline { font-size: 0.95rem; line-height: 1.4; max-width: 100%; }
-      .ticker-track span { font-size: 0.35rem !important; }
+      .ticker-item span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
       .hero-signature {
@@ -325,8 +332,12 @@
 
   <div class="ticker">
     <div class="ticker-track">
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
+      <div class="ticker-item">
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
+      </div>
+      <div class="ticker-item">
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
+      </div>
     </div>
   </div>
 
