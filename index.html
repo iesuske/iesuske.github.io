@@ -123,7 +123,23 @@
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
-    .hero-divider { width: 40%; height: 1px; background: rgba(255,255,255,0.18); margin: 36px 0 28px; }
+    
+    /* MODIFICA: Separatore Punk "Graffiato" usando i caratteri del font 'TR' */
+    .hero-divider { 
+      width: 40%; 
+      margin: 24px 0 24px; 
+      font-family: 'TR', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: -2px;
+      opacity: 0.4;
+      user-select: none;
+      overflow: hidden;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .hero-divider::before {
+      content: "--------------------------------------------------";
+    }
     
     .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.6; }
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
@@ -237,7 +253,6 @@
 
     @media (max-width: 768px) {
       .hero { padding: 40px 20px 36px; min-height: 450px; }
-      /* Ripristino sfondo ragazzi urlanti su iPad */
       .hero::after { 
         background-size: 150% auto; 
         background-position: 50% 50%; 
@@ -249,14 +264,13 @@
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
-      /* FIRMA CORRETTA PER IPAD/MOBILE */
       .hero-signature {
         display: block !important;
         position: absolute;
         top: auto;
         bottom: 20px;
         left: 20px;
-        transform: rotate(0deg); /* Orizzontale */
+        transform: rotate(0deg); 
         font-size: 0.55rem;
         opacity: 0.7;
         z-index: 100;
