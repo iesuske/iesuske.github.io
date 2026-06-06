@@ -103,7 +103,6 @@
       z-index: 3;
     }
 
-    /* ALZAMENTO GLOBALE BILANCIATO: Sposta l'intero blocco testi senza intaccare le proporzioni interne */
     .hero-inner { 
       max-width: 1280px; 
       margin: -30px auto 0; 
@@ -131,7 +130,7 @@
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
-    /* LA NUOVA LINEA TRATTEGGIATA SPESSA CON SFUMATURA RIPRISTINATA CORRETTAMENTE */
+    /* Splendida linea di divisione spessa e sfumata */
     .hero-divider { 
       width: 40%; 
       height: 4px; 
@@ -156,6 +155,7 @@
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
+    /* TICKER PERFETTAMENTE STRUTTURATO PER IL LOOP CONTINUO */
     .ticker {
       background: var(--black);
       color: var(--white); 
@@ -171,7 +171,7 @@
       display: flex;
       align-items: center;
       width: max-content;
-      animation: ticker-move 40s linear infinite; /* Animazione velocizzata a 40s rispetto ai 60s originari */
+      animation: ticker-move 32s linear infinite; /* Movimento rapido e continuo senza scatti */
     }
     .ticker-track span { 
       display: inline-block;
@@ -189,6 +189,8 @@
       display: flex;
       align-items: center;
     }
+    
+    /* Con 2 blocchi identici nell'HTML, lo scorrimento a -50% rende il loop impeccabile visivamente */
     @keyframes ticker-move { 
       0% { transform: translateX(0); } 
       100% { transform: translateX(-50%); } 
@@ -270,7 +272,6 @@
         opacity: 0.8;
       }
       
-      /* Annulla il margine negativo su mobile per mantenere spaziature fluide */
       .hero-inner { margin: 0 auto; }
       
       .hero-title { font-size: 3.8rem; }
@@ -323,8 +324,8 @@
 
   <div class="ticker">
     <div class="ticker-track">
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
-      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
+      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
+      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
     </div>
   </div>
 
