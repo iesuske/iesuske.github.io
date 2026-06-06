@@ -194,7 +194,7 @@
       opacity: 0.5;
       font-size: 1rem; 
       padding-right: 18px;
-      line-height: 1;
+      line-flex: 1;
       display: inline-flex;
       align-items: center;
     }
@@ -278,7 +278,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MOBILE CON SPOSTAMENTO EFFETTIVO DELLA FOTO A DESTRA E IN BASSO */
+    /* SPECIFICHE MOBILE CON SCALATURA E MASSIMO SPOSTAMENTO DELLA FOTO VERSO IL BASSO */
     @media (max-width: 768px) {
       .hero { 
         padding: 25px 24px 35px; 
@@ -289,7 +289,9 @@
       }
       .hero::after { 
         background-size: cover;
-        background-position: 30% 85%; /* Sposta l'inquadratura in basso per liberare la scritta CHAOS */
+        /* Impostato a 30% 100%: spinge l'immagine completamente verso il basso,
+           ancorandola alla base del box per massimizzare la zona scura superiore sotto la scritta CHAOS */
+        background-position: 30% 100%; 
         opacity: 0.75;
       }
       
