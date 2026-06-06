@@ -333,17 +333,20 @@
         padding-right: 12px !important;
       }
       
-      /* GIUSTIFICAZIONE E OTTIMIZZAZIONE ETICHETTA SEZIONE SOLO SU MOBILE */
+      /* NUOVA STRUTTURA BILANCIATA E CENTRATA PER LA SEZIONE SU MOBILE */
       .section-header {
-        padding: 28px 24px 20px !important; /* Allineo il padding ai margini del layout mobile */
+        padding: 30px 20px 22px !important;
       }
       .section-label {
         display: block !important;
         font-size: 0.48rem !important;
-        letter-spacing: 2px !important; /* Spaziatura ridotta per evitare rotture anomale delle parole */
-        text-align: justify !important; /* Forza il testo a spalmarsi perfettamente sui lati */
-        text-justify: inter-word !important;
-        line-height: 1.5 !important;
+        letter-spacing: 2px !important;
+        text-align: center !important; /* Mantiene l'allineamento centrale complessivo */
+        text-wrap: balance !important; /* FORZA IL BROWSER A BILANCIARE LE RIGHE ED ELIMINARE LETTERE ISOLATE */
+        -webkit-text-wrap: balance !important;
+        line-height: 1.6 !important;
+        max-width: 90%;
+        margin: 0 auto;
       }
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
