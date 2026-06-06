@@ -271,14 +271,14 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MOBILE CON SPOSTAMENTO DEL TESTO IN ALTO */
+    /* SPECIFICHE MOBILE CON RITORNO A CAPO OTTIMIZZATO DOPO "YEARS" */
     @media (max-width: 768px) {
       .hero { 
-        padding: 25px 24px 35px; /* Ridotto il padding superiore per agganciare subito il testo in alto */
+        padding: 25px 24px 35px; 
         min-height: 460px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* Sposta stabilmente tutto il blocco scritte verso l'alto */
+        justify-content: flex-start; 
       }
       .hero::after { 
         background-size: cover;
@@ -300,14 +300,18 @@
 
       .hero-tagline { 
         font-size: 0.92rem; 
-        line-height: 1.25;
+        line-height: 1.35; /* Gestisce armoniosamente lo spazio tra le due righe spezzate */
         max-width: 100%; 
         margin: 0;
         padding: 0;
       }
       .hero-tagline .autore { 
         display: block; 
-        margin-top: 2px;
+        margin-top: 4px;
+      }
+
+      .mobile-only-br { 
+        display: block; /* Attiva il ritorno a capo preciso solo su mobile */
       }
       
       .ticker-item span { font-size: 0.35rem !important; }
@@ -349,7 +353,7 @@
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
       <div class="hero-divider"></div>
       <p class="hero-tagline">
-        “...Don’t you know your last years youth, ’77 you told the truth...”<span class="autore">(Menace, 1979)</span>
+        “...Don’t you know your last years<br class="mobile-only-br">youth, ’77 you told the truth...”<span class="autore">(Menace, 1979)</span>
       </p>
     </div>
   </section>
