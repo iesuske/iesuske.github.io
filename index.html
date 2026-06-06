@@ -102,15 +102,7 @@
       background: radial-gradient(ellipse at 25% center, transparent 40%, rgba(8,8,8,0.60) 75%, rgba(8,8,8,0.85) 100%);
       z-index: 3;
     }
-    
-    /* MODIFICA STRUTTURALE: Spostiamo globalmente verso l'alto l'intero blocco dei testi della Hero */
-    .hero-inner { 
-      max-width: 1280px; 
-      margin: 0 auto; 
-      position: relative; 
-      z-index: 4; 
-      transform: translateY(-20px); /* Alza in modo sicuro tutto il blocco */
-    }
+    .hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 4; }
     
     /* FIRMA */
     .hero-signature {
@@ -132,10 +124,11 @@
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
+    /* MODIFICA MARGINE: Tira su l'intero blocco (riga + testi) lasciando intatta la formattazione interna */
     .hero-divider { 
       width: 40%; 
       height: 4px; 
-      margin: 22px 0 24px; /* Mantiene lo spazio di 1 tab visivo sotto il titolo */
+      margin: -30px 0 24px; 
       opacity: 0.4;
       background: repeating-linear-gradient(
         90deg,
@@ -152,13 +145,7 @@
       -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
     }
     
-    .hero-tagline { 
-      font-size: 1.20rem; 
-      font-style: italic; 
-      opacity: 0.75; 
-      max-width: 900px; 
-      line-height: 1.6; 
-    }
+    .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.6; }
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
@@ -177,10 +164,11 @@
       display: flex;
       align-items: center;
       width: max-content;
-      animation: ticker-move 60s linear infinite;
+      animation: ticker-move 80s linear infinite; /* Rallentata leggermente per compensare la terza stringa */
     }
     .ticker-track span { 
       display: inline-block;
+      font-family: 'TR', sans-serif;
       font-size: 0.62rem; 
       letter-spacing: 6px; 
       text-transform: uppercase;
@@ -197,7 +185,7 @@
     }
     @keyframes ticker-move { 
       0% { transform: translateX(0); } 
-      100% { transform: translateX(-50%); } 
+      100% { transform: translateX(-33.333%); } /* Modificato per scorrere esattamente un terzo dello spazio totale */
     }
 
     .section-header {
@@ -275,12 +263,12 @@
         background-position: 50% 50%; 
         opacity: 0.8;
       }
-      
-      /* Annulla la traslazione globale su mobile/tablet per preservare lo spazio */
-      .hero-inner { transform: translateY(0); }
-      
       .hero-title { font-size: 3.8rem; }
       .mobile-only-br { display: inline; }
+      
+      /* Reset del margine per mobile per preservare l'equilibrio degli spazi nativi */
+      .hero-divider { margin: 22px 0 24px; }
+      
       .hero-tagline { font-size: 0.95rem; line-height: 1.4; max-width: 100%; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
@@ -331,11 +319,12 @@
     <div class="ticker-track">
       <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
       <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
+      <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span>
     </div>
   </div>
 
   <div class="section-header">
-    <span class="section-label">&#9733; MY PERSONAL UK/US PUNK COLLECTION: ORIGINAL VINYL COPIES FROM 1977 TO 1979 &#9733;</span>
+    <span class="section-label">&#9733; MY PERSONAL UK/US PUNK COLLECTION, ORIGINAL VINYL COPIES FROM 1977 TO 1979 &#9733;</span>
   </div>
 
   <div class="records-wrap">
