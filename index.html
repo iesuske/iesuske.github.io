@@ -321,7 +321,16 @@
         display: block; 
       }
       
-      .ticker-item span { font-size: 0.35rem !important; }
+      /* MODIFICHE CORRETTIVE SOLO PER MOBILE DEL TICKER */
+      .ticker-item span { 
+        font-size: 0.52rem !important; /* Aumentato il font rispetto allo 0.35rem precedente */
+        letter-spacing: 2px !important; /* Diminuita e normalizzata la spaziatura interna tra lettere */
+        padding-right: 12px !important;
+      }
+      .ticker-item .dot {
+        font-size: 0.8rem !important;
+        padding-right: 12px !important;
+      }
       
       /* OTTIMIZZAZIONE ETICHETTA SEZIONE SU SCHERMI REALI E IPHONE */
       .section-label {
