@@ -124,21 +124,25 @@
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
-    /* MODIFICA: Separatore Punk "Graffiato" usando i caratteri del font 'TR' */
+    /* NUOVO APPROCCIO: Linea punk consumata, graffiata e frastagliata via CSS puro */
     .hero-divider { 
       width: 40%; 
-      margin: 24px 0 24px; 
-      font-family: 'TR', sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: -2px;
+      height: 4px; 
+      margin: 36px 0 28px; 
       opacity: 0.4;
-      user-select: none;
-      overflow: hidden;
-      white-space: nowrap;
-      line-height: 1;
-    }
-    .hero-divider::before {
-      content: "--------------------------------------------------";
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        var(--white) 2px,
+        var(--white) 7px,
+        transparent 7px,
+        transparent 9px,
+        var(--white) 9px,
+        var(--white) 12px
+      );
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
     }
     
     .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.6; }
