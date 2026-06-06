@@ -177,7 +177,8 @@
       display: flex;
       align-items: center;
       flex-shrink: 0;
-      animation: ticker-move-item 16s linear infinite;
+      /* Rallentata l'animazione da 16s a 24s per renderlo più leggibile e meno frenetico */
+      animation: ticker-move-item 24s linear infinite;
     }
 
     .ticker-item span { 
@@ -281,9 +282,7 @@
         justify-content: flex-start; 
       }
       .hero::after { 
-        /* Usiamo una dimensione fissa controllata per evitare ingrandimenti eccessivi */
         background-size: 160% auto;
-        /* 65% a destra e 100% (completamente in basso) per sganciare la faccia dai testi */
         background-position: 65% 100%;
         opacity: 0.75;
       }
