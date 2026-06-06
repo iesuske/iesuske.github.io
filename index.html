@@ -271,7 +271,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MOBILE CON SPOSTAMENTO EFFETTIVO DELLA FOTO A DESTRA E VERSO IL BASSO */
+    /* SPECIFICHE MOBILE CON SCALATURA E ABBASSAMENTO DECISIVO DELLA FOTO */
     @media (max-width: 768px) {
       .hero { 
         padding: 25px 24px 35px; 
@@ -281,9 +281,10 @@
         justify-content: flex-start; 
       }
       .hero::after { 
-        background-size: cover;
-        /* Spostiamo l'asse verticale all'85% per spingere il volto del ragazzo più in basso nel blocco, evitando le scritte */
-        background-position: 30% 85%;
+        /* Usiamo una dimensione fissa controllata per evitare ingrandimenti eccessivi */
+        background-size: 160% auto;
+        /* 65% a destra e 100% (completamente in basso) per sganciare la faccia dai testi */
+        background-position: 65% 100%;
         opacity: 0.75;
       }
       
