@@ -333,10 +333,17 @@
         padding-right: 12px !important;
       }
       
-      /* OTTIMIZZAZIONE ETICHETTA SEZIONE SU SCHERMI REALI E IPHONE */
+      /* GIUSTIFICAZIONE E OTTIMIZZAZIONE ETICHETTA SEZIONE SOLO SU MOBILE */
+      .section-header {
+        padding: 28px 24px 20px !important; /* Allineo il padding ai margini del layout mobile */
+      }
       .section-label {
+        display: block !important;
         font-size: 0.48rem !important;
-        letter-spacing: 4px !important;
+        letter-spacing: 2px !important; /* Spaziatura ridotta per evitare rotture anomale delle parole */
+        text-align: justify !important; /* Forza il testo a spalmarsi perfettamente sui lati */
+        text-justify: inter-word !important;
+        line-height: 1.5 !important;
       }
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
