@@ -124,7 +124,11 @@
     .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
-    /* MODIFICA MARGINI: Spostata in basso di un altro mezzo invio (22px) rispetto alla parentesi quadra */
+    /* CONTENITORE INFO: Sposta in alto tutto il blocco senza rompere i rapporti interni */
+    .hero-info-block {
+      margin-top: -12px; 
+    }
+
     .hero-divider { 
       width: 40%; 
       height: 4px; 
@@ -264,6 +268,10 @@
       }
       .hero-title { font-size: 3.8rem; }
       .mobile-only-br { display: inline; }
+      
+      /* Reset del margine negativo per il mobile/iPad per evitare sovrapposizioni */
+      .hero-info-block { margin-top: 0; }
+      
       .hero-tagline { font-size: 0.95rem; line-height: 1.4; max-width: 100%; }
       .ticker-track span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
@@ -302,11 +310,15 @@
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
-      <div class="hero-divider"></div>
-      <p class="hero-tagline">
-        “...Don’t you know your last<br class="mobile-only-br"> years youth, ’77 you told<br class="mobile-only-br"> the truth...” 
-        <span class="autore"><br class="mobile-only-br">(Menace, 1979)</span>
-      </p>
+      
+      <div class="hero-info-block">
+        <div class="hero-divider"></div>
+        <p class="hero-tagline">
+          “...Don’t you know your last<br class="mobile-only-br"> years youth, ’77 you told<br class="mobile-only-br"> the truth...” 
+          <span class="autore"><br class="mobile-only-br">(Menace, 1979)</span>
+        </p>
+      </div>
+
     </div>
   </section>
 
