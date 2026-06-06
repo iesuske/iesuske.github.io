@@ -271,7 +271,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MOBILE CON FOTO SPOSTATA A DESTRA */
+    /* SPECIFICHE MOBILE CON SPOSTAMENTO EFFETTIVO DELLA FOTO A DESTRA */
     @media (max-width: 768px) {
       .hero { 
         padding: 25px 24px 35px; 
@@ -282,7 +282,7 @@
       }
       .hero::after { 
         background-size: cover;
-        background-position: 85% center; /* Sposta l'immagine di sfondo più a destra su mobile */
+        background-position: 30% center; /* Diminuendo il valore lo sfondo si sposta visivamente verso DESTRA */
         opacity: 0.75;
       }
       
