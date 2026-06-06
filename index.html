@@ -172,7 +172,7 @@
       width: max-content;
     }
 
-    /* SINGOLO BLOCCO DI BAND: Spostando esattamente un intero blocco (-100%), la transizione è impeccabile */
+    /* SINGOLO BLOCCO DI BAND */
     .ticker-item {
       display: flex;
       align-items: center;
@@ -198,7 +198,6 @@
       align-items: center;
     }
     
-    /* Animazione corretta basata sul singolo item per eliminare i buchi neri */
     @keyframes ticker-move-item { 
       0% { transform: translate3d(0, 0, 0); } 
       100% { transform: translate3d(-100%, 0, 0); } 
@@ -272,19 +271,45 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* SPECIFICHE OTTIMIZZATE LATO MOBILE (IPHONE 12 E SIMILI) */
     @media (max-width: 768px) {
-      .hero { padding: 40px 20px 36px; min-height: 450px; }
+      .hero { 
+        padding: 60px 24px 50px; 
+        min-height: auto; /* Toglie l'altezza fissa per non disperdere il testo */
+      }
       .hero::after { 
         background-size: 150% auto; 
         background-position: 50% 50%; 
         opacity: 0.8;
       }
       
-      .hero-inner { margin: 0 auto; }
+      .hero-inner { 
+        margin: 0; 
+        text-align: left; /* Allinea stabilmente a sinistra tutto il blocco */
+      }
       
       .hero-title { font-size: 3.8rem; }
-      .mobile-only-br { display: inline; }
-      .hero-tagline { font-size: 0.95rem; line-height: 1.4; max-width: 100%; }
+      
+      .hero-divider {
+        width: 60%;
+        margin: 24px 0 20px 0; /* Centra geometricamente la linea sotto il titolo */
+      }
+
+      .hero-tagline { 
+        font-size: 1rem; 
+        line-height: 1.3; /* Compatta l'interlinea della citazione */
+        max-width: 100%; 
+        text-align: left;
+      }
+      .hero-tagline .autore { 
+        display: inline-block; 
+        margin-top: 6px; /* Avvicina l'autore alla citazione */
+      }
+
+      .mobile-only-br { 
+        display: block; /* Mantiene un solo a capo controllato per la citazione */
+      }
+      
       .ticker-item span { font-size: 0.35rem !important; }
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
@@ -292,8 +317,8 @@
         display: block !important;
         position: absolute;
         top: auto;
-        bottom: 20px;
-        left: 20px;
+        bottom: 15px;
+        left: 24px;
         transform: rotate(0deg); 
         font-size: 0.55rem;
         opacity: 0.7;
@@ -324,8 +349,8 @@
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
       <div class="hero-divider"></div>
       <p class="hero-tagline">
-        “...Don’t you know your last<br class="mobile-only-br"> years youth, ’77 you told<br class="mobile-only-br"> the truth...” 
-        <span class="autore"><br class="mobile-only-br">(Menace, 1979)</span>
+        “...Don’t you know your last years youth,<br class="mobile-only-br">’77 you told the truth...” 
+        <span class="autore">(Menace, 1979)</span>
       </p>
     </div>
   </section>
