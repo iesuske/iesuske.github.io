@@ -62,9 +62,12 @@
       padding: 0; display: none; min-width: 160px; border: 3px solid var(--black); z-index: 1100;
     }
     .dropdown-menu li { list-style: none; }
-    .dropdown-menu li:first-child {
+    
+    /* Linee di separazione tratteggiate tra le voci del menu */
+    .dropdown-menu li:not(:last-child) {
       border-bottom: 2px dashed var(--white);
     }
+    
     .dropdown.open .dropdown-menu { display: block !important; }
     
     @media (hover: hover) {
@@ -385,6 +388,7 @@
       <ul class="dropdown-menu">
         <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
         <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
+        <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank">Whatsapp me</a></li>
       </ul>
     </div>
   </nav>
