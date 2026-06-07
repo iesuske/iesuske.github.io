@@ -130,7 +130,15 @@
     }
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
-    .hero-title { font-size: clamp(4.5rem, 12vw, 11rem); line-height: 0.88; text-transform: uppercase; letter-spacing: -3px; }
+    
+    /* Correzione del kerning su Desktop (sposta leggermente a sinistra per compensare lo spazio vuoto del font) */
+    .hero-title { 
+      font-size: clamp(4.5rem, 12vw, 11rem); 
+      line-height: 0.88; 
+      text-transform: uppercase; 
+      letter-spacing: -3px;
+      margin-left: -14px; 
+    }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
     /* Linea di divisione sfumata */
@@ -307,7 +315,11 @@
         text-align: left;
       }
       
-      .hero-title { font-size: 3.5rem; }
+      /* Correzione millimetrica del kerning specifica per Mobile (allineamento perfetto della quadra all'eyebrow) */
+      .hero-title { 
+        font-size: 3.5rem; 
+        margin-left: -5px; 
+      }
       
       /* Ripristinata esattamente all'opacità originale di tipo desktop */
       .hero-title .line2 {
@@ -388,7 +400,7 @@
       <ul class="dropdown-menu">
         <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
         <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
-        <li><a href="https://wa.me/393382975188" target="_blank">Whatsapp Me</a></li>
+        <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank">Whatsapp me</a></li>
       </ul>
     </div>
   </nav>
