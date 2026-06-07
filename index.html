@@ -207,7 +207,7 @@
       100% { transform: translate3d(-100%, 0, 0); } 
     }
 
-    /* CONTENITORE SOTTO IL TICKER: Larghezza fluida al 100% per adattarsi ad iPad e desktop */
+    /* CONTENITORE COMPATTO: Sempre allineato a destra su tutti gli schermi */
     .ticker-bottom-row {
       width: 100%;
       margin: 14px 0 0 0;
@@ -216,7 +216,6 @@
       justify-content: flex-end;
     }
 
-    /* Stile base del Copyright */
     .photo-credit {
       font-family: 'TR', sans-serif;
       font-weight: 700;
@@ -302,29 +301,23 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ADATTAMENTO PER IPAD, IPHONE E DISPOSITIVI MOBILE */
+    /* CORREZIONE PER STRUTTURA AD ASSE DESTRO SU MOBILE */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
       }
       
-      /* Su iPad/iPhone la riga si adatta alla larghezza dello schermo */
+      /* Mantiene lo spazio compatto e spinge a destra millimetricamente con il nav dell'iPhone/iPad */
       .ticker-bottom-row {
         padding: 0 24px;
-        margin: 12px 0 0 0;
-        justify-content: flex-end; /* Mantiene a destra su iPad */
+        margin: 14px 0 0 0;
+        display: flex;
+        justify-content: flex-end; 
       }
-
-      /* Su iPhone (schermi molto stretti), la scritta si centra per non rompersi */
-      @media (max-width: 480px) {
-        .ticker-bottom-row {
-          justify-content: center; 
-        }
-        .photo-credit {
-          font-size: 0.50rem; /* Leggermente più piccola su smartphone */
-          padding-right: 0;
-          letter-spacing: 1px;
-        }
+      
+      .photo-credit {
+        font-size: 0.56rem;
+        padding-right: 12px; /* Perfetto allineamento sotto l'ingranaggio dell'About Me */
       }
 
       .hero { 
@@ -464,7 +457,7 @@
   </div>
 
   <div class="ticker-bottom-row">
-    <div class="photo-credit">[Photo by Derek Ridgers, © 1977]</div>
+    <div class="photo-credit">[Photo by Derek Ridgers © 1977]</div>
   </div>
 
   <div class="section-header">
