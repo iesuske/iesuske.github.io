@@ -39,37 +39,17 @@
       background-size: 10px 10px;
     }
     
-    nav, section, .ticker, .section-header, .records-wrap, footer {
+    nav, section, .ticker, .ticker-bottom-row, .section-header, .records-wrap, footer {
       position: relative;
       z-index: 10;
     }
 
-    /* Struttura nav modificata per incolonnare a destra About Me e Copyright */
+    /* Ripristinato nav standard con solo About Me a destra */
     nav {
       border-bottom: var(--border); padding: 14px 40px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-end; 
-      gap: 8px;
+      justify-content: flex-end; 
       z-index: 1000; 
-    }
-
-    .nav-top-row {
-      display: flex;
-      justify-content: flex-end;
-      width: 100%;
-    }
-
-    /* Stile per il Copyright della foto allineato a destra */
-    .photo-credit {
-      font-family: 'TR', sans-serif;
-      font-weight: 700;
-      font-size: 0.58rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--black);
-      padding-right: 12px;
-      opacity: 0.8;
     }
 
     .dropdown { position: relative; list-style: none; }
@@ -152,7 +132,7 @@
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
     
-    /* Correzione del kerning su Desktop (sposta leggermente a sinistra per allineamento perfetto) */
+    /* Correzione del kerning su Desktop */
     .hero-title { 
       font-size: clamp(4.5rem, 12vw, 11rem); 
       line-height: 0.88; 
@@ -235,6 +215,26 @@
       100% { transform: translate3d(-100%, 0, 0); } 
     }
 
+    /* NUOVO CONTENITORE SOTTO IL TICKER: Allinea perfettamente il copyright a destra */
+    .ticker-bottom-row {
+      max-width: 1280px;
+      margin: 14px auto 0;
+      padding: 0 40px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* Stile per il Copyright della foto sotto il ticker */
+    .photo-credit {
+      font-family: 'TR', sans-serif;
+      font-weight: 700;
+      font-size: 0.58rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.8;
+    }
+
     .section-header {
       max-width: 1280px;
       margin: 0 auto; padding: 28px 40px 20px;
@@ -314,8 +314,8 @@
         padding: 14px 24px;
       }
       
-      /* Nascondiamo temporaneamente la riga del copyright su mobile per pulizia visiva */
-      .photo-credit {
+      /* Nascondiamo la riga del copyright su mobile per fare spazio al titolo */
+      .ticker-bottom-row {
         display: none;
       }
 
@@ -418,17 +418,14 @@
   <div class="grid-bg"></div>
 
   <nav>
-    <div class="nav-top-row">
-      <div class="dropdown">
-        <a class="dropdown-trigger">About Me</a>
-        <ul class="dropdown-menu">
-          <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
-          <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
-          <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank">Whatsapp me</a></li>
-        </ul>
-      </div>
+    <div class="dropdown">
+      <a class="dropdown-trigger">About Me</a>
+      <ul class="dropdown-menu">
+        <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
+        <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
+        <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank">Whatsapp me</a></li>
+      </ul>
     </div>
-    <div class="photo-credit">[Photo by Derek Ridgers © 1977]</div>
   </nav>
 
   <section class="hero">
@@ -457,6 +454,10 @@
         <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span>
       </div>
     </div>
+  </div>
+
+  <div class="ticker-bottom-row">
+    <div class="photo-credit">[Photo by Derek Ridgers © 1977]</div>
   </div>
 
   <div class="section-header">
