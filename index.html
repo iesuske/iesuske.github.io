@@ -207,7 +207,7 @@
       100% { transform: translate3d(-100%, 0, 0); } 
     }
 
-    /* CONTENITORE COMPATTO: Sempre allineato a destra su tutti gli schermi */
+    /* FILA DESKTOP */
     .ticker-bottom-row {
       width: 100%;
       margin: 14px 0 0 0;
@@ -225,6 +225,11 @@
       color: var(--black);
       opacity: 0.8;
       padding-right: 12px;
+    }
+
+    /* ELEMENTO MOBILE NASCOSTO DI DEFAULT SU DESKTOP */
+    .photo-credit-mobile {
+      display: none;
     }
 
     .section-header {
@@ -301,26 +306,30 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* MODIFICHE SPECIFICHE MOBILE (IPHONE / IPAD) */
+    /* COSTRUTTO STRUTTURALE MOBILE SENZA SPAZI */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
       }
       
-      /* Mantiene lo spazio compatto e spinge a destra millimetricamente con il nav */
+      /* CANCELLA IL BLOCCO VUOTO ESTERNO */
       .ticker-bottom-row {
-        padding: 0 24px;
-        margin: 14px 0 0 0;
-        display: flex;
-        justify-content: flex-end; 
+        display: none !important; 
       }
-      
-      /* Ridotto drasticamente il font su mobile per dare importanza al testo sotto */
-      .photo-credit {
+
+      /* ABILITA IL COPYRIGHT DENTRO L'INTESTAZIONE DEI RECORD */
+      .photo-credit-mobile {
+        display: block !important;
+        text-align: right;
+        font-family: 'TR', sans-serif;
+        font-weight: 700;
         font-size: 0.45rem; 
-        padding-right: 0; 
         letter-spacing: 1.5px;
-        opacity: 0.7; /* Leggermente più sfumato per non distrarre */
+        text-transform: uppercase;
+        color: var(--black);
+        opacity: 0.6;
+        margin-bottom: 12px; /* Distanza minima dalla linea nera superiore */
+        padding-right: 4px;
       }
 
       .hero { 
@@ -386,8 +395,10 @@
         padding-right: 12px !important;
       }
       
+      /* IL BLOCCO GRIGIO ADESSO SI ATTACCA DIRETTAMENTE SOTTO IL TICKER */
       .section-header {
-        padding: 30px 20px 22px !important;
+        padding: 10px 24px 18px !important; 
+        margin-top: 0 !important;
       }
       .section-label {
         display: block !important;
@@ -396,9 +407,13 @@
         text-align: center !important; 
         text-wrap: balance !important; 
         -webkit-text-wrap: balance !important;
-        line-height: 1.6 !important;
-        max-width: 90%;
+        line-height: 1.5 !important;
+        max-width: 100%;
         margin: 0 auto;
+      }
+
+      .records-wrap {
+        padding: 24px; 
       }
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
@@ -464,6 +479,7 @@
   </div>
 
   <div class="section-header">
+    <div class="photo-credit-mobile">[Photo by Derek Ridgers © 1977]</div>
     <span class="section-label">★ MY PERSONAL UK/US PUNK COLLECTION: ORIGINAL VINYL COPIES FROM 1977 TO 1979 ★</span>
   </div>
 
