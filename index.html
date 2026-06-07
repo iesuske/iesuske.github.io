@@ -44,11 +44,32 @@
       z-index: 10;
     }
 
+    /* Struttura nav modificata per incolonnare a destra About Me e Copyright */
     nav {
       border-bottom: var(--border); padding: 14px 40px;
       display: flex;
-      justify-content: flex-end; 
+      flex-direction: column;
+      align-items: flex-end; 
+      gap: 8px;
       z-index: 1000; 
+    }
+
+    .nav-top-row {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    /* Stile per il Copyright della foto allineato a destra */
+    .photo-credit {
+      font-family: 'TR', sans-serif;
+      font-weight: 700;
+      font-size: 0.58rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      padding-right: 12px;
+      opacity: 0.8;
     }
 
     .dropdown { position: relative; list-style: none; }
@@ -131,7 +152,7 @@
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
     
-    /* Correzione del kerning su Desktop (sposta leggermente a sinistra per compensare lo spazio vuoto del font) */
+    /* Correzione del kerning su Desktop (sposta leggermente a sinistra per allineamento perfetto) */
     .hero-title { 
       font-size: clamp(4.5rem, 12vw, 11rem); 
       line-height: 0.88; 
@@ -188,7 +209,6 @@
       display: flex;
       align-items: center;
       flex-shrink: 0;
-      /* Animazione rallentata a 35s per una lettura molto fluida sul mobile */
       animation: ticker-move-item 35s linear infinite;
     }
 
@@ -289,8 +309,16 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MOBILE CON SPOSTAMENTO EFFETTIVO DELLA FOTO A DESTRA E IN BASSO */
     @media (max-width: 768px) {
+      nav {
+        padding: 14px 24px;
+      }
+      
+      /* Nascondiamo temporaneamente la riga del copyright su mobile per pulizia visiva */
+      .photo-credit {
+        display: none;
+      }
+
       .hero { 
         padding: 25px 24px 35px; 
         min-height: 460px;
@@ -299,7 +327,6 @@
         justify-content: flex-start; 
       }
       
-      /* GRADIENTE SCURITO ULTERIORMENTE (da 0.85 a 0.95) PER ABBATTERE IL CONTRASTO SUI CAPELLI */
       .hero::after { 
         background-image: 
           linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.3) 45%, transparent 100%), 
@@ -315,13 +342,12 @@
         text-align: left;
       }
       
-      /* Correzione millimetrica del kerning specifica per Mobile (allineamento perfetto della quadra all'eyebrow) */
+      /* Allineamento millimetrico della quadra specifico per Mobile */
       .hero-title { 
         font-size: 3.5rem; 
         margin-left: -5px; 
       }
       
-      /* Ripristinata esattamente all'opacità originale di tipo desktop */
       .hero-title .line2 {
         opacity: 0.28;
       }
@@ -331,7 +357,6 @@
         margin: 16px 0 14px 0;
       }
 
-      /* OTTIMIZZAZIONE TAGLINE CITAZIONE SU MOBILE */
       .hero-tagline { 
         font-size: 0.85rem !important; 
         line-height: 1.45 !important;
@@ -348,7 +373,6 @@
         display: block; 
       }
       
-      /* MODIFICHE CORRETTIVE SOLO PER MOBILE DEL TICKER */
       .ticker-item span { 
         font-size: 0.52rem !important; 
         letter-spacing: 2px !important; 
@@ -359,7 +383,6 @@
         padding-right: 12px !important;
       }
       
-      /* STRUTTURA BILANCIATA E CENTRATA: STESSA GRANDEZZA DEL FONT TICKER (0.52rem) */
       .section-header {
         padding: 30px 20px 22px !important;
       }
@@ -395,14 +418,17 @@
   <div class="grid-bg"></div>
 
   <nav>
-    <div class="dropdown">
-      <a class="dropdown-trigger">About Me</a>
-      <ul class="dropdown-menu">
-        <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
-        <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
-        <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank">Whatsapp me</a></li>
-      </ul>
+    <div class="nav-top-row">
+      <div class="dropdown">
+        <a class="dropdown-trigger">About Me</a>
+        <ul class="dropdown-menu">
+          <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
+          <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
+          <li><a href="https://wa.me/39XXXXXXXXXX" target="_blank">Whatsapp me</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="photo-credit">[Photo by Derek Ridgers © 1977]</div>
   </nav>
 
   <section class="hero">
