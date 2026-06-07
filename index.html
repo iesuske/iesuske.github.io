@@ -287,9 +287,15 @@
         flex-direction: column;
         justify-content: flex-start; 
       }
+      
+      /* RIPRISTINO SCRITTA TRASPARENTE + OMBREGGIATURA DI SFONDO PER ISOLARE LE TESTE DIETRO CHAOS */
       .hero::after { 
+        background-image: 
+          linear-gradient(to top, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.2) 40%, transparent 100%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), 
+          url('images/backgroundhome.jpg');
         background-size: cover;
-        background-position: 30% 85%; /* Sposta l'inquadratura in basso per liberare la scritta CHAOS */
+        background-position: 30% 85%;
         opacity: 0.75;
       }
       
@@ -300,10 +306,9 @@
       
       .hero-title { font-size: 3.5rem; }
       
-      /* Modifica mirata mobile: trasforma il testo in grigio scuro fumo semitrasparente */
+      /* Ripristinata esattamente all'opacità originale di tipo desktop */
       .hero-title .line2 {
-        color: var(--black);
-        opacity: 0.55;
+        opacity: 0.28;
       }
       
       .hero-divider {
