@@ -44,7 +44,6 @@
       z-index: 10;
     }
 
-    /* Ripristinato nav standard con solo About Me a destra */
     nav {
       border-bottom: var(--border); padding: 14px 40px;
       display: flex;
@@ -64,7 +63,6 @@
     }
     .dropdown-menu li { list-style: none; }
     
-    /* Linee di separazione tratteggiate tra le voci del menu */
     .dropdown-menu li:not(:last-child) {
       border-bottom: 2px dashed var(--white);
     }
@@ -114,7 +112,6 @@
       z-index: 4; 
     }
     
-    /* FIRMA */
     .hero-signature {
         position: absolute;
         top: 250px;
@@ -132,7 +129,6 @@
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
     
-    /* Correzione del kerning su Desktop */
     .hero-title { 
       font-size: clamp(4.5rem, 12vw, 11rem); 
       line-height: 0.88; 
@@ -142,7 +138,6 @@
     }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
-    /* Linea di divisione sfumata */
     .hero-divider { 
       width: 40%; 
       height: 4px; 
@@ -167,7 +162,6 @@
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
-    /* CONTENITORE TICKER */
     .ticker {
       background: var(--black);
       color: var(--white); 
@@ -178,13 +172,11 @@
       display: flex;
     }
     
-    /* TRACCIA DI SCORRIMENTO */
     .ticker-track { 
       display: flex;
       width: max-content;
     }
 
-    /* SINGOLO BLOCCO DI BAND */
     .ticker-item {
       display: flex;
       align-items: center;
@@ -215,16 +207,16 @@
       100% { transform: translate3d(-100%, 0, 0); } 
     }
 
-    /* NUOVO CONTENITORE SOTTO IL TICKER: Allinea perfettamente il copyright a destra */
+    /* CONTENITORE SOTTO IL TICKER SBLOCCATO: Larghezza totale e padding di 40px identico al nav */
     .ticker-bottom-row {
-      max-width: 1280px;
-      margin: 14px auto 0;
+      width: 100%;
+      margin: 14px 0 0 0;
       padding: 0 40px;
       display: flex;
       justify-content: flex-end;
     }
 
-    /* Stile per il Copyright della foto sotto il ticker */
+    /* Stile per il Copyright allineato sul margine destro assoluto */
     .photo-credit {
       font-family: 'TR', sans-serif;
       font-weight: 700;
@@ -233,6 +225,7 @@
       text-transform: uppercase;
       color: var(--black);
       opacity: 0.8;
+      padding-right: 12px; /* Compensa la spaziatura del bottone sopra */
     }
 
     .section-header {
@@ -314,7 +307,6 @@
         padding: 14px 24px;
       }
       
-      /* Nascondiamo la riga del copyright su mobile per fare spazio al titolo */
       .ticker-bottom-row {
         display: none;
       }
@@ -342,7 +334,6 @@
         text-align: left;
       }
       
-      /* Allineamento millimetrico della quadra specifico per Mobile */
       .hero-title { 
         font-size: 3.5rem; 
         margin-left: -5px; 
