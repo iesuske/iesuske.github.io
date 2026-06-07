@@ -207,7 +207,7 @@
       100% { transform: translate3d(-100%, 0, 0); } 
     }
 
-    /* CONTENITORE SOTTO IL TICKER SBLOCCATO: Larghezza totale e padding di 40px identico al nav */
+    /* CONTENITORE SOTTO IL TICKER: Larghezza fluida al 100% per adattarsi ad iPad e desktop */
     .ticker-bottom-row {
       width: 100%;
       margin: 14px 0 0 0;
@@ -216,7 +216,7 @@
       justify-content: flex-end;
     }
 
-    /* Stile per il Copyright allineato sul margine destro assoluto */
+    /* Stile base del Copyright */
     .photo-credit {
       font-family: 'TR', sans-serif;
       font-weight: 700;
@@ -225,7 +225,7 @@
       text-transform: uppercase;
       color: var(--black);
       opacity: 0.8;
-      padding-right: 12px; /* Compensa la spaziatura del bottone sopra */
+      padding-right: 12px;
     }
 
     .section-header {
@@ -302,13 +302,29 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* ADATTAMENTO PER IPAD, IPHONE E DISPOSITIVI MOBILE */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
       }
       
+      /* Su iPad/iPhone la riga si adatta alla larghezza dello schermo */
       .ticker-bottom-row {
-        display: none;
+        padding: 0 24px;
+        margin: 12px 0 0 0;
+        justify-content: flex-end; /* Mantiene a destra su iPad */
+      }
+
+      /* Su iPhone (schermi molto stretti), la scritta si centra per non rompersi */
+      @media (max-width: 480px) {
+        .ticker-bottom-row {
+          justify-content: center; 
+        }
+        .photo-credit {
+          font-size: 0.50rem; /* Leggermente più piccola su smartphone */
+          padding-right: 0;
+          letter-spacing: 1px;
+        }
       }
 
       .hero { 
