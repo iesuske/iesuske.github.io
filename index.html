@@ -95,7 +95,6 @@
       background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
     }
     
-    /* RIPRISTINATA CONFIGURAZIONE ORIGINALE DESKTOP */
     .hero-grid-texture {
       position: absolute;
       inset: 0; 
@@ -260,10 +259,10 @@
     }
     
     .record-card { cursor: pointer; transition: transform 0.25s cubic-bezier(.22,.68,0,1.2); }
-    .record-card:nth-child(1) { transform: rotate(-1.4deg); }
-    .record-card:nth-child(2) { transform: rotate(1.2deg); }
-    .record-card:nth-child(3) { transform: rotate(-0.8deg); }
-    .record-card:nth-child(4) { transform: rotate(1.5deg); }
+    .record-card:nth-child(4n+1) { transform: rotate(-1.4deg); }
+    .record-card:nth-child(4n+2) { transform: rotate(1.2deg); }
+    .record-card:nth-child(4n+3) { transform: rotate(-0.8deg); }
+    .record-card:nth-child(4n+4) { transform: rotate(1.5deg); }
     
     .record-card:hover, .record-card.active { transform: rotate(0deg) scale(1.04) !important; z-index: 50; }
     
@@ -311,7 +310,6 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* MODIFICHE ISOLATE RIGOROSAMENTE SOLO PER COSTRUTTO MOBILE */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -351,12 +349,6 @@
         background-size: cover;
         background-position: 30% 85%;
         opacity: 0.75;
-      }
-      
-      /* LE MODIFICHE DELLA GRIGLIA AVVENGONO ESCLUSIVAMENTE SU SMARTPHONE QUI */
-      .hero-grid-texture {
-        background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.2px, transparent 1.2px);
-        background-size: 11px 11px;
       }
       
       .hero-inner { 
@@ -516,6 +508,24 @@
         <div class="record-band">The Drones</div>
         <div class="record-title">Further Temptations</div>
         <div class="record-meta">AU • LP • 1977</div>
+      </div>
+      <div class="record-card">
+        <div class="record-cover"><img src="images/thedepressionsa.jpg" alt="The Depressions"></div>
+        <div class="record-band">The Depressions</div>
+        <div class="record-title">The Depressions</div>
+        <div class="record-meta">UK • LP • 1979</div>
+      </div>
+      <div class="record-card">
+        <div class="record-cover"><img src="images/johnnymopeda.jpg" alt="Johnny Moped"></div>
+        <div class="record-band">Johnny Moped</div>
+        <div class="record-title">Cycledelic</div>
+        <div class="record-meta">UK • LP • 1978</div>
+      </div>
+      <div class="record-card">
+        <div class="record-cover"><img src="images/deadboysa.jpg" alt="Dead Boys"></div>
+        <div class="record-band">Dead Boys</div>
+        <div class="record-title">Young, Loud and Snotty</div>
+        <div class="record-meta">US • LP • 1977</div>
       </div>
     </div>
   </div>
