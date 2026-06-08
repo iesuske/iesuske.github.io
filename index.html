@@ -95,12 +95,12 @@
       background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
     }
     
-    /* CORREZIONE GRIGLIA DESKTOP */
+    /* RIPRISTINATA ORIGINALE DESKTOP AL 100% */
     .hero-grid-texture {
       position: absolute;
       inset: 0; 
-      background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
-      background-size: 12px 12px; 
+      background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+      background-size: 8px 8px; 
       z-index: 2;
     }
     
@@ -353,10 +353,10 @@
         opacity: 0.75;
       }
       
-      /* ADATTAMENTO PROPORZIONALE GRIGLIA SU MOBILE */
+      /* LA MODIFICA VIENE APPLICATA ESCLUSIVAMENTE QUI DENTRO PER IL MOBILE */
       .hero-grid-texture {
-        background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-        background-size: 10px 10px;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.2px, transparent 1.2px);
+        background-size: 11px 11px;
       }
       
       .hero-inner { 
