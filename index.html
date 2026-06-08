@@ -94,11 +94,16 @@
       background-position: 37vw 50%;
       background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
     }
+    
+    /* CORREZIONE GRIGLIA DESKTOP */
     .hero-grid-texture {
       position: absolute;
-      inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
-      background-size: 8px 8px; z-index: 2;
+      inset: 0; 
+      background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
+      background-size: 12px 12px; 
+      z-index: 2;
     }
+    
     .hero-vignette {
       position: absolute; inset: 0;
       background: radial-gradient(ellipse at 25% center, transparent 40%, rgba(8,8,8,0.60) 75%, rgba(8,8,8,0.85) 100%);
@@ -312,12 +317,10 @@
         padding: 14px 24px;
       }
       
-      /* CANCELLA IL BLOCCO VUOTO ESTERNO */
       .ticker-bottom-row {
         display: none !important; 
       }
 
-      /* ABILITA IL COPYRIGHT DENTRO L'INTESTAZIONE DEI RECORD */
       .photo-credit-mobile {
         display: block !important;
         text-align: right;
@@ -328,7 +331,7 @@
         text-transform: uppercase;
         color: var(--black);
         opacity: 0.6;
-        margin-bottom: 12px; /* Distanza minima dalla linea nera superiore */
+        margin-bottom: 12px; 
         padding-right: 4px;
       }
 
@@ -348,6 +351,12 @@
         background-size: cover;
         background-position: 30% 85%;
         opacity: 0.75;
+      }
+      
+      /* ADATTAMENTO PROPORZIONALE GRIGLIA SU MOBILE */
+      .hero-grid-texture {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+        background-size: 10px 10px;
       }
       
       .hero-inner { 
@@ -395,7 +404,6 @@
         padding-right: 12px !important;
       }
       
-      /* IL BLOCCO GRIGIO ADESSO SI ATTACCA DIRETTAMENTE SOTTO IL TICKER */
       .section-header {
         padding: 10px 24px 18px !important; 
         margin-top: 0 !important;
