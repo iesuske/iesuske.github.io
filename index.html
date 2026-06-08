@@ -95,7 +95,7 @@
       background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
     }
     
-    /* RIPRISTINATA ORIGINALE DESKTOP AL 100% */
+    /* RIPRISTINATA CONFIGURAZIONE ORIGINALE DESKTOP */
     .hero-grid-texture {
       position: absolute;
       inset: 0; 
@@ -311,7 +311,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* COSTRUTTO STRUTTURALE MOBILE SENZA SPAZI */
+    /* MODIFICHE ISOLATE RIGOROSAMENTE SOLO PER COSTRUTTO MOBILE */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -353,7 +353,7 @@
         opacity: 0.75;
       }
       
-      /* LA MODIFICA VIENE APPLICATA ESCLUSIVAMENTE QUI DENTRO PER IL MOBILE */
+      /* LE MODIFICHE DELLA GRIGLIA AVVENGONO ESCLUSIVAMENTE SU SMARTPHONE QUI */
       .hero-grid-texture {
         background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.2px, transparent 1.2px);
         background-size: 11px 11px;
