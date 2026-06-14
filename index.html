@@ -356,6 +356,12 @@
         padding: 14px 24px;
       }
       
+      /* RIPRISTINO FORZATO DELLA GRIGLIA GLOBALE DI BACKGROUND ANCHE SU IPHONE */
+      .grid-bg {
+        opacity: 0.14 !important;
+        display: block !important;
+      }
+
       .ticker-bottom-row {
         display: none !important;
       }
@@ -392,9 +398,10 @@
         opacity: 0.9;
       }
 
-      /* LA GRIGLIA VIENE DETTATA CON L'OPACITÀ SITO ORIGINALE 0.14 SU MOBILE */
+      /* LA GRIGLIA INTERNA ALL'HERO VIENE DETTATA CON OPACITÀ 0.14 SU MOBILE */
       .hero-grid-texture {
         opacity: 0.14 !important;
+        display: block !important;
       }
       
       .hero-inner { 
