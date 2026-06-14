@@ -131,6 +131,32 @@
         pointer-events: none;
     }
 
+    /* NUOVO CONTATORE GRAFFIANTE IN BASSO A SINISTRA */
+    .views-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 40px;
+      z-index: 99;
+      text-align: left;
+      line-height: 1;
+    }
+
+    .counter-label {
+      font-family: 'TR', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 2px;
+      opacity: 0.5;
+      margin-bottom: -2px;
+    }
+
+    .counter-number {
+      font-family: 'TR', sans-serif;
+      font-size: 1.5rem;
+      font-weight: normal;
+      opacity: 0.85;
+      letter-spacing: -1px;
+    }
+
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
     
     .hero-title { 
@@ -431,6 +457,11 @@
         z-index: 100;
         white-space: nowrap;
       }
+
+      .views-counter {
+        left: 24px;
+        bottom: 20px;
+      }
     } 
   </style>
 </head>
@@ -452,6 +483,12 @@
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
     <div class="hero-signature">Massimo Redaelli 2026</div>
+    
+    <div class="views-counter">
+      <div class="counter-label">Views</div>
+      <div id="visit-count" class="counter-number">00</div>
+    </div>
+
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
       <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
@@ -693,6 +730,30 @@
       if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
+
+    // LOGICA CONTATORE CON BLOCCO ADMIN
+    const counterElement = document.getElementById('visit-count');
+    const namespace = "glueandchaos_v1";
+
+    if (localStorage.getItem('is_admin') === 'true') {
+      // Sei l'admin: recupera solo le visite salvate senza aumentarle
+      fetch(`https://api.countapi.xyz/get/${namespace}/visits`)
+        .then(res => res.json())
+        .then(data => {
+          let count = data.value || 0;
+          counterElement.innerText = String(count).padStart(2, '0').slice(-2);
+        })
+        .catch(() => { counterElement.innerText = '00'; });
+    } else {
+      // Visitatore comune: incrementa di 1
+      fetch(`https://api.countapi.xyz/hit/${namespace}/visits`)
+        .then(res => res.json())
+        .then(data => {
+          let count = data.value || 0;
+          counterElement.innerText = String(count).padStart(2, '0').slice(-2);
+        })
+        .catch(() => { counterElement.innerText = '00'; });
+    }
   </script>
 </body>
 </html>
