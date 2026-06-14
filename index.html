@@ -143,11 +143,11 @@
         pointer-events: none;
     }
 
-    /* CONTATORE IN BASSO A SINISTRA SOTTO LA FIRMA */
+    /* CONTATORE IN BASSO A SINISTRA ALLINEATO ALLA FIRMA VERTICALE DESKTOP */
     .views-counter {
       position: absolute;
       bottom: 20px;
-      left: 40px;
+      left: 20px;
       z-index: 99;
       text-align: left;
       line-height: 1;
@@ -372,7 +372,7 @@
       }
 
       .hero { 
-        padding: 25px 24px 35px; 
+        padding: 25px 24px 75px; /* Aumentato padding bottom per fare spazio a firma e contatore */
         min-height: 460px;
         display: flex;
         flex-direction: column;
@@ -456,23 +456,24 @@
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
+      /* SISTEMAZIONE MOBILE DI FIRMA E CONTATORE (ORIZZONTALI, NON AZZANNATI) */
       .hero-signature {
         display: block !important;
         position: absolute;
         top: auto !important;
-        bottom: 15px !important;
-        left: 12px !important;
-        transform: rotate(-90deg) !important;
-        transform-origin: left bottom !important;
-        font-size: 0.55rem;
-        opacity: 0.6;
+        bottom: 18px !important;
+        left: 24px !important;
+        transform: none !important; /* Raddrizzata la firma su mobile */
+        font-size: 0.65rem;
+        opacity: 0.5;
         z-index: 100;
         white-space: nowrap;
       }
 
       .views-counter {
-        left: 24px;
-        bottom: 20px;
+        left: auto !important;
+        right: 24px !important; /* Spostato a destra bilanciando la firma a sinistra */
+        bottom: 15px !important;
       }
     } 
   </style>
@@ -641,7 +642,7 @@
       <div class="record-card">
         <div class="record-cover"><img src="images/thelurkera.jpg" alt="The Lurkers"></div>
         <div class="record-band">The Lurkers</div>
-        <div class="record-title">Fullham Fallout</div>
+        <div class="record-title">Fulham Fallout</div>
         <div class="record-meta">UK • LP • 1978</div>
       </div>
       <div class="record-card">
@@ -773,12 +774,10 @@
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
 
-    // LOGICA FUNZIONANTE CONTATORE CON BLOCCO ADMIN
     const counterElement = document.getElementById('visit-count');
     const key = "glueandchaos_it"; 
 
     if (localStorage.getItem('is_admin') === 'true') {
-      // Sei l'admin: recupera il valore senza fare +1
       fetch(`https://api.countapi.net/get/${key}`)
         .then(res => res.json())
         .then(data => {
@@ -787,7 +786,6 @@
         })
         .catch(() => { counterElement.innerText = '00'; });
     } else {
-      // Nuovo visitatore: aumenta il contatore di 1
       fetch(`https://api.countapi.net/hit/${key}`)
         .then(res => res.json())
         .then(data => {
@@ -797,12 +795,10 @@
         .catch(() => { counterElement.innerText = '01'; });
     }
 
-    // PROTEZIONE: Blocco totale del Click con Tasto Destro mouse
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
 
-    // PROTEZIONE EXTRA: Blocca le scorciatoie da tastiera per salvare la pagina (CTRL+S / CMD+S)
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
