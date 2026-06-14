@@ -96,61 +96,69 @@
 
     .hero {
       background: var(--black); color: var(--white); padding: 72px 40px 56px;
-      border-bottom: 5px solid var(--black); overflow: hidden; min-height: 550px;
+      border-bottom: 5px solid var(--black); overflow: hidden; min-height: 580px;
       position: relative;
+      display: flex;
+      align-items: center;
     }
+    
     .hero::after {
       content: '';
       position: absolute; inset: 0;
-      background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
-      background-position: 37vw 50%;
-      background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
+      background-image: url('images/backgroundhome.jpg');
+      background-position: right center;
+      background-size: cover; 
+      background-repeat: no-repeat; 
+      filter: sepia(60%) brightness(0.9); 
+      z-index: 1;
+    }
+    
+    /* Gradiente per amalgamare l'immagine con lo sfondo nero a sinistra */
+    .hero-vignette {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.4) 60%, rgba(8,8,8,0.2) 100%);
+      z-index: 3;
     }
     
     .hero-grid-texture {
       position: absolute;
       inset: 0; 
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
       background-size: 8px 8px; 
       z-index: 2;
     }
-    
-    .hero-vignette {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 25% center, transparent 40%, rgba(8,8,8,0.60) 75%, rgba(8,8,8,0.85) 100%);
-      z-index: 3;
-    }
 
     .hero-inner { 
+      width: 100%;
       max-width: 1280px; 
-      margin: -30px auto 0; 
+      margin: 0 auto; 
       position: relative; 
       z-index: 4; 
     }
     
-    /* FIRMA VERTICALE DESKTOP */
+    /* FIRMA VERTICALE */
     .hero-signature {
         position: absolute;
-        top: 250px;
+        bottom: 40px;
         left: 20px;
         color: #ffffff;
         font-size: 0.7rem;
         letter-spacing: 2px;
         transform: rotate(-90deg);
-        transform-origin: left top;
+        transform-origin: left bottom;
         z-index: 99;
-        opacity: 0.7;
+        opacity: 0.5;
         white-space: nowrap;
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP */
+    /* CONTATORE */
     .views-counter {
       position: absolute;
       bottom: 20px;
-      left: 20px;
+      right: 40px;
       z-index: 99;
-      text-align: left;
+      text-align: right;
       line-height: 1;
     }
 
@@ -159,7 +167,7 @@
       font-size: 0.48rem;
       letter-spacing: 2px;
       opacity: 0.5;
-      margin-bottom: -1px;
+      margin-bottom: 2px;
     }
 
     .counter-number {
@@ -173,11 +181,11 @@
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
     
     .hero-title { 
-      font-size: clamp(4.5rem, 12vw, 11rem); 
+      font-size: clamp(3.5rem, 10vw, 9rem); 
       line-height: 0.88; 
       text-transform: uppercase; 
       letter-spacing: -3px;
-      margin-left: -14px; 
+      margin-left: -5px; 
     }
     .hero-title .line2 { opacity: 0.28; display: block; }
     
@@ -197,11 +205,9 @@
         var(--white) 9px,
         var(--white) 12px
       );
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
     }
     
-    .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.6; }
+    .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 600px; line-height: 1.6; }
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
@@ -250,7 +256,6 @@
       100% { transform: translate3d(-100%, 0, 0); } 
     }
 
-    /* FILA DESKTOP */
     .ticker-bottom-row {
       width: 100%;
       margin: 14px 0 0 0;
@@ -344,11 +349,16 @@
         font-weight: 700;
     }
 
+    /* MEDIA QUERIES PER TABLET / IPAD */
     @media (max-width: 1024px) {
-      .records-grid { grid-template-columns: repeat(2, 1fr); }
+      .records-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .hero { min-height: 500px; padding: 40px; }
+      .hero::after { background-position: 65% center; }
+      .hero-title { font-size: 5rem; }
+      .hero-divider { width: 60%; }
     }
 
-    /* STRAORDINARIO COMPATTO DI RESPONSIVITÀ PER DISPOSITIVI MOBILE ED IPAD */
+    /* MEDIA QUERIES PER SMARTPHONE / IPHONE */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -373,58 +383,37 @@
       }
 
       .hero { 
-        padding: 25px 24px 50px; 
+        padding: 40px 24px 60px; 
         min-height: 480px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; 
       }
       
-      /* SPOSTAMENTO FOTO A DESTRA ED ELIMINAZIONE SOVRAPPOSIZIONI SUI VOLTI */
       .hero::after { 
-        background-image: 
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.92) 35%, rgba(8,8,8,0.3) 70%, transparent 100%), 
-          url('images/backgroundhome.jpg');
-        background-size: auto 100%; /* Blocca l'altezza impedendo zoom sproporzionati */
-        background-position: right 25% center; /* Spinge lo scatto a destra per liberare il volto principale */
-        opacity: 0.9;
+        background-position: center center;
+        opacity: 0.85;
       }
-
-      /* OPACITÀ DELLA GRIGLIA ABBASSATA SU MOBILE PER EVITARE RUMORE SU VISO E TESTI */
-      .hero-grid-texture {
-        opacity: 0.04 !important;
+      
+      .hero-vignette {
+        background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.7) 40%, rgba(8,8,8,0.5) 100%);
       }
       
       .hero-inner { 
-        margin: 0;
         text-align: left;
-        max-width: 75%; /* Vincola i testi per non farli sconfinare oltre la metà dello schermo */
       }
       
       .hero-title { 
-        font-size: 3.1rem; 
-        margin-left: -4px; 
-      }
-      
-      .hero-title .line2 {
-        opacity: 0.28;
+        font-size: 3.5rem; 
+        margin-left: -3px; 
       }
       
       .hero-divider {
-        width: 65%;
+        width: 70%;
         margin: 16px 0 14px 0;
       }
 
       .hero-tagline { 
-        font-size: 0.85rem !important; 
+        font-size: 0.95rem !important; 
         line-height: 1.45 !important;
         max-width: 100%; 
-        margin: 0;
-        padding: 0;
-      }
-      .hero-tagline .autore { 
-        display: block; 
-        margin-top: 6px;
       }
 
       .mobile-only-br { 
@@ -442,62 +431,42 @@
       }
       
       .section-header {
-        padding: 10px 24px 18px !important; 
-        margin-top: 0 !important;
+        padding: 16px 24px !important; 
       }
       .section-label {
         display: block !important;
-        font-size: 0.52rem !important; 
+        font-size: 0.55rem !important; 
         letter-spacing: 2px !important;
-        text-align: center !important; 
-        text-wrap: balance !important; 
-        -webkit-text-wrap: balance !important;
         line-height: 1.5 !important;
-        max-width: 100%;
-        margin: 0 auto;
       }
 
       .records-wrap {
         padding: 24px; 
       }
 
-      .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
+      .records-grid { grid-template-columns: repeat(1, 1fr); gap: 32px; }
       
       .hero-signature {
         display: block !important;
         position: absolute;
-        top: auto !important;         
         bottom: 20px !important;      
         left: 20px !important;        
-        transform: rotate(-90deg) !important;
-        transform-origin: left bottom !important; 
-        font-size: 0.62rem !important;
-        opacity: 0.5;
-        z-index: 100;
-        white-space: nowrap;
+        font-size: 0.55rem !important;
+        opacity: 0.4;
       }
 
       .views-counter {
         left: auto !important;
         right: 20px !important; 
         bottom: 20px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-end !important;
       }
       
       .views-counter .counter-label {
         font-size: 0.40rem !important; 
-        margin-bottom: 3px !important;
-        text-align: right;
       }
 
       .views-counter .counter-number {
-        font-size: 0.75rem !important; 
-        letter-spacing: 0px;
-        text-align: right;
-        opacity: 0.7;
-        line-height: 1 !important;
+        font-size: 1rem !important; 
       }
     } 
   </style>
@@ -523,7 +492,7 @@
     
     <div class="views-counter">
       <div class="counter-label">Views</div>
-      <div id="visit-count" class="counter-number">00</div>
+      <div id="visit-count" class="counter-number">01</div>
     </div>
 
     <div class="hero-inner">
@@ -538,9 +507,6 @@
 
   <div class="ticker">
     <div class="ticker-track">
-      <div class="ticker-item">
-        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
-      </div>
       <div class="ticker-item">
         <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
       </div>
