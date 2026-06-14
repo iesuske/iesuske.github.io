@@ -104,7 +104,8 @@
       position: absolute; inset: 0;
       background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
       background-position: 37vw 50%;
-      background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
+      background-size: 70% auto; background-repeat: no-repeat;
+      filter: sepia(60%); z-index: 1;
     }
     
     .hero-grid-texture {
@@ -124,7 +125,7 @@
     .hero-inner { 
       max-width: 1280px; 
       margin: -30px auto 0; 
-      position: relative; 
+      position: relative;
       z-index: 4; 
     }
     
@@ -170,10 +171,11 @@
       letter-spacing: -0.5px;
     }
 
-    .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
+    .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px;
+    border-left: 3px solid var(--white); padding-left: 14px;}
     
     .hero-title { 
-      font-size: clamp(4.5rem, 12vw, 11rem); 
+      font-size: clamp(4.5rem, 12vw, 11rem);
       line-height: 0.88; 
       text-transform: uppercase; 
       letter-spacing: -3px;
@@ -183,7 +185,7 @@
     
     .hero-divider { 
       width: 40%; 
-      height: 4px; 
+      height: 4px;
       margin: 32px 0 28px;
       opacity: 0.4;
       background: repeating-linear-gradient(
@@ -280,7 +282,7 @@
       border-bottom: 2px solid var(--black); text-align: center;
     }
     .section-label { 
-      font-size: 0.72rem; 
+      font-size: 0.72rem;
       letter-spacing: 6px; 
       text-transform: uppercase; 
       font-weight: 700;
@@ -355,7 +357,7 @@
       }
       
       .ticker-bottom-row {
-        display: none !important; 
+        display: none !important;
       }
 
       .photo-credit-mobile {
@@ -369,11 +371,11 @@
         color: var(--black);
         opacity: 0.6;
         margin-bottom: 12px; 
-        padding-right: 4px;
+        padding-right: 24px; /* MODIFICATO: Ridotto per spingere il testo più a destra, allineandolo al bordo */
       }
 
       .hero { 
-        padding: 25px 24px 50px; 
+        padding: 25px 24px 50px;
         min-height: 480px;
         display: flex;
         flex-direction: column;
@@ -386,7 +388,8 @@
           linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.92) 35%, rgba(8,8,8,0.3) 70%, transparent 100%), 
           url('images/backgroundhome.jpg');
         background-size: auto 100%; /* Blocca l'altezza impedendo zoom sproporzionati */
-        background-position: right 25% center; /* Spinge lo scatto a destra per liberare il volto principale */
+        background-position: right 25% center;
+        /* Spinge lo scatto a destra per liberare il volto principale */
         opacity: 0.9;
       }
 
@@ -402,7 +405,7 @@
       }
       
       .hero-title { 
-        font-size: 3.1rem; 
+        font-size: 3.1rem;
         margin-left: -4px; 
       }
       
@@ -416,23 +419,23 @@
       }
 
       .hero-tagline { 
-        font-size: 0.85rem !important; 
+        font-size: 0.85rem !important;
         line-height: 1.45 !important;
         max-width: 100%; 
         margin: 0;
         padding: 0;
       }
       .hero-tagline .autore { 
-        display: block; 
+        display: block;
         margin-top: 6px;
       }
 
       .mobile-only-br { 
-        display: block; 
+        display: block;
       }
       
       .ticker-item span { 
-        font-size: 0.52rem !important; 
+        font-size: 0.52rem !important;
         letter-spacing: 2px !important; 
         padding-right: 12px !important;
       }
@@ -442,7 +445,7 @@
       }
       
       .section-header {
-        padding: 10px 24px 18px !important; 
+        padding: 10px 24px 18px !important;
         margin-top: 0 !important;
       }
       .section-label {
@@ -458,7 +461,7 @@
       }
 
       .records-wrap {
-        padding: 24px; 
+        padding: 24px;
       }
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
@@ -470,7 +473,7 @@
         bottom: 20px !important;      
         left: 20px !important;        
         transform: rotate(-90deg) !important;
-        transform-origin: left bottom !important; 
+        transform-origin: left bottom !important;
         font-size: 0.62rem !important;
         opacity: 0.5;
         z-index: 100;
@@ -479,21 +482,21 @@
 
       .views-counter {
         left: auto !important;
-        right: 20px !important; 
-        bottom: 20px !important;
+        right: 24px !important; /* MODIFICATO: Allineato a destra con il padding standard del contenitore */
+        bottom: 12px !important; /* MODIFICATO: Spostato più in basso rispetto a prima */
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-end !important;
       }
       
       .views-counter .counter-label {
-        font-size: 0.40rem !important; 
+        font-size: 0.40rem !important;
         margin-bottom: 3px !important;
         text-align: right;
       }
 
       .views-counter .counter-number {
-        font-size: 0.75rem !important; 
+        font-size: 0.75rem !important;
         letter-spacing: 0px;
         text-align: right;
         opacity: 0.7;
@@ -519,6 +522,7 @@
   <section class="hero">
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
+   
     <div class="hero-signature">Massimo Redaelli 2026</div>
     
     <div class="views-counter">
@@ -778,7 +782,6 @@
         dropdown.classList.toggle('open');
       }
     });
-
     cards.forEach(card => {
       card.addEventListener('click', function(e) {
         if (window.matchMedia('(pointer: coarse)').matches) {
@@ -792,12 +795,10 @@
         }
       });
     });
-
     document.addEventListener('touchstart', (e) => {
       if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
-
     const counterElement = document.getElementById('visit-count');
     const key = "glueandchaos_it"; 
 
@@ -822,7 +823,6 @@
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
-
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
