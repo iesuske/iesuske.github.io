@@ -49,7 +49,6 @@
       z-index: 1; opacity: 0.14;
       background-image: radial-gradient(#080808 1px, transparent 1px);
       background-size: 10px 10px;
-      /* Forza l'accelerazione hardware su iOS per evitare che la griglia scompaia */
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
     }
@@ -353,20 +352,26 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SEZIONE MOBILE (OTTIMIZZATA PER IPHONE) */
+    /* SEZIONE MOBILE (LAVORO DI CORREZIONE SULLA GRIGLIA GLOBALE PER IPHONE) */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
       }
       
-      /* OTTIMIZZAZIONE GRIGLIA GLOBALE DI BACKGROUND PER SCHERMI RETINA IPHONE */
+      /* FIX DEFINITIVO IPHONE PER LA GRIGLIA SOTTO I DISCHI */
       .grid-bg {
-        opacity: 0.16 !important;
+        opacity: 0.35 !important; /* Alzata opacità per i micro-pixel degli schermi Retina Apple */
         display: block !important;
-        background-image: radial-gradient(#080808 1.5px, transparent 1.5px) !important;
+        /* Tecnica hard-edge: crea cerchi perfetti da 1px senza sfocatura che sennò scompare su iOS */
+        background-image: radial-gradient(#080808 1px, transparent 1px) !important;
         background-size: 10px 10px !important;
         -webkit-transform: translateZ(0) !important;
         transform: translateZ(0) !important;
+      }
+
+      /* Assicura che le sezioni sotto l'hero lascino trasparire lo sfondo fixed */
+      .section-header, .records-wrap, footer {
+        background: transparent !important;
       }
 
       .ticker-bottom-row {
@@ -395,7 +400,6 @@
         justify-content: flex-start; 
       }
       
-      /* SPOSTAMENTO INQUADRATURA SULLA SINISTRA PER FARE USCIRE IL RAGAZZO CHE URLA */
       .hero::after { 
         background-image: 
           linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.1) 75%, transparent 100%), 
@@ -405,11 +409,11 @@
         opacity: 0.9;
       }
 
-      /* OTTIMIZZAZIONE GRIGLIA INTERNA ALL'HERO SU IPHONE */
+      /* Griglia interna all'Hero scuro */
       .hero-grid-texture {
-        opacity: 0.16 !important;
+        opacity: 0.14 !important;
         display: block !important;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px) !important;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px) !important;
         background-size: 8px 8px !important;
         -webkit-transform: translateZ(0) !important;
         transform: translateZ(0) !important;
