@@ -144,7 +144,7 @@
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP (IN BASSO A SINISTRA SOTTO LA FIRMA) */
+    /* CONTATORE DESKTOP (RIMPICCIOLITO LEGGERMENTE) */
     .views-counter {
       position: absolute;
       bottom: 20px;
@@ -156,18 +156,18 @@
 
     .counter-label {
       font-family: 'TR', sans-serif;
-      font-size: 0.55rem;
+      font-size: 0.48rem; /* FIXED: Rimpicciolito da 0.55rem */
       letter-spacing: 2px;
       opacity: 0.5;
-      margin-bottom: -2px;
+      margin-bottom: -1px;
     }
 
     .counter-number {
       font-family: 'TR', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.25rem; /* FIXED: Rimpicciolito da 1.5rem */
       font-weight: normal;
       opacity: 0.85;
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
     }
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
@@ -457,31 +457,34 @@
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
-      /* MODIFICA: FIRMA IN VERTICALE SPOSTATA TUTTA IN BASSO SOPRA IL TICKER A SINISTRA (ZONA RETTANGOLO "DUE") */
+      /* FIRMA IN VERTICALE ANCORATA IN BASSO SOPRA IL TICKER A SINISTRA */
       .hero-signature {
         display: block !important;
         position: absolute;
-        top: auto !important;         /* Rimuove l'altezza fissa dall'alto */
-        bottom: 20px !important;      /* La ancora in fondo sopra la linea del ticker */
-        left: 20px !important;        /* Allineata a sinistra */
+        top: auto !important;         
+        bottom: 20px !important;      
+        left: 20px !important;        
         transform: rotate(-90deg) !important;
-        transform-origin: left bottom !important; /* Cambiato il pivot per gestire la rotazione dal basso */
+        transform-origin: left bottom !important; 
         font-size: 0.62rem !important;
         opacity: 0.5;
         z-index: 100;
         white-space: nowrap;
       }
 
-      /* CONTATORE MICRO SU MOBILE - SPOSTATO A DESTRA PER EFFETTO SPECCHIO CON LA FIRMA */
+      /* CONTATORE SU MOBILE (MANTIENE LE SUE DIMENSIONI PERFETTE COME CORRETTO PRIMA) */
       .views-counter {
         left: auto !important;
         right: 20px !important; 
         bottom: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
       }
       
       .views-counter .counter-label {
         font-size: 0.40rem !important; 
-        margin-bottom: -4px;
+        margin-bottom: 3px !important;
         text-align: right;
       }
 
@@ -490,6 +493,7 @@
         letter-spacing: 0px;
         text-align: right;
         opacity: 0.7;
+        line-height: 1 !important;
       }
     } 
   </style>
