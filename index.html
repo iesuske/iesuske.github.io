@@ -350,7 +350,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* STRAORDINARIO COMPATTO DI RESPONSIVITÀ PER DISPOSITIVI MOBILE ED IPAD */
+    /* SEZIONE MOBILE (LAVORIAMO SOLO QUI) */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -371,7 +371,7 @@
         color: var(--black);
         opacity: 0.6;
         margin-bottom: 12px; 
-        padding-right: 0px !important; /* CORRETTO: Spinto interamente al limite destro dello schermo */
+        padding-right: 0px !important;
       }
 
       .hero { 
@@ -382,25 +382,25 @@
         justify-content: flex-start; 
       }
       
-      /* SPOSTAMENTO FOTO A DESTRA ED ELIMINAZIONE SOVRAPPOSIZIONI SUI VOLTI */
+      /* RIPRISTINO DELLA GRIGLIA ORIGINALE E RIPOSIZIONAMENTO PER MOSTRARE IL RAGAZZO */
       .hero::after { 
         background-image: 
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.95) 20%, rgba(8,8,8,0.2) 65%, transparent 100%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.1) 75%, transparent 100%), 
           url('images/backgroundhome.jpg');
-        background-size: cover; 
-        background-position: 85% center;
-        opacity: 0.95;
+        background-size: auto 115%; /* Mantiene l'altezza proporzionata permettendo lo scorrimento orizzontale */
+        background-position: 18% center; /* Riposiziona l'asse per far rientrare la parte sinistra dello scatto (il ragazzo che urla) */
+        opacity: 0.9;
       }
 
-      /* OPACITÀ DELLA GRIGLIA ABBASSATA SU MOBILE PER EVITARE RUMORE SU VISO E TESTI */
+      /* LA GRIGLIA VIENE LASCIATA ALL'OPACITÀ DELLA STRUTTURA DEL SITO SENZA CAMBIAMENTI RECENTI */
       .hero-grid-texture {
-        opacity: 0.04 !important;
+        opacity: 0.14 !important;
       }
       
       .hero-inner { 
         margin: 0;
         text-align: left;
-        max-width: 75%; /* Vincola i testi per non farli sconfinare oltre la metà dello schermo */
+        max-width: 80%; 
       }
       
       .hero-title { 
@@ -481,8 +481,8 @@
 
       .views-counter {
         left: auto !important;
-        right: 12px !important; /* CORRETTO: Spinto più a destra verso il bordo (da 20px a 12px) */
-        bottom: 5px !important; /* CORRETTO: Abbassato drasticamente verso la fine della sezione hero (da 20px a 5px) */
+        right: 12px !important; 
+        bottom: 5px !important; 
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-end !important;
