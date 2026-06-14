@@ -379,14 +379,16 @@
         justify-content: flex-start; 
       }
       
-      /* CORRETTO: Spostiamo l'immagine decisamente a destra usando vw fisso e bilanciando l'ingombro per far respirare il volto rispetto al testo sulla sinistra */
+      /* REVISIONATO: Usiamo 'cover' che garantisce la visibilità dell'immagine e cambiamo l'asse X a 72% per muovere la foto verso destra in modo sicuro senza farla sparire */
       .hero::after { 
         background-image: 
-          linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.4) 40%, rgba(8,8,8,0.1) 100%),
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 35%, rgba(8,8,8,0) 85%), 
+          linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.5) 45%, rgba(8,8,8,0.1) 100%),
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.8) 35%, rgba(8,8,8,0) 85%), 
           url('images/backgroundhome.jpg');
-        background-size: 135% auto; /* Scaliamo leggermente per contenere le proporzioni senza crop aggressivi */
-        background-position: 58vw 50%; /* Spinge la foto verso destra liberando la metà sinistra per il testo */
+        background-size: cover;
+        background-position: 72% 50%;
+        filter: sepia(60%);
+        z-index: 1;
         opacity: 0.75;
       }
       
