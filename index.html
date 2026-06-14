@@ -380,19 +380,22 @@
         justify-content: flex-start; 
       }
       
+      /* MODIFICATO: Spostata l'immagine più a destra/basso e calibrata la sfumatura per migliorare contrasto e visibilità del volto */
       .hero::after { 
         background-image: 
-          linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.3) 45%, transparent 100%), 
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), 
+          linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.2) 100%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.8) 30%, rgba(8,8,8,0) 100%), 
           url('images/backgroundhome.jpg');
         background-size: cover;
-        background-position: 30% 85%;
+        background-position: 42% 90%;
         opacity: 0.75;
       }
       
+      /* MODIFICATO: Aggiunto un leggero padding-top per alzare il blocco di testo rispetto alla testa del ragazzo */
       .hero-inner { 
         margin: 0;
         text-align: left;
+        padding-top: 15px;
       }
       
       .hero-title { 
