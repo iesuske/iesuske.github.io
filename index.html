@@ -38,7 +38,7 @@
       user-select: none;
     }
 
-    /* PROTEZIONE: Impedisce il trascinamento delle immagini su desktop */
+    /* PROTEZIONE: Impedisce il trascinamento delle immagini */
     img {
       -webkit-user-drag: none;
       user-drag: none;
@@ -94,36 +94,44 @@
     }
     .dropdown-menu li a:hover { opacity: 0.7; }
 
+    /* SEZIONE HERO STRUTTURATA PER EVITARE COLLASSI */
     .hero {
-      background: var(--black); color: var(--white); padding: 72px 40px 56px;
-      border-bottom: 5px solid var(--black); overflow: hidden; min-height: 580px;
+      background: var(--black); 
+      color: var(--white); 
+      padding: 60px 40px;
+      border-bottom: 5px solid var(--black); 
+      overflow: hidden; 
+      min-height: 560px;
       position: relative;
       display: flex;
       align-items: center;
     }
     
+    /* SFONDO DINAMICO CON COPERTURA AGGANCIATA SULLA DESTRA (FOTO SPOSTATA PIÙ A DESTRA) */
     .hero::after {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute; 
+      inset: 0;
       background-image: url('images/backgroundhome.jpg');
-      background-position: right center;
+      background-position: 65% center;
       background-size: cover; 
       background-repeat: no-repeat; 
-      filter: sepia(60%) brightness(0.9); 
+      filter: sepia(60%) brightness(0.85); 
       z-index: 1;
     }
     
-    /* Gradiente per amalgamare l'immagine con lo sfondo nero a sinistra */
+    /* VIGNETTE GRADIENTE BILANCIATA PER LA LEGGIBILITÀ DEL TESTO A SINISTRA */
     .hero-vignette {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.4) 60%, rgba(8,8,8,0.2) 100%);
+      position: absolute; 
+      inset: 0;
+      background: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 35%, rgba(8,8,8,0.4) 70%, rgba(8,8,8,0.1) 100%);
       z-index: 3;
     }
     
     .hero-grid-texture {
       position: absolute;
       inset: 0; 
-      background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
       background-size: 8px 8px; 
       z-index: 2;
     }
@@ -139,10 +147,10 @@
     /* FIRMA VERTICALE */
     .hero-signature {
         position: absolute;
-        bottom: 40px;
+        bottom: 30px;
         left: 20px;
         color: #ffffff;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         letter-spacing: 2px;
         transform: rotate(-90deg);
         transform-origin: left bottom;
@@ -155,7 +163,7 @@
     /* CONTATORE */
     .views-counter {
       position: absolute;
-      bottom: 20px;
+      bottom: 30px;
       right: 40px;
       z-index: 99;
       text-align: right;
@@ -178,10 +186,10 @@
       letter-spacing: -0.5px;
     }
 
-    .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; border-left: 3px solid var(--white); padding-left: 14px;}
+    .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; border-left: 3px solid var(--white); padding-left: 14px;}
     
     .hero-title { 
-      font-size: clamp(3.5rem, 10vw, 9rem); 
+      font-size: clamp(3.5rem, 9vw, 8.5rem); 
       line-height: 0.88; 
       text-transform: uppercase; 
       letter-spacing: -3px;
@@ -190,9 +198,9 @@
     .hero-title .line2 { opacity: 0.28; display: block; }
     
     .hero-divider { 
-      width: 40%; 
+      width: 35%; 
       height: 4px; 
-      margin: 32px 0 28px;
+      margin: 24px 0 22px;
       opacity: 0.4;
       background: repeating-linear-gradient(
         90deg,
@@ -207,7 +215,7 @@
       );
     }
     
-    .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 600px; line-height: 1.6; }
+    .hero-tagline { font-size: 1.15rem; font-style: italic; opacity: 0.75; max-width: 650px; line-height: 1.5; }
     .hero-tagline .autore { display: block; margin-top: 8px; font-style: normal; opacity: 0.8; }
     .mobile-only-br { display: none; }
 
@@ -294,6 +302,7 @@
     
     .records-wrap { padding: 40px; max-width: 1280px; margin: 0 auto; }
     
+    /* GRIGLIA FARE RETE COMPATTA ED EVITARE DISALLINEAMENTI */
     .records-grid { 
       display: grid;
       grid-template-columns: repeat(4, 1fr); 
@@ -349,16 +358,16 @@
         font-weight: 700;
     }
 
-    /* MEDIA QUERIES PER TABLET / IPAD */
+    /* SPECIFICO PER IPAD / TABLET (RISOLVE LA GRIGLIA ENORME A 1 COLONNA) */
     @media (max-width: 1024px) {
       .records-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-      .hero { min-height: 500px; padding: 40px; }
-      .hero::after { background-position: 65% center; }
-      .hero-title { font-size: 5rem; }
-      .hero-divider { width: 60%; }
+      .hero { min-height: 520px; padding: 40px; }
+      .hero::after { background-position: 72% center; } /* Sposta la foto a destra su iPad */
+      .hero-title { font-size: 4.8rem; }
+      .hero-divider { width: 55%; }
     }
 
-    /* MEDIA QUERIES PER SMARTPHONE / IPHONE */
+    /* SPECIFICO PER IPHONE / SMARTPHONE */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -383,31 +392,36 @@
       }
 
       .hero { 
-        padding: 40px 24px 60px; 
-        min-height: 480px;
+        padding: 45px 24px 65px; 
+        min-height: 510px; /* Altezza solida per evitare schiacciamenti su iOS */
+        align-items: center;
       }
       
+      /* FORZATURA FOTO TUTTA A DESTRA SU IPHONE */
       .hero::after { 
-        background-position: center center;
-        opacity: 0.85;
+        background-position: 78% center !important;
+        opacity: 0.9;
       }
       
+      /* GRADIENTE VERTICALE + ORIZZONTALE INCROCIATO PER IPHONE */
       .hero-vignette {
-        background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.7) 40%, rgba(8,8,8,0.5) 100%);
+        background: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 45%, rgba(8,8,8,0.3) 80%, rgba(8,8,8,0.1) 100%),
+                    linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.4) 30%, transparent 100%);
       }
       
       .hero-inner { 
         text-align: left;
+        margin-top: -15px; /* Alza leggermente la scritta bloccando il problema */
       }
       
       .hero-title { 
-        font-size: 3.5rem; 
+        font-size: 3.4rem; 
         margin-left: -3px; 
       }
       
       .hero-divider {
-        width: 70%;
-        margin: 16px 0 14px 0;
+        width: 65%;
+        margin: 18px 0 16px 0;
       }
 
       .hero-tagline { 
@@ -421,7 +435,7 @@
       }
       
       .ticker-item span { 
-        font-size: 0.52rem !important; 
+        font-size: 0.55rem !important; 
         letter-spacing: 2px !important; 
         padding-right: 12px !important;
       }
@@ -431,11 +445,11 @@
       }
       
       .section-header {
-        padding: 16px 24px !important; 
+        padding: 20px 24px !important; 
       }
       .section-label {
         display: block !important;
-        font-size: 0.55rem !important; 
+        font-size: 0.58rem !important; 
         letter-spacing: 2px !important;
         line-height: 1.5 !important;
       }
@@ -444,12 +458,12 @@
         padding: 24px; 
       }
 
-      .records-grid { grid-template-columns: repeat(1, 1fr); gap: 32px; }
+      .records-grid { grid-template-columns: repeat(1, 1fr); gap: 35px; }
       
       .hero-signature {
         display: block !important;
         position: absolute;
-        bottom: 20px !important;      
+        bottom: 25px !important;      
         left: 20px !important;        
         font-size: 0.55rem !important;
         opacity: 0.4;
@@ -457,16 +471,16 @@
 
       .views-counter {
         left: auto !important;
-        right: 20px !important; 
-        bottom: 20px !important;
+        right: 24px !important; 
+        bottom: 25px !important;
       }
       
       .views-counter .counter-label {
-        font-size: 0.40rem !important; 
+        font-size: 0.42rem !important; 
       }
 
       .views-counter .counter-number {
-        font-size: 1rem !important; 
+        font-size: 1.05rem !important; 
       }
     } 
   </style>
@@ -794,6 +808,6 @@
         e.preventDefault();
       }
     });
-  </script>
+  </style>
 </body>
 </html>
