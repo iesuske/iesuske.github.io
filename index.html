@@ -352,11 +352,10 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ==========================================
-       SEZIONE OPERATIVA MOBILE (IPHONE / IPAD)
-       ========================================== */
+    /* ========================================================
+       SEZIONE OPERATIVA MOBILE: CORREZIONE COMPLETA E RIGIDA
+       ======================================================== */
     @media (max-width: 768px) {
-      /* Forza il colore crema sulla radice HTML per permettere la trasparenza dei blocchi */
       html {
         background-color: var(--white) !important;
       }
@@ -370,21 +369,21 @@
         background: transparent !important;
       }
       
-      /* FIX AGGRESSIVO DI VISIBILITÀ GRIGLIA PER WEBKIT (iOS) */
+      /* INIEZIONE SVG BASE64: Risolve definitivamente il bug di render dei puntini su Chrome/Safari mobile */
       .grid-bg {
         position: fixed !important; 
         inset: 0 !important;
         display: block !important;
         z-index: 1 !important;
-        opacity: 0.22 !important; /* Contrasto solido per schermi Retina Apple */
-        /* Utilizziamo pixel netti hard-edge per evitare che l'antialiasing di iOS la nasconda */
-        background-image: radial-gradient(#080808 1.2px, transparent 1.2px) !important;
+        opacity: 0.16 !important;
+        /* Un cerchio reale SVG ripetuto ogni 10px costringe lo smartphone a disegnarlo graficamente senza piallarlo */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23080808'/%3E%3C/svg%3E") !important;
         background-size: 10px 10px !important;
-        -webkit-transform: translateZ(0) !important;
-        transform: translateZ(0) !important;
+        background-repeat: repeat !important;
+        -webkit-transform: none !important;
+        transform: none !important;
       }
 
-      /* Rende i contenitori completamente trasparenti per far vedere la griglia fixed sottostante */
       .section-header, .records-wrap, footer {
         background: transparent !important;
       }
@@ -413,7 +412,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start; 
-        background-color: var(--black) !important; /* Mantiene lo sfondo nero dell'hero */
+        background-color: var(--black) !important;
       }
       
       .hero::after { 
@@ -425,14 +424,13 @@
         opacity: 0.9;
       }
 
-      /* Texture interna all'Hero nero */
+      /* Texture interna all'Hero (Puntini Bianchi su sfondo Nero dell'Hero) */
       .hero-grid-texture {
-        opacity: 0.14 !important;
+        opacity: 0.10 !important;
         display: block !important;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px) !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffffff'/%3E%3C/svg%3E") !important;
         background-size: 8px 8px !important;
-        -webkit-transform: translateZ(0) !important;
-        transform: translateZ(0) !important;
+        background-repeat: repeat !important;
       }
       
       .hero-inner { 
