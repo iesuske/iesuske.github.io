@@ -110,7 +110,7 @@
     .hero-grid-texture {
       position: absolute;
       inset: 0; 
-      background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
       background-size: 8px 8px; 
       z-index: 2;
     }
@@ -348,7 +348,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* COMPARTO MOBILE CALIBRATO SULLA STRUTTURA DEL FILE ORIGINALE */
+    /* STRAORDINARIO COMPATTO DI RESPONSIVITÀ PER DISPOSITIVI MOBILE ED IPAD */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -374,35 +374,36 @@
 
       .hero { 
         padding: 25px 24px 50px; 
-        min-height: 460px;
+        min-height: 480px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start; 
       }
       
-      /* Ottimizzazione sfumatura: preserva il posizionamento originale della foto (30% 85%) creando una spessa barriera nera a sinistra per salvare i testi */
+      /* SPOSTAMENTO FOTO A DESTRA ED ELIMINAZIONE SOVRAPPOSIZIONI SUI VOLTI */
       .hero::after { 
         background-image: 
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.95) 35%, rgba(8,8,8,0.4) 65%, transparent 100%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.92) 35%, rgba(8,8,8,0.3) 70%, transparent 100%), 
           url('images/backgroundhome.jpg');
-        background-size: cover;
-        background-position: 30% 85%;
-        opacity: 0.85;
+        background-size: auto 100%; /* Blocca l'altezza impedendo zoom sproporzionati */
+        background-position: right 25% center; /* Spinge lo scatto a destra per liberare il volto principale */
+        opacity: 0.9;
       }
 
-      /* Rimuove i puntini bianchi dello sfondo solo su mobile per evitare l'effetto distorsione sui testi */
+      /* OPACITÀ DELLA GRIGLIA ABBASSATA SU MOBILE PER EVITARE RUMORE SU VISO E TESTI */
       .hero-grid-texture {
-        display: none !important;
+        opacity: 0.04 !important;
       }
       
       .hero-inner { 
         margin: 0;
         text-align: left;
+        max-width: 75%; /* Vincola i testi per non farli sconfinare oltre la metà dello schermo */
       }
       
       .hero-title { 
-        font-size: 3.5rem; 
-        margin-left: -5px; 
+        font-size: 3.1rem; 
+        margin-left: -4px; 
       }
       
       .hero-title .line2 {
@@ -410,7 +411,7 @@
       }
       
       .hero-divider {
-        width: 50%;
+        width: 65%;
         margin: 16px 0 14px 0;
       }
 
