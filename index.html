@@ -30,6 +30,18 @@
       font-family: 'TR', sans-serif;
       overflow-x: hidden;
       -webkit-tap-highlight-color: transparent;
+      
+      /* PROTEZIONE: Blocca la selezione del testo in tutto il sito */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* PROTEZIONE: Impedisce il trascinamento delle immagini su desktop */
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     .grid-bg {
@@ -131,7 +143,7 @@
         pointer-events: none;
     }
 
-    /* CONTATORE IN BASSO A SINISTRA CON IL TUO FONT PUNK */
+    /* CONTATORE IN BASSO A SINISTRA SOTTO LA FIRMA */
     .views-counter {
       position: absolute;
       bottom: 20px;
@@ -629,7 +641,7 @@
       <div class="record-card">
         <div class="record-cover"><img src="images/thelurkera.jpg" alt="The Lurkers"></div>
         <div class="record-band">The Lurkers</div>
-        <div class="record-title">Fulham Fallout</div>
+        <div class="record-title">Fullham Fallout</div>
         <div class="record-meta">UK • LP • 1978</div>
       </div>
       <div class="record-card">
@@ -731,7 +743,7 @@
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
 
-    // LOGICA NUOVA DI COUNTAPI PER SITI STATICI
+    // LOGICA FUNZIONANTE CONTATORE CON BLOCCO ADMIN
     const counterElement = document.getElementById('visit-count');
     const key = "glueandchaos_it"; 
 
@@ -754,6 +766,18 @@
         })
         .catch(() => { counterElement.innerText = '01'; });
     }
+
+    // PROTEZIONE: Blocco totale del Click con Tasto Destro mouse
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // PROTEZIONE EXTRA: Blocca le scorciatoie da tastiera per salvare la pagina (CTRL+S / CMD+S)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
