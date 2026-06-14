@@ -371,7 +371,7 @@
         color: var(--black);
         opacity: 0.6;
         margin-bottom: 12px; 
-        padding-right: 24px; /* MODIFICATO: Ridotto per spingere il testo più a destra, allineandolo al bordo */
+        padding-right: 0px !important; /* CORRETTO: Spinto interamente al limite destro dello schermo */
       }
 
       .hero { 
@@ -482,8 +482,8 @@
 
       .views-counter {
         left: auto !important;
-        right: 24px !important; /* MODIFICATO: Allineato a destra con il padding standard del contenitore */
-        bottom: 12px !important; /* MODIFICATO: Spostato più in basso rispetto a prima */
+        right: 12px !important; /* CORRETTO: Spinto più a destra verso il bordo (da 20px a 12px) */
+        bottom: 5px !important; /* CORRETTO: Abbassato drasticamente verso la fine della sezione hero (da 20px a 5px) */
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-end !important;
