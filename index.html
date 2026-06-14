@@ -144,7 +144,7 @@
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP */
+    /* CONTATORE DESKTOP (RIMPICCIOLITO LEGGERMENTE) */
     .views-counter {
       position: absolute;
       bottom: 20px;
@@ -156,7 +156,7 @@
 
     .counter-label {
       font-family: 'TR', sans-serif;
-      font-size: 0.48rem;
+      font-size: 0.48rem; /* FIXED: Rimpicciolito da 0.55rem */
       letter-spacing: 2px;
       opacity: 0.5;
       margin-bottom: -1px;
@@ -164,7 +164,7 @@
 
     .counter-number {
       font-family: 'TR', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.25rem; /* FIXED: Rimpicciolito da 1.5rem */
       font-weight: normal;
       opacity: 0.85;
       letter-spacing: -0.5px;
@@ -270,6 +270,7 @@
       padding-right: 12px;
     }
 
+    /* ELEMENTO MOBILE NASCOSTO DI DEFAULT SU DESKTOP */
     .photo-credit-mobile {
       display: none;
     }
@@ -348,7 +349,6 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* MEDIA QUERY MOBILE AGGIORNATA E CALIBRATA */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -380,17 +380,17 @@
         justify-content: flex-start; 
       }
       
-      /* MODIFICA CRUCIALE: RICALIBRATO L'OFFET PER FORZARE L'INQUADRATURA SUL RAGAZZO */
+      /* CSS CALIBRATO PER SPINGERE IL RAGAZZO ANCORA PIÙ A DESTRA */
       .hero::after { 
         background-image: 
-          linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.4) 50%, transparent 100%), 
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.8) 30%, transparent 100%), 
+          linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.3) 40%, transparent 100%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.95) 20%, rgba(8,8,8,0.15) 70%, transparent 100%), 
           url('images/backgroundhome.jpg');
         background-size: cover;
         
-        /* Spostiamo l'ancoraggio millimetricamente verso sinistra per centralizzare il volto */
-        background-position: right 22% bottom 0%; /* <--- CORREZIONE CHIAVE */
-        opacity: 0.8;
+        /* FIXED: Spostiamo millimetricamente l'inquadratura ancora più a destra */
+        background-position: right 18% bottom 0%; /* <--- CORREZIONE CHIAVE */
+        opacity: 0.85; /* Leggermente più visibile lo spot di luce */
       }
       
       .hero-inner { 
@@ -460,6 +460,7 @@
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
+      /* FIRMA IN VERTICALE ANCORATA IN BASSO SOPRA IL TICKER A SINISTRA */
       .hero-signature {
         display: block !important;
         position: absolute;
@@ -474,6 +475,7 @@
         white-space: nowrap;
       }
 
+      /* CONTATORE SU MOBILE (MANTIENE LE SUE DIMENSIONI PERFETTE COME CORRETTO PRIMA) */
       .views-counter {
         left: auto !important;
         right: 20px !important; 
