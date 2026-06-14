@@ -94,32 +94,17 @@
     }
     .dropdown-menu li a:hover { opacity: 0.7; }
 
-    /* STRUTTURA HERO AGGIORNATA PER ACCOGLIERE IL TAG IMG */
     .hero {
       background: var(--black); color: var(--white); padding: 72px 40px 56px;
       border-bottom: 5px solid var(--black); overflow: hidden; min-height: 550px;
       position: relative;
     }
-
-    /* CSS PER L'IMMAGINE DI COPERTINA NATIVA HTML */
-    .hero-pic-layer {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 70% center; /* Allineamento desktop */
-        filter: sepia(60%);
-        z-index: 1;
-    }
-
-    /* GRADIENTE DI OVERLAY NERO A SINISTRA PER LA LEGGIBILITÀ DEL TESTO */
-    .hero-overlay-gradient {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.95) 25%, rgba(8,8,8,0.3) 55%, transparent 100%);
-        z-index: 2;
-        pointer-events: none;
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
+      background-position: 37vw 50%;
+      background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
     }
     
     .hero-grid-texture {
@@ -127,20 +112,20 @@
       inset: 0; 
       background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
       background-size: 8px 8px; 
-      z-index: 3;
+      z-index: 2;
     }
     
     .hero-vignette {
       position: absolute; inset: 0;
       background: radial-gradient(ellipse at 25% center, transparent 40%, rgba(8,8,8,0.60) 75%, rgba(8,8,8,0.85) 100%);
-      z-index: 4;
+      z-index: 3;
     }
 
     .hero-inner { 
       max-width: 1280px; 
       margin: -30px auto 0; 
       position: relative; 
-      z-index: 5; /* Sopra l'overlay e la foto */
+      z-index: 4; 
     }
     
     /* FIRMA VERTICALE DESKTOP */
@@ -363,7 +348,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* MEDIA QUERY MOBILE DEFINITIVA E RISOLUTIVA */
+    /* MEDIA QUERY MOBILE AGGIORNATA E CALIBRATA */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -395,15 +380,17 @@
         justify-content: flex-start; 
       }
       
-      /* FORZATURA FOTO A DESTRA MILLIMETRICA: SPINGE I VOLTI A DESTRA AL MASSIMO */
-      .hero-pic-layer {
-        object-position: 82% center !important; /* Sposta il fuoco dell'inquadratura ancora più a destra */
-        opacity: 0.9;
-      }
-
-      /* AGGIORNAMENTO GRADIENTE OVERLAY: CREA UN MURO NERO A SINISTRA PIÙ NETTO */
-      .hero-overlay-gradient {
-          background: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.98) 45%, rgba(8,8,8,0.3) 85%, transparent 100%) !important;
+      /* MODIFICA CRUCIALE: RICALIBRATO L'OFFET PER FORZARE L'INQUADRATURA SUL RAGAZZO */
+      .hero::after { 
+        background-image: 
+          linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.4) 50%, transparent 100%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.8) 30%, transparent 100%), 
+          url('images/backgroundhome.jpg');
+        background-size: cover;
+        
+        /* Spostiamo l'ancoraggio millimetricamente verso sinistra per centralizzare il volto */
+        background-position: right 22% bottom 0%; /* <--- CORREZIONE CHIAVE */
+        opacity: 0.8;
       }
       
       .hero-inner { 
@@ -527,9 +514,6 @@
   </nav>
 
   <section class="hero">
-    <img src="images/backgroundhome.jpg" alt="Background" class="hero-pic-layer">
-    <div class="hero-overlay-gradient"></div>
-    
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
     <div class="hero-signature">Massimo Redaelli 2026</div>
@@ -551,9 +535,6 @@
 
   <div class="ticker">
     <div class="ticker-track">
-      <div class="ticker-item">
-        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
-      </div>
       <div class="ticker-item">
         <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
       </div>
