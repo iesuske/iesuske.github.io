@@ -348,7 +348,6 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* MEDIA QUERY MOBILE MODIFICATA CON IL POSIZIONAMENTO CORRETTO A SINISTRA (LEFT) */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -380,7 +379,6 @@
         justify-content: flex-start; 
       }
       
-      /* INVERSIONE CORREZIONE: usiamo un gradiente orientatato a sinistra e background-position: left */
       .hero::after { 
         background-image: 
           linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.3) 40%, transparent 100%), 
@@ -388,9 +386,9 @@
           url('images/backgroundhome.jpg');
         background-size: cover;
         
-        /* CORREZIONE RADICALE: Spostiamo a sinistra (38%) per centrare il ragazzo urlante e lo spot di luce */
-        background-position: left 38% bottom 0%; 
-        opacity: 0.9; /* Alziamo la visibilità complessiva per far risaltare il flash sul volto */
+        /* FIXED: Spostiamo ancora un po' a destra l'immagine (da 38% a 32%) per liberare il volto dalle scritte */
+        background-position: left 32% bottom 0%; 
+        opacity: 0.9;
       }
       
       .hero-inner { 
