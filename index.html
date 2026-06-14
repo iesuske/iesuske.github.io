@@ -348,7 +348,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* MEDIA QUERY RISCRITTA ED OTTIMIZZATA PER MOBILE */
+    /* COMPARTO MOBILE CALIBRATO SULLA STRUTTURA DEL FILE ORIGINALE */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -373,71 +373,57 @@
       }
 
       .hero { 
-        padding: 35px 24px 60px; 
-        min-height: 500px;
+        padding: 25px 24px 50px; 
+        min-height: 460px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start; 
       }
       
-      /* 1. RIPOSIZIONAMENTO FOTO A DESTRA E SFUMATURA AGGRESSIVA SUI TESTI */
+      /* Ottimizzazione sfumatura: preserva il posizionamento originale della foto (30% 85%) creando una spessa barriera nera a sinistra per salvare i testi */
       .hero::after { 
         background-image: 
-          linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.5) 45%, transparent 100%), 
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.95) 45%, rgba(8,8,8,0.1) 90%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.95) 35%, rgba(8,8,8,0.4) 65%, transparent 100%), 
           url('images/backgroundhome.jpg');
         background-size: cover;
-        background-position: 100% 50%;
-        opacity: 0.65;
+        background-position: 30% 85%;
+        opacity: 0.85;
       }
 
-      /* 2. DISATTIVAZIONE GRIGLIA IMPASTATI SUI TESTI */
+      /* Rimuove i puntini bianchi dello sfondo solo su mobile per evitare l'effetto distorsione sui testi */
       .hero-grid-texture {
-        opacity: 0.03 !important;
+        display: none !important;
       }
       
       .hero-inner { 
         margin: 0;
         text-align: left;
-        z-index: 10;
       }
       
-      .hero-eyebrow {
-        opacity: 0.9 !important;
-        font-size: 0.65rem !important;
-        letter-spacing: 4px !important;
-      }
-
-      /* 3. CONTRASTO MAGGIORE SUL TITOLO CON UN'OMBRA STRUTTURATA */
       .hero-title { 
         font-size: 3.5rem; 
         margin-left: -5px; 
-        text-shadow: 2px 2px 8px rgba(8,8,8,0.8);
       }
       
       .hero-title .line2 {
-        opacity: 0.35;
+        opacity: 0.28;
       }
       
       .hero-divider {
-        width: 60%;
-        margin: 18px 0 16px 0;
+        width: 50%;
+        margin: 16px 0 14px 0;
       }
 
-      /* 4. MASSIMA LEGGIBILITÀ SULLA TAGLINE */
       .hero-tagline { 
-        font-size: 0.90rem !important; 
-        line-height: 1.5 !important;
+        font-size: 0.85rem !important; 
+        line-height: 1.45 !important;
         max-width: 100%; 
         margin: 0;
         padding: 0;
-        opacity: 0.95 !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
       }
       .hero-tagline .autore { 
         display: block; 
         margin-top: 6px;
-        opacity: 0.8;
       }
 
       .mobile-only-br { 
