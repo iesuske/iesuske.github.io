@@ -38,6 +38,12 @@
       user-select: none;
     }
 
+    /* PROTEZIONE: Impedisce il trascinamento delle immagini su desktop */
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
+
     .grid-bg {
       position: fixed; inset: 0; pointer-events: none;
       z-index: 1; opacity: 0.14;
@@ -88,54 +94,38 @@
     }
     .dropdown-menu li a:hover { opacity: 0.7; }
 
-    /* STRUTTURA HERO AGGIORNATA PER ACCOGLIERE IL TAG IMG */
     .hero {
       background: var(--black); color: var(--white); padding: 72px 40px 56px;
       border-bottom: 5px solid var(--black); overflow: hidden; min-height: 550px;
       position: relative;
     }
-
-    .hero-bg-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 70% center;
-      filter: sepia(60%);
-      z-index: 1;
-      pointer-events: none;
-      -webkit-user-drag: none;
-      user-drag: none;
-    }
-
-    .hero-overlay-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%);
-      z-index: 2;
-      pointer-events: none;
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.9) 20%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0) 100%), url('images/backgroundhome.jpg');
+      background-position: 37vw 50%;
+      background-size: 70% auto; background-repeat: no-repeat; filter: sepia(60%); z-index: 1;
     }
     
     .hero-grid-texture {
       position: absolute;
       inset: 0; 
-      background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
       background-size: 8px 8px; 
-      z-index: 3;
+      z-index: 2;
     }
     
     .hero-vignette {
       position: absolute; inset: 0;
       background: radial-gradient(ellipse at 25% center, transparent 40%, rgba(8,8,8,0.60) 75%, rgba(8,8,8,0.85) 100%);
-      z-index: 4;
+      z-index: 3;
     }
 
     .hero-inner { 
       max-width: 1280px; 
       margin: -30px auto 0; 
       position: relative; 
-      z-index: 5; 
+      z-index: 4; 
     }
     
     /* FIRMA VERTICALE DESKTOP */
@@ -324,8 +314,6 @@
       filter: grayscale(100%); 
       opacity: 1; transition: filter 0.4s ease; 
       display: block;
-      -webkit-user-drag: none;
-      user-drag: none;
     }
     .record-card:hover img, .record-card.active img { filter: grayscale(0%); }
     
@@ -360,7 +348,7 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SPECIFICHE MEDIA QUERY MOBILE RISOLUTIVE */
+    /* STRAORDINARIO COMPATTO DI RESPONSIVITÀ PER DISPOSITIVI MOBILE ED IPAD */
     @media (max-width: 768px) {
       nav {
         padding: 14px 24px;
@@ -386,31 +374,36 @@
 
       .hero { 
         padding: 25px 24px 50px; 
-        min-height: 460px;
+        min-height: 480px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start; 
       }
-
-      /* ANCORAGGIO INFALLIBILE PER IPHONE: FORZA LA POSIZIONE CORRETTA SUI VOLTI DEI RAGAZZI */
-      .hero-bg-img {
-        object-position: 82% center !important; /* FIXED: Ricalibrato per allineare geometricamente i volti urlanti a destra */
-        opacity: 0.85; /* FIXED: Visibilità leggermente aumentata per esaltare il drammatico contrasto di luce */
+      
+      /* SPOSTAMENTO FOTO A DESTRA ED ELIMINAZIONE SOVRAPPOSIZIONI SUI VOLTI */
+      .hero::after { 
+        background-image: 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.92) 35%, rgba(8,8,8,0.3) 70%, transparent 100%), 
+          url('images/backgroundhome.jpg');
+        background-size: auto 100%; /* Blocca l'altezza impedendo zoom sproporzionati */
+        background-position: right 25% center; /* Spinge lo scatto a destra per liberare il volto principale */
+        opacity: 0.9;
       }
 
-      .hero-overlay-gradient {
-        background: linear-gradient(to top, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0.4) 50%, transparent 100%), 
-                    linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.8) 35%, transparent 100%) !important; /* FIXED: Gradiente orientato a sinistra per garantire la massima leggibilità del testo */
+      /* OPACITÀ DELLA GRIGLIA ABBASSATA SU MOBILE PER EVITARE RUMORE SU VISO E TESTI */
+      .hero-grid-texture {
+        opacity: 0.04 !important;
       }
       
       .hero-inner { 
         margin: 0;
         text-align: left;
+        max-width: 75%; /* Vincola i testi per non farli sconfinare oltre la metà dello schermo */
       }
       
       .hero-title { 
-        font-size: 3.5rem; 
-        margin-left: -5px; 
+        font-size: 3.1rem; 
+        margin-left: -4px; 
       }
       
       .hero-title .line2 {
@@ -418,7 +411,7 @@
       }
       
       .hero-divider {
-        width: 50%;
+        width: 65%;
         margin: 16px 0 14px 0;
       }
 
@@ -470,7 +463,6 @@
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
-      /* FIRMA IN VERTICALE ANCORATA IN BASSO SOPRA IL TICKER A SINISTRA */
       .hero-signature {
         display: block !important;
         position: absolute;
@@ -485,7 +477,6 @@
         white-space: nowrap;
       }
 
-      /* CONTATORE SU MOBILE (MANTIENE LE SUE DIMENSIONI PERFETTE COME CORRETTO PRIMA) */
       .views-counter {
         left: auto !important;
         right: 20px !important; 
@@ -526,11 +517,8 @@
   </nav>
 
   <section class="hero">
-    <img src="images/backgroundhome.jpg" alt="Background" class="hero-bg-img">
-    <div class="hero-overlay-gradient"></div>
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
-    
     <div class="hero-signature">Massimo Redaelli 2026</div>
     
     <div class="views-counter">
