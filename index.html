@@ -352,24 +352,39 @@
       .records-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* SEZIONE MOBILE (LAVORO DI CORREZIONE SULLA GRIGLIA GLOBALE PER IPHONE) */
+    /* ==========================================
+       SEZIONE OPERATIVA MOBILE (IPHONE / IPAD)
+       ========================================== */
     @media (max-width: 768px) {
-      nav {
-        padding: 14px 24px;
+      /* Forza il colore crema sulla radice HTML per permettere la trasparenza dei blocchi */
+      html {
+        background-color: var(--white) !important;
       }
       
-      /* FIX DEFINITIVO IPHONE PER LA GRIGLIA SOTTO I DISCHI */
+      body {
+        background: transparent !important;
+      }
+
+      nav {
+        padding: 14px 24px;
+        background: transparent !important;
+      }
+      
+      /* FIX AGGRESSIVO DI VISIBILITÀ GRIGLIA PER WEBKIT (iOS) */
       .grid-bg {
-        opacity: 0.35 !important; /* Alzata opacità per i micro-pixel degli schermi Retina Apple */
+        position: fixed !important; 
+        inset: 0 !important;
         display: block !important;
-        /* Tecnica hard-edge: crea cerchi perfetti da 1px senza sfocatura che sennò scompare su iOS */
-        background-image: radial-gradient(#080808 1px, transparent 1px) !important;
+        z-index: 1 !important;
+        opacity: 0.22 !important; /* Contrasto solido per schermi Retina Apple */
+        /* Utilizziamo pixel netti hard-edge per evitare che l'antialiasing di iOS la nasconda */
+        background-image: radial-gradient(#080808 1.2px, transparent 1.2px) !important;
         background-size: 10px 10px !important;
         -webkit-transform: translateZ(0) !important;
         transform: translateZ(0) !important;
       }
 
-      /* Assicura che le sezioni sotto l'hero lascino trasparire lo sfondo fixed */
+      /* Rende i contenitori completamente trasparenti per far vedere la griglia fixed sottostante */
       .section-header, .records-wrap, footer {
         background: transparent !important;
       }
@@ -398,6 +413,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start; 
+        background-color: var(--black) !important; /* Mantiene lo sfondo nero dell'hero */
       }
       
       .hero::after { 
@@ -409,7 +425,7 @@
         opacity: 0.9;
       }
 
-      /* Griglia interna all'Hero scuro */
+      /* Texture interna all'Hero nero */
       .hero-grid-texture {
         opacity: 0.14 !important;
         display: block !important;
