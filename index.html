@@ -382,17 +382,17 @@
         justify-content: flex-start; 
       }
       
-      /* RIPRISTINO DELLA GRIGLIA ORIGINALE E RIPOSIZIONAMENTO PER MOSTRARE IL RAGAZZO */
+      /* SPOSTAMENTO INQUADRATURA SULLA SINISTRA PER FARE USCIRE IL RAGAZZO CHE URLA */
       .hero::after { 
         background-image: 
           linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.1) 75%, transparent 100%), 
           url('images/backgroundhome.jpg');
-        background-size: auto 115%; /* Mantiene l'altezza proporzionata permettendo lo scorrimento orizzontale */
-        background-position: 18% center; /* Riposiziona l'asse per far rientrare la parte sinistra dello scatto (il ragazzo che urla) */
+        background-size: auto 115%; 
+        background-position: 18% center; 
         opacity: 0.9;
       }
 
-      /* LA GRIGLIA VIENE LASCIATA ALL'OPACITÀ DELLA STRUTTURA DEL SITO SENZA CAMBIAMENTI RECENTI */
+      /* LA GRIGLIA VIENE DETTATA CON L'OPACITÀ SITO ORIGINALE 0.14 SU MOBILE */
       .hero-grid-texture {
         opacity: 0.14 !important;
       }
