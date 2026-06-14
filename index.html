@@ -385,12 +385,11 @@
       /* SPOSTAMENTO FOTO A DESTRA ED ELIMINAZIONE SOVRAPPOSIZIONI SUI VOLTI */
       .hero::after { 
         background-image: 
-          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.92) 35%, rgba(8,8,8,0.3) 70%, transparent 100%), 
+          linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.95) 20%, rgba(8,8,8,0.2) 65%, transparent 100%), 
           url('images/backgroundhome.jpg');
-        background-size: auto 100%; /* Blocca l'altezza impedendo zoom sproporzionati */
-        background-position: right 25% center;
-        /* Spinge lo scatto a destra per liberare il volto principale */
-        opacity: 0.9;
+        background-size: cover; 
+        background-position: 85% center;
+        opacity: 0.95;
       }
 
       /* OPACITÀ DELLA GRIGLIA ABBASSATA SU MOBILE PER EVITARE RUMORE SU VISO E TESTI */
