@@ -131,7 +131,7 @@
         pointer-events: none;
     }
 
-    /* NUOVO CONTATORE GRAFFIANTE IN BASSO A SINISTRA */
+    /* CONTATORE IN BASSO A SINISTRA CON IL TUO FONT PUNK */
     .views-counter {
       position: absolute;
       bottom: 20px;
@@ -731,13 +731,13 @@
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
 
-    // LOGICA CONTATORE CON BLOCCO ADMIN
+    // LOGICA NUOVA DI COUNTAPI PER SITI STATICI
     const counterElement = document.getElementById('visit-count');
-    const namespace = "glueandchaos_v1";
+    const key = "glueandchaos_it"; 
 
     if (localStorage.getItem('is_admin') === 'true') {
-      // Sei l'admin: recupera solo le visite salvate senza aumentarle
-      fetch(`https://api.countapi.xyz/get/${namespace}/visits`)
+      // Sei l'admin: recupera il valore senza fare +1
+      fetch(`https://api.countapi.net/get/${key}`)
         .then(res => res.json())
         .then(data => {
           let count = data.value || 0;
@@ -745,14 +745,14 @@
         })
         .catch(() => { counterElement.innerText = '00'; });
     } else {
-      // Visitatore comune: incrementa di 1
-      fetch(`https://api.countapi.xyz/hit/${namespace}/visits`)
+      // Nuovo visitatore: aumenta il contatore di 1
+      fetch(`https://api.countapi.net/hit/${key}`)
         .then(res => res.json())
         .then(data => {
           let count = data.value || 0;
           counterElement.innerText = String(count).padStart(2, '0').slice(-2);
         })
-        .catch(() => { counterElement.innerText = '00'; });
+        .catch(() => { counterElement.innerText = '01'; });
     }
   </script>
 </body>
