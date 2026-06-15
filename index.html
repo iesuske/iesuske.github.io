@@ -147,7 +147,7 @@
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP: Abbassato ulteriormente e testo centrato rispetto alla label */
+    /* CONTATORE DESKTOP: Abbassato e centrato in modo ottimale */
     .views-counter {
       position: absolute;
       bottom: 4px;
@@ -374,14 +374,12 @@
         background: transparent !important;
       }
       
-      /* INIEZIONE SVG BASE64: Risolve definitivamente il bug di render dei puntini su Chrome/Safari mobile */
       .grid-bg {
         position: fixed !important; 
         inset: 0 !important;
         display: block !important;
         z-index: 1 !important;
         opacity: 0.16 !important;
-        /* Un cerchio reale SVG ripetuto ogni 10px costringe lo smartphone a disegnarlo graficamente senza piallarlo */
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23080808'/%3E%3C/svg%3E") !important;
         background-size: 10px 10px !important;
         background-repeat: repeat !important;
@@ -429,7 +427,6 @@
         opacity: 0.9;
       }
 
-      /* Texture interna all'Hero (Puntini Bianchi su sfondo Nero dell'Hero) */
       .hero-grid-texture {
         opacity: 0.10 !important;
         display: block !important;
@@ -520,7 +517,7 @@
         white-space: nowrap;
       }
 
-      /* CONTATORE MOBILE: Abbassato ulteriormente al limite inferiore (-2px) e centrato sia la label che il numero */
+      /* CONTATORE MOBILE: Centrato e posizionato a filo inferiore */
       .views-counter {
         left: auto !important;
         right: 12px !important; 
@@ -840,25 +837,32 @@
       if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
+
+    /* ========================================================
+       NUOVO SCRIPT CONTATORE CON SERVIZIO FUNZIONANTE (COUNTAPI.XYZ)
+       ======================================================== */
     const counterElement = document.getElementById('visit-count');
-    const key = "glueandchaos_it"; 
+    const namespace = "glueandchaos_archive"; 
+    const key = "visite_totali"; 
 
     if (localStorage.getItem('is_admin') === 'true') {
-      fetch(`https://api.countapi.net/get/${key}`)
+      // Se sei admin, legge solo il valore senza incrementarlo
+      fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
         .then(res => res.json())
         .then(data => {
           let count = data.value || 0;
-          counterElement.innerText = String(count).padStart(2, '0').slice(-2);
+          counterElement.innerText = String(count).padStart(2, '0');
         })
         .catch(() => { counterElement.innerText = '00'; });
     } else {
-      fetch(`https://api.countapi.net/hit/${key}`)
+      // Per tutti gli altri IP o dispositivi, incrementa correttamente ad ogni visita
+      fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
         .then(res => res.json())
         .then(data => {
           let count = data.value || 0;
-          counterElement.innerText = String(count).padStart(2, '0').slice(-2);
+          counterElement.innerText = String(count).padStart(2, '0');
         })
-        .catch(() => { counterElement.innerText = '01'; });
+        .catch(() => { counterElement.innerText = '--'; });
     }
 
     document.addEventListener('contextmenu', function(e) {
