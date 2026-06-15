@@ -147,7 +147,7 @@
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP MODIFICATO: Abbassato e giustificato al centro */
+    /* CONTATORE DESKTOP: Abbassato ulteriormente e testo centrato rispetto alla label */
     .views-counter {
       position: absolute;
       bottom: 4px;
@@ -155,6 +155,9 @@
       z-index: 99;
       text-align: center;
       line-height: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .counter-label {
@@ -517,7 +520,7 @@
         white-space: nowrap;
       }
 
-      /* CONTATORE MOBILE MODIFICATO: Abbassato e centrato internamente */
+      /* CONTATORE MOBILE: Abbassato ulteriormente al limite inferiore (-2px) e centrato sia la label che il numero */
       .views-counter {
         left: auto !important;
         right: 12px !important; 
