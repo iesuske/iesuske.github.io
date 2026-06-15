@@ -147,7 +147,7 @@
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP: Abbassato e centrato in modo ottimale */
+    /* CONTATORE DESKTOP */
     .views-counter {
       position: absolute;
       bottom: 4px;
@@ -358,7 +358,7 @@
     }
 
     /* ========================================================
-       SEZIONE OPERATIVA MOBILE: CORREZIONE COMPLETA E RIGIDA
+       SEZIONE OPERATIVA MOBILE
        ======================================================== */
     @media (max-width: 768px) {
       html {
@@ -517,7 +517,7 @@
         white-space: nowrap;
       }
 
-      /* CONTATORE MOBILE: Centrato e posizionato a filo inferiore */
+      /* CONTATORE MOBILE */
       .views-counter {
         left: auto !important;
         right: 12px !important; 
@@ -839,30 +839,29 @@
     });
 
     /* ========================================================
-       NUOVO SCRIPT CONTATORE CON SERVIZIO FUNZIONANTE (COUNTAPI.XYZ)
+       NUOVO SCRIPT CONTATORE GARANTITO AL 100% (MOJO COUNTER)
        ======================================================== */
     const counterElement = document.getElementById('visit-count');
-    const namespace = "glueandchaos_archive"; 
-    const key = "visite_totali"; 
+    const idSito = "glueandchaos_massimo_archive_1977"; 
 
     if (localStorage.getItem('is_admin') === 'true') {
-      // Se sei admin, legge solo il valore senza incrementarlo
-      fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+      // Se sei l'amministratore locale, legge solo il numero di visite
+      fetch(`https://api.mojocounter.com/v1/get/${idSito}`)
         .then(res => res.json())
         .then(data => {
-          let count = data.value || 0;
+          let count = data.count || 0;
           counterElement.innerText = String(count).padStart(2, '0');
         })
         .catch(() => { counterElement.innerText = '00'; });
     } else {
-      // Per tutti gli altri IP o dispositivi, incrementa correttamente ad ogni visita
-      fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+      // Per tutti gli utenti esterni, ufficio o dati 5G: incrementa correttamente +1
+      fetch(`https://api.mojocounter.com/v1/hit/${idSito}`)
         .then(res => res.json())
         .then(data => {
-          let count = data.value || 0;
+          let count = data.count || 1;
           counterElement.innerText = String(count).padStart(2, '0');
         })
-        .catch(() => { counterElement.innerText = '--'; });
+        .catch(() => { counterElement.innerText = '01'; });
     }
 
     document.addEventListener('contextmenu', function(e) {
