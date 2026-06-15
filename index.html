@@ -147,13 +147,13 @@
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP */
+    /* CONTATORE DESKTOP MODIFICATO: Abbassato e giustificato al centro */
     .views-counter {
       position: absolute;
-      bottom: 20px;
+      bottom: 4px;
       left: 20px;
       z-index: 99;
-      text-align: left;
+      text-align: center;
       line-height: 1;
     }
 
@@ -163,6 +163,7 @@
       letter-spacing: 2px;
       opacity: 0.5;
       margin-bottom: -1px;
+      text-align: center;
     }
 
     .counter-number {
@@ -171,6 +172,7 @@
       font-weight: normal;
       opacity: 0.85;
       letter-spacing: -0.5px;
+      text-align: center;
     }
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px;
@@ -515,25 +517,26 @@
         white-space: nowrap;
       }
 
+      /* CONTATORE MOBILE MODIFICATO: Abbassato e centrato internamente */
       .views-counter {
         left: auto !important;
         right: 12px !important; 
-        bottom: 5px !important; 
+        bottom: -2px !important; 
         display: flex !important;
         flex-direction: column !important;
-        align-items: flex-end !important;
+        align-items: center !important;
       }
       
       .views-counter .counter-label {
         font-size: 0.40rem !important;
         margin-bottom: 3px !important;
-        text-align: right;
+        text-align: center !important;
       }
 
       .views-counter .counter-number {
         font-size: 0.75rem !important;
         letter-spacing: 0px;
-        text-align: right;
+        text-align: center !important;
         opacity: 0.7;
         line-height: 1 !important;
       }
