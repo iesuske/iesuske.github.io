@@ -550,7 +550,7 @@
     <div class="dropdown">
       <a class="dropdown-trigger">About Me</a>
       <ul class="dropdown-menu">
-        <li><a href="mailto:maxximo@gmail.com" target="_blank">E-mail</a></li>
+        <li><a href="mailto:maxximo@gmail.com?subject=From%20the%20%5BGlues%26Chaos%5D%20site" target="_blank">E-mail</a></li>
         <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
         <li><a href="https://wa.me/393382975188" target="_blank">Whatsapp Me</a></li>
       </ul>
@@ -839,13 +839,12 @@
     });
 
     /* ========================================================
-       NUOVO SCRIPT CONTATORE GARANTITO AL 100% (MOJO COUNTER)
+       LOGICA CONTATORE MOJO COUNTER ATTIVA E FUNZIONANTE
        ======================================================== */
     const counterElement = document.getElementById('visit-count');
     const idSito = "glueandchaos_massimo_archive_1977"; 
 
     if (localStorage.getItem('is_admin') === 'true') {
-      // Se sei l'amministratore locale, legge solo il numero di visite
       fetch(`https://api.mojocounter.com/v1/get/${idSito}`)
         .then(res => res.json())
         .then(data => {
@@ -854,7 +853,6 @@
         })
         .catch(() => { counterElement.innerText = '00'; });
     } else {
-      // Per tutti gli utenti esterni, ufficio o dati 5G: incrementa correttamente +1
       fetch(`https://api.mojocounter.com/v1/hit/${idSito}`)
         .then(res => res.json())
         .then(data => {
