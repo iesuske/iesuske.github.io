@@ -839,7 +839,7 @@
     });
 
     /* ========================================================
-       LOGICA CONTATORE CON ID AGGIORNATO COMPLETAMENTE NUOVO
+       LOGICA CONTATORE CON LOG DI DEBUG CORS / PROTOCOLLO LOCAL
        ======================================================== */
     const counterElement = document.getElementById('visit-count');
     const idSito = "glueandchaos_official_archive_77"; 
@@ -851,7 +851,10 @@
           let count = data.count || 0;
           counterElement.innerText = String(count).padStart(2, '0');
         })
-        .catch(() => { counterElement.innerText = '00'; });
+        .catch((error) => { 
+          console.error("Errore contatore (Admin mode):", error);
+          counterElement.innerText = '00'; 
+        });
     } else {
       fetch(`https://api.mojocounter.com/v1/hit/${idSito}`)
         .then(res => res.json())
@@ -859,7 +862,11 @@
           let count = data.count || 1;
           counterElement.innerText = String(count).padStart(2, '0');
         })
-        .catch(() => { counterElement.innerText = '01'; });
+        .catch((error) => { 
+          console.error("Errore contatore (User mode):", error);
+          // Mostra '99' in locale per confermare il fallimento della richiesta CORS/file
+          counterElement.innerText = '99'; 
+        });
     }
 
     document.addEventListener('contextmenu', function(e) {
