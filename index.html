@@ -3,7 +3,7 @@
 <head>
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link class="favicon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   
   <meta charset="UTF-8">
@@ -546,10 +546,6 @@
 <body>
   <div class="grid-bg"></div>
 
-  <div style="display:none;">
-    <script type="text/javascript" src="https://counter10.fonticons.com/private/counter.js?c=zlyw28eubmreudqeyjeyzwh6h341clnd&down=async" async></script>
-  </div>
-
   <nav>
     <div class="dropdown">
       <a class="dropdown-trigger">About Me</a>
@@ -569,7 +565,7 @@
     
     <div class="views-counter">
       <div class="counter-label">Views</div>
-      <div id="visit-count" class="counter-number">01</div>
+      <div id="visit-count" class="counter-number">16</div>
     </div>
 
     <div class="hero-inner">
@@ -843,36 +839,62 @@
     });
 
     /* ========================================================
-       SISTEMA DI AGGANCIO GRAFICO AL CONTATORE IP INVISIBILE
+       SISTEMA CONTATORE DI VISITE AD ALTA AFFIDABILITÀ (IP FILTRATO)
        ======================================================== */
     const counterElement = document.getElementById('visit-count');
+    const basePartenza = 16; 
+    const namespaceSito = "glueandchaos_punk_archive_2026";
+    const chiaveContatore = "visite_totali";
 
-    function fetchRealCount() {
-      // Interroghiamo direttamente l'API del widget per prelevare il numero unico generato per te
-      fetch('https://counter10.fonticons.com/private/counterjson.php?c=zlyw28eubmreudqeyjeyzwh6h341clnd')
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.count) {
-            // Mostra il numero vero formattato a 2 cifre
-            counterElement.innerText = String(data.count).padStart(2, '0');
-          }
-        })
-        .catch(() => {
-          // Se la rete è lenta, leggiamo l'ultimo valore valido per non mostrare scritte brutte
-          let fallback = localStorage.getItem('last_good_count') || '01';
-          counterElement.innerText = fallback;
-        });
+    function updateDisplay(valore) {
+      counterElement.innerText = String(valore).padStart(2, '0');
     }
 
-    // Avvia la lettura dopo il caricamento della pagina
-    setTimeout(fetchRealCount, 800);
+    // Passaggio 1: Leggiamo l'IP pubblico del visitatore attuale in modo fulmineo e sicuro
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(ipData => {
+        const userIP = ipData.ip;
+        const lastSavedIP = localStorage.getItem('last_counted_ip');
 
-    // Salviamo l'ultimo valore per i successivi caricamenti istantanei
-    setInterval(() => {
-      if(counterElement.innerText !== '00') {
-        localStorage.setItem('last_good_count', counterElement.innerText);
-      }
-    }, 2000);
+        // Passaggio 2: Se l'IP è lo stesso registrato in questo browser, facciamo solo una lettura (GET) senza incrementare
+        if (lastSavedIP === userIP) {
+          fetch(`https://api.countapi.xyz/get/${namespaceSito}/${chiaveContatore}`)
+            .then(res => res.json())
+            .then(data => updateDisplay((data.value || 0) + basePartenza))
+            .catch(() => updateDisplay(basePartenza));
+        } else {
+          // Passaggio 3: Se l'IP è diverso o nuovo, eseguiamo l'incremento sul server (+1)
+          fetch(`https://api.countapi.xyz/hit/${namespaceSito}/${chiaveContatore}`)
+            .then(res => res.json())
+            .then(data => {
+              const nuovoConteggio = (data.value || 0) + basePartenza;
+              updateDisplay(nuovoConteggio);
+              localStorage.setItem('last_counted_ip', userIP); // Memorizziamo l'IP per bloccare i refresh successivi
+            })
+            .catch(() => {
+              // Fallback di emergenza se le API sono temporaneamente sature
+              updateDisplay(basePartenza);
+            });
+        }
+      })
+      .catch(() => {
+        // Se il browser ha un ad-blocker aggressivo che ferma ipify, usiamo il Session Storage classico anti-refresh
+        if (sessionStorage.getItem('counted_this_session') === 'true') {
+          fetch(`https://api.countapi.xyz/get/${namespaceSito}/${chiaveContatore}`)
+            .then(res => res.json())
+            .then(data => updateDisplay((data.value || 0) + basePartenza))
+            .catch(() => updateDisplay(basePartenza));
+        } else {
+          fetch(`https://api.countapi.xyz/hit/${namespaceSito}/${chiaveContatore}`)
+            .then(res => res.json())
+            .then(data => {
+              updateDisplay((data.value || 0) + basePartenza);
+              sessionStorage.setItem('counted_this_session', 'true');
+            })
+            .catch(() => updateDisplay(basePartenza));
+        }
+      });
 
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
