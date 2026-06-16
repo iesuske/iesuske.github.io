@@ -3,7 +3,7 @@
 <head>
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link class="favicon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   
   <meta charset="UTF-8">
@@ -546,6 +546,10 @@
 <body>
   <div class="grid-bg"></div>
 
+  <div style="display:none;">
+    <script type="text/javascript" src="https://counter10.fonticons.com/private/counter.js?c=zlyw28eubmreudqeyjeyzwh6h341clnd&down=async" async></script>
+  </div>
+
   <nav>
     <div class="dropdown">
       <a class="dropdown-trigger">About Me</a>
@@ -565,7 +569,7 @@
     
     <div class="views-counter">
       <div class="counter-label">Views</div>
-      <div id="visit-count" class="counter-number">00</div>
+      <div id="visit-count" class="counter-number">01</div>
     </div>
 
     <div class="hero-inner">
@@ -839,38 +843,45 @@
     });
 
     /* ========================================================
-       LOGICA CONTATORE INTELLIGENTE CON FILTRO ANTI-REFRESH
+       SISTEMA DI AGGANCIO GRAFICO AL CONTATORE IP INVISIBILE
        ======================================================== */
     const counterElement = document.getElementById('visit-count');
-    const nomeSito = "glue-and-chaos-archive-1977";
 
-    function updateDisplay(valore) {
-      counterElement.innerText = String(valore).padStart(2, '0');
+    function fetchRealCount() {
+      // Interroghiamo direttamente l'API del widget per prelevare il numero unico generato per te
+      fetch('https://counter10.fonticons.com/private/counterjson.php?c=zlyw28eubmreudqeyjeyzwh6h341clnd')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.count) {
+            // Mostra il numero vero formattato a 2 cifre
+            counterElement.innerText = String(data.count).padStart(2, '0');
+          }
+        })
+        .catch(() => {
+          // Se la rete è lenta, leggiamo l'ultimo valore valido per non mostrare scritte brutte
+          let fallback = localStorage.getItem('last_good_count') || '01';
+          counterElement.innerText = fallback;
+        });
     }
 
-    if (localStorage.getItem('is_admin') === 'true') {
-      // Modalità Admin: legge il numero attuale senza incrementare mai
-      fetch(`https://api.lystoly.dev/get/${nomeSito}`)
-        .then(res => res.ok ? res.json() : Promise.reject())
-        .then(data => updateDisplay(data.value || 15))
-        .catch(() => updateDisplay(localStorage.getItem('backup_counter_views') || 15));
-    } else {
-      // Modalità Utente: controlla se l'utente ha già visualizzato il sito in questa sessione
-      if (sessionStorage.getItem('already_counted_visit') === 'true') {
-        // L'utente ha solo aggiornato la pagina! Leggiamo il numero senza fare +1
-        fetch(`https://api.lystoly.dev/get/${nomeSito}`)
-          .then(res => res.ok ? res.json() : Promise.reject())
-          .then(data => updateDisplay(data.value || 15))
-          .catch(() => updateDisplay(localStorage.getItem('backup_counter_views') || 15));
-      } else {
-        // Prima volta che entra! Incrementiamo il contatore e salviamo il blocco sessione
-        fetch(`https://api.lystoly.dev/hit/${nomeSito}`)
-          .then(res => res.ok ? res.json() : Promise.reject())
-          .then(data => {
-            let count = data.value || 15;
-            updateDisplay(count);
-            localStorage.setItem('backup_counter_views', count);
-            sessionStorage.setItem('already_counted_visit', 'true'); // Attiva il filtro anti-refresh
-          })
-          .catch(() => {
-            let localCount = parseInt(localStorage
+    // Avvia la lettura dopo il caricamento della pagina
+    setTimeout(fetchRealCount, 800);
+
+    // Salviamo l'ultimo valore per i successivi caricamenti istantanei
+    setInterval(() => {
+      if(counterElement.innerText !== '00') {
+        localStorage.setItem('last_good_count', counterElement.innerText);
+      }
+    }, 2000);
+
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
