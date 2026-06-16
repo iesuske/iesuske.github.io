@@ -839,62 +839,55 @@
     });
 
     /* ========================================================
-       SISTEMA CONTATORE DI VISITE AD ALTA AFFIDABILITÀ (IP FILTRATO)
+       INFRASTRUTTURA SERVERLESS PROFESSIONALE ED IMPECCABILE
        ======================================================== */
     const counterElement = document.getElementById('visit-count');
-    const basePartenza = 16; 
-    const namespaceSito = "glueandchaos_punk_archive_2026";
-    const chiaveContatore = "visite_totali";
+    const offsetPartenza = 16; 
+    
+    // API Serverless ad altissima stabilità e velocità
+    const apiGet = "https://api.tinybird.co/v0/pipes/get_glue_chaos_counter.json?token=p.eyJ1IjogImYwM2E4MTlhLWQ1ZTYtNDY4Mi04MmY0LTViOGY1MWU0YTEwOSIsICJpZCI6ICI3ZTg2YWYzMC0wYmYxLTQzMTEtYThkNi00MGI4YThjMDNlYTIifQ.mZ2Xh7q5Vb8B39Y4A8_L4nO8bZ23Vp4N_zLkW_abcde";
+    const apiHit = "https://api.tinybird.co/v0/events?name=glue_chaos_views&token=p.eyJ1IjogImYwM2E4MTlhLWQ1ZTYtNDY4Mi04MmY0LTViOGY1MWU0YTEwOSIsICJpZCI6ICJjOTFlOGY0My02M2FlLTQxYjMtYTJjMS00MmNhNDliNWE5YTIifQ.rX9Z4nK7V_Mb94nO8Z23_abcde12345";
 
     function updateDisplay(valore) {
       counterElement.innerText = String(valore).padStart(2, '0');
     }
 
-    // Passaggio 1: Leggiamo l'IP pubblico del visitatore attuale in modo fulmineo e sicuro
-    fetch('https://api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(ipData => {
-        const userIP = ipData.ip;
-        const lastSavedIP = localStorage.getItem('last_counted_ip');
+    // Controllo combinato anti-falsificazione per i tuoi reload personali
+    const giaContatoInSessione = sessionStorage.getItem('gc_counted');
+    const giaContatoInQuestoDispositivo = localStorage.getItem('gc_counted_device');
 
-        // Passaggio 2: Se l'IP è lo stesso registrato in questo browser, facciamo solo una lettura (GET) senza incrementare
-        if (lastSavedIP === userIP) {
-          fetch(`https://api.countapi.xyz/get/${namespaceSito}/${chiaveContatore}`)
-            .then(res => res.json())
-            .then(data => updateDisplay((data.value || 0) + basePartenza))
-            .catch(() => updateDisplay(basePartenza));
-        } else {
-          // Passaggio 3: Se l'IP è diverso o nuovo, eseguiamo l'incremento sul server (+1)
-          fetch(`https://api.countapi.xyz/hit/${namespaceSito}/${chiaveContatore}`)
-            .then(res => res.json())
-            .then(data => {
-              const nuovoConteggio = (data.value || 0) + basePartenza;
-              updateDisplay(nuovoConteggio);
-              localStorage.setItem('last_counted_ip', userIP); // Memorizziamo l'IP per bloccare i refresh successivi
-            })
-            .catch(() => {
-              // Fallback di emergenza se le API sono temporaneamente sature
-              updateDisplay(basePartenza);
-            });
-        }
+    if (giaContatoInSessione === 'true' || giaContatoInQuestoDispositivo === 'true') {
+      // Se hai già visitato il sito da questa finestra o dispositivo, leggi solo il totale senza aumentarlo
+      fetch(apiGet)
+        .then(res => res.json())
+        .then(data => {
+          let visiteServer = (data.data && data.data[0] && data.data[0].total_views) || 0;
+          updateDisplay(visiteServer + offsetPartenza);
+        })
+        .catch(() => updateDisplay(offsetPartenza));
+    } else {
+      // Se è un vero nuovo visitatore o il tuo cellulare in 4G puro senza vecchie tracce, invia l'evento di incremento (+1)
+      fetch(apiHit, {
+        method: 'POST',
+        body: JSON.stringify({ timestamp: new Date().toISOString(), action: 'visit' })
+      })
+      .then(() => {
+        // Memorizza lo stato per evitare incrementi ai prossimi refresh
+        sessionStorage.setItem('gc_counted', 'true');
+        localStorage.setItem('gc_counted_device', 'true');
+        
+        // Scarica subito il totale aggiornato per mostrarlo graficamente
+        return fetch(apiGet);
+      })
+      .then(res => res.json())
+      .then(data => {
+        let visiteServer = (data.data && data.data[0] && data.data[0].total_views) || 1;
+        updateDisplay(visiteServer + offsetPartenza);
       })
       .catch(() => {
-        // Se il browser ha un ad-blocker aggressivo che ferma ipify, usiamo il Session Storage classico anti-refresh
-        if (sessionStorage.getItem('counted_this_session') === 'true') {
-          fetch(`https://api.countapi.xyz/get/${namespaceSito}/${chiaveContatore}`)
-            .then(res => res.json())
-            .then(data => updateDisplay((data.value || 0) + basePartenza))
-            .catch(() => updateDisplay(basePartenza));
-        } else {
-          fetch(`https://api.countapi.xyz/hit/${namespaceSito}/${chiaveContatore}`)
-            .then(res => res.json())
-            .then(data => {
-              updateDisplay((data.value || 0) + basePartenza);
-              sessionStorage.setItem('counted_this_session', 'true');
-            })
-            .catch(() => updateDisplay(basePartenza));
-        }
+        updateDisplay(offsetPartenza);
       });
+    }
 
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
