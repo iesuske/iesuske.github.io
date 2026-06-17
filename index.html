@@ -147,37 +147,6 @@
         pointer-events: none;
     }
 
-    /* CONTATORE DESKTOP */
-    .views-counter {
-      position: absolute;
-      bottom: 4px;
-      left: 20px;
-      z-index: 99;
-      text-align: center;
-      line-height: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .counter-label {
-      font-family: 'TR', sans-serif;
-      font-size: 0.48rem;
-      letter-spacing: 2px;
-      opacity: 0.5;
-      margin-bottom: -1px;
-      text-align: center;
-    }
-
-    .counter-number {
-      font-family: 'TR', sans-serif;
-      font-size: 1.25rem;
-      font-weight: normal;
-      opacity: 0.85;
-      letter-spacing: -0.5px;
-      text-align: center;
-    }
-
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px;
     border-left: 3px solid var(--white); padding-left: 14px;}
     
@@ -438,7 +407,17 @@
       .hero-inner { 
         margin: 0;
         text-align: left;
-        max-width: 80%; 
+        max-width: 100%; 
+      }
+
+      .hero-eyebrow {
+        font-size: 0.48rem !important;
+        letter-spacing: 2.2px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        width: 100% !important;
+        display: block !important;
       }
       
       .hero-title { 
@@ -516,30 +495,6 @@
         z-index: 100;
         white-space: nowrap;
       }
-
-      /* CONTATORE MOBILE */
-      .views-counter {
-        left: auto !important;
-        right: 12px !important; 
-        bottom: -2px !important; 
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-      }
-      
-      .views-counter .counter-label {
-        font-size: 0.40rem !important;
-        margin-bottom: 3px !important;
-        text-align: center !important;
-      }
-
-      .views-counter .counter-number {
-        font-size: 0.75rem !important;
-        letter-spacing: 0px;
-        text-align: center !important;
-        opacity: 0.7;
-        line-height: 1 !important;
-      }
     } 
   </style>
 </head>
@@ -562,11 +517,6 @@
     <div class="hero-vignette"></div>
    
     <div class="hero-signature">Massimo Redaelli 2026</div>
-    
-    <div class="views-counter">
-      <div class="counter-label">Views</div>
-      <div id="visit-count" class="counter-number">16</div>
-    </div>
 
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
@@ -837,57 +787,6 @@
       if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
-
-    /* ========================================================
-       INFRASTRUTTURA SERVERLESS PROFESSIONALE ED IMPECCABILE
-       ======================================================== */
-    const counterElement = document.getElementById('visit-count');
-    const offsetPartenza = 16; 
-    
-    // API Serverless ad altissima stabilità e velocità
-    const apiGet = "https://api.tinybird.co/v0/pipes/get_glue_chaos_counter.json?token=p.eyJ1IjogImYwM2E4MTlhLWQ1ZTYtNDY4Mi04MmY0LTViOGY1MWU0YTEwOSIsICJpZCI6ICI3ZTg2YWYzMC0wYmYxLTQzMTEtYThkNi00MGI4YThjMDNlYTIifQ.mZ2Xh7q5Vb8B39Y4A8_L4nO8bZ23Vp4N_zLkW_abcde";
-    const apiHit = "https://api.tinybird.co/v0/events?name=glue_chaos_views&token=p.eyJ1IjogImYwM2E4MTlhLWQ1ZTYtNDY4Mi04MmY0LTViOGY1MWU0YTEwOSIsICJpZCI6ICJjOTFlOGY0My02M2FlLTQxYjMtYTJjMS00MmNhNDliNWE5YTIifQ.rX9Z4nK7V_Mb94nO8Z23_abcde12345";
-
-    function updateDisplay(valore) {
-      counterElement.innerText = String(valore).padStart(2, '0');
-    }
-
-    // Controllo combinato anti-falsificazione per i tuoi reload personali
-    const giaContatoInSessione = sessionStorage.getItem('gc_counted');
-    const giaContatoInQuestoDispositivo = localStorage.getItem('gc_counted_device');
-
-    if (giaContatoInSessione === 'true' || giaContatoInQuestoDispositivo === 'true') {
-      // Se hai già visitato il sito da questa finestra o dispositivo, leggi solo il totale senza aumentarlo
-      fetch(apiGet)
-        .then(res => res.json())
-        .then(data => {
-          let visiteServer = (data.data && data.data[0] && data.data[0].total_views) || 0;
-          updateDisplay(visiteServer + offsetPartenza);
-        })
-        .catch(() => updateDisplay(offsetPartenza));
-    } else {
-      // Se è un vero nuovo visitatore o il tuo cellulare in 4G puro senza vecchie tracce, invia l'evento di incremento (+1)
-      fetch(apiHit, {
-        method: 'POST',
-        body: JSON.stringify({ timestamp: new Date().toISOString(), action: 'visit' })
-      })
-      .then(() => {
-        // Memorizza lo stato per evitare incrementi ai prossimi refresh
-        sessionStorage.setItem('gc_counted', 'true');
-        localStorage.setItem('gc_counted_device', 'true');
-        
-        // Scarica subito il totale aggiornato per mostrarlo graficamente
-        return fetch(apiGet);
-      })
-      .then(res => res.json())
-      .then(data => {
-        let visiteServer = (data.data && data.data[0] && data.data[0].total_views) || 1;
-        updateDisplay(visiteServer + offsetPartenza);
-      })
-      .catch(() => {
-        updateDisplay(offsetPartenza);
-      });
-    }
 
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
