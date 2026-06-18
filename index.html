@@ -131,59 +131,20 @@
       z-index: 4; 
     }
     
-    /* STRUTTURA FIRMA VERTICALE + MINIATURA DESKTOP */
-    .signature-container {
+    /* FIRMA VERTICALE DESKTOP */
+    .hero-signature {
         position: absolute;
         top: 250px;
         left: 20px;
-        z-index: 99;
-    }
-
-    .hero-signature {
         color: #ffffff;
         font-size: 0.7rem;
         letter-spacing: 2px;
         transform: rotate(-90deg);
         transform-origin: left top;
+        z-index: 99;
         opacity: 0.7;
         white-space: nowrap;
-        cursor: pointer;
-        pointer-events: auto; /* Attiva l'interazione del mouse */
-        transition: opacity 0.2s ease;
-    }
-    .hero-signature:hover {
-        opacity: 1;
-    }
-
-    /* Miniatura quadrata con bordo nero */
-    .author-thumb {
-        position: absolute;
-        top: -60px;
-        left: 35px;
-        width: 85px;
-        height: 85px;
-        object-fit: cover;
-        border: 2px solid var(--black);
-        box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-        transform: rotate(-6deg);
-        display: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
         pointer-events: none;
-    }
-
-    /* Mostra la foto al passaggio sulla firma su desktop */
-    @media (hover: hover) {
-        .signature-container:hover .author-thumb {
-            display: block;
-            opacity: 1;
-        }
-    }
-    
-    /* Stato attivo gestito via JavaScript */
-    .signature-container.active .author-thumb {
-        display: block;
-        opacity: 1;
     }
 
     .hero-eyebrow { font-size: 0.62rem; letter-spacing: 7px; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px;
@@ -469,7 +430,7 @@
       }
       
       .hero-divider {
-        width: 35%; /* Mantiene la linea accorciata fino alla O */
+        width: 35%;
         margin: 16px 0 14px 0;
       }
 
@@ -521,34 +482,18 @@
 
       .records-grid { grid-template-columns: repeat(1, 1fr); gap: 40px; }
       
-      /* RIPOSIZIONAMENTO CONTENITORE FIRMA + FOTO SU MOBILE */
-      .signature-container {
+      .hero-signature {
+        display: block !important;
         position: absolute;
         top: auto !important;         
         bottom: 20px !important;      
-        left: 20px !important;
-        width: auto;
-        height: auto;
-      }
-
-      .hero-signature {
-        display: block !important;
+        left: 20px !important;        
         transform: rotate(-90deg) !important;
         transform-origin: left bottom !important;
         font-size: 0.62rem !important;
         opacity: 0.5;
         z-index: 100;
         white-space: nowrap;
-      }
-
-      /* Regolazione miniatura per la visualizzazione mobile ruotata */
-      .author-thumb {
-        top: -100px;
-        left: 45px;
-        width: 75px;
-        height: 75px;
-        transform: rotate(6deg);
-        box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
       }
     } 
   </style>
@@ -571,10 +516,7 @@
     <div class="hero-grid-texture"></div>
     <div class="hero-vignette"></div>
    
-    <div class="signature-container">
-      <div class="hero-signature">Massimo Redaelli 2026</div>
-      <img src="images/io.jpg" alt="Author" class="author-thumb">
-    </div>
+    <div class="hero-signature">Massimo Redaelli 2026</div>
 
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
@@ -716,7 +658,7 @@
       <div class="record-card">
         <div class="record-cover"><img src="images/thelurkera.jpg" alt="The Lurkers"></div>
         <div class="record-band">The Lurkers</div>
-        <div class="record-title">Fullham Fallout</div>
+        <div class="record-title">Fulham Fallout</div>
         <div class="record-meta">UK • LP • 1978</div>
       </div>
       <div class="record-card">
@@ -827,18 +769,6 @@
     const dropdown = document.querySelector('.dropdown');
     const trigger = document.querySelector('.dropdown-trigger');
     const cards = document.querySelectorAll('.record-card');
-    
-    // Gestione Firma Autore + Foto Easter Egg
-    const sigContainer = document.querySelector('.signature-container');
-    const sigClickable = document.querySelector('.hero-signature');
-
-    // Su dispositivi touch, mostra/nasconde al tocco sulla firma
-    sigClickable.addEventListener('click', (e) => {
-      if (window.matchMedia('(pointer: coarse)').matches) {
-        e.stopPropagation();
-        sigContainer.classList.toggle('active');
-      }
-    });
 
     trigger.addEventListener('click', (e) => {
       if (window.matchMedia('(pointer: coarse)').matches) {
@@ -846,7 +776,6 @@
         dropdown.classList.toggle('open');
       }
     });
-
     cards.forEach(card => {
       card.addEventListener('click', function(e) {
         if (window.matchMedia('(pointer: coarse)').matches) {
@@ -860,11 +789,8 @@
         }
       });
     });
-
-    // Chiude i menu o le foto attive quando si tocca lo sfondo
     document.addEventListener('touchstart', (e) => {
       if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
-      if (!sigContainer.contains(e.target)) sigContainer.classList.remove('active');
       if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
     });
 
