@@ -83,9 +83,30 @@
     
     .dropdown.open .dropdown-menu { display: block !important; }
     
+    /* MINIATURA AUTORE (Stile fanzine/punk ritagliato) */
+    .author-thumb {
+      position: absolute;
+      top: 110%;
+      right: 175px; /* Posizionata a sinistra del menu a tendina su desktop */
+      width: 90px;
+      height: auto;
+      border: 2px solid var(--black);
+      box-shadow: 3px 3px 0px var(--black);
+      transform: rotate(-5deg);
+      display: none;
+      z-index: 1200;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .dropdown.open .author-thumb {
+      display: block;
+      opacity: 1;
+    }
+
     @media (hover: hover) {
       .dropdown:hover .dropdown-menu { display: block; }
       .dropdown:hover .dropdown-trigger { background: var(--black); color: var(--white); }
+      .dropdown:hover .author-thumb { display: block; opacity: 1; }
     }
     
     .dropdown-menu li a {
@@ -342,6 +363,15 @@
         padding: 14px 24px;
         background: transparent !important;
       }
+
+      /* Riposizionamento miniatura per mobile sotto il menu a tendina */
+      .author-thumb {
+        right: 0px;
+        top: calc(100% + 155px); /* Spinta sotto le voci di menu in verticale */
+        width: 75px; /* Leggermente più piccola su mobile */
+        transform: rotate(6deg);
+        box-shadow: 2px 2px 0px var(--black);
+      }
       
       .grid-bg {
         position: fixed !important; 
@@ -430,7 +460,7 @@
       }
       
       .hero-divider {
-        width: 35%;
+        width: 35%; /* Mantiene la modifica precedente per fermarsi alla 'O' */
         margin: 16px 0 14px 0;
       }
 
@@ -504,6 +534,7 @@
   <nav>
     <div class="dropdown">
       <a class="dropdown-trigger">About Me</a>
+      <img src="images/IMG_4628.jpg" alt="Author" class="author-thumb">
       <ul class="dropdown-menu">
         <li><a href="mailto:maxximo@gmail.com?subject=From%20the%20%5BGlues%26Chaos%5D%20site" target="_blank">E-mail</a></li>
         <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
@@ -765,7 +796,7 @@
     <span class="footer-credits">NO COPYRIGHT, NO FUTURE</span>
   </footer>
 
-  <script>
+  <script {="true"}>
     const dropdown = document.querySelector('.dropdown');
     const trigger = document.querySelector('.dropdown-trigger');
     const cards = document.querySelectorAll('.record-card');
