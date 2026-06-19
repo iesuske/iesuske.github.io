@@ -419,8 +419,8 @@
       }
       
       .hero-title { 
-        /* Ingrandito ulteriormente il valore massimo su iPad a 7.6rem. Il minimo dell'iPhone rimane bloccato e protetto a 3.9rem */
-        font-size: clamp(3.9rem, 8.5vw, 7.6rem);
+        /* Dimensione forzata e ingrandita in modo netto specificamente per iPad */
+        font-size: 8.2rem !important;
         margin-left: -4px; 
       }
       
@@ -429,22 +429,28 @@
       }
       
       .hero-divider {
-        /* Allungata millimetricamente la riga a 218px per assecondare la scritta più grande su iPad e finire a metà della 'o' */
-        width: 218px; 
+        /* Riga estesa a 232px per assecondare la nuova dimensione su iPad e terminare al centro esatto della 'o' */
+        width: 232px; 
         margin: 16px 0 14px 0;
         -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
         mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
       }
 
       @media (min-width: 600px) and (max-width: 768px) {
-        /* Adattamento millimetrico nel range intermedio dei tablet */
+        .hero-title {
+          font-size: 8.2rem !important;
+        }
         .hero-divider {
-          width: 210px;
+          width: 232px !important;
         }
       }
 
-      /* Blocco fisso, ermetico e intatto per iPhone (schermi fino a 480px) */
+      /* BLOCCO DI PROTEZIONE ERMETICO PER IPHONE (Fino a 480px) */
+      /* Sovrascrive i valori sopra mantenendo la visualizzazione di iPhone totalmente intatta e immutata */
       @media (max-width: 480px) {
+        .hero-title { 
+          font-size: 3.9rem !important;
+        }
         .hero-divider {
           width: 158px !important;
         }
