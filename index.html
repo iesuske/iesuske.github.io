@@ -105,6 +105,7 @@
       box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
       transition: transform 0.2s, filter 0.2s;
       cursor: pointer;
+      display: block; /* assicura il corretto allineamento del tag a */
     }
     
     .looking-thumb img {
@@ -617,7 +618,9 @@
       <a class="dropdown-trigger">Want List...</a>
       <div class="dropdown-menu-visual">
         <div class="looking-grid">
-          <div class="looking-thumb"><img src="images/skrewdrivera.jpg" alt="Skrewdriver"></div>
+          <a href="https://www.discogs.com/master/854821-Skrewdriver-All-Skrewed-Up" target="_blank" class="looking-thumb">
+            <img src="images/skrewdrivera.jpg" alt="Skrewdriver">
+          </a>
           <div class="looking-thumb"><img src="images/thegermsa.jpg" alt="The Germs"></div>
           <div class="looking-thumb"><img src="images/theclasha.jpg" alt="The Clash"></div>
         </div>
