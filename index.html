@@ -159,7 +159,7 @@
     }
     .hero-title .line2 { opacity: 0.28; display: block; position: relative; }
     
-    /* DESKTOP MODIFICATA: Spostata di mezzo punto più in alto (margin-top da 32px a 24px) */
+    /* DESKTOP: Spostata di mezzo punto più in alto (margin-top da 32px a 24px) */
     .hero-divider { 
       width: 40%; 
       height: 4px;
@@ -434,7 +434,7 @@
         position: relative;
       }
 
-      /* MOBILE (iPad & iPhone): Avvicinata molto più in alto ed attaccata al testo (margin-top: 8px) */
+      /* IPAD & IPHONE GENERAL: Ben attaccata e vicina sotto il testo (margin-top: 8px) */
       .hero-title .hero-divider {
         display: block !important;
         width: 245px !important; 
@@ -472,11 +472,11 @@
         .hero-title { 
           font-size: 3.1rem !important;
         }
-        /* IPHONE FIX: Portata fino all'inizio della lettera S (122px) includendo tutta la sfumatura fluida (0% al 100% della maschera) */
+        /* IPHONE FIX: Allungata a 142px per coprire interamente la S di Chaos con sfumatura fluida alla fine */
         .hero-title .hero-divider {
-          width: 122px !important;
-          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%) !important;
-          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%) !important;
+          width: 142px !important;
+          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%) !important;
+          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%) !important;
         }
       }
 
