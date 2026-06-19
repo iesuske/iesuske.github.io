@@ -75,16 +75,16 @@
       text-transform: uppercase; text-decoration: none; color: var(--black); padding: 6px 12px; cursor: pointer;
     }
     
-    /* Menu di Destra (About me) */
+    /* Menu di Destra (★ABOUT ME) */
     .dropdown-menu {
       position: absolute; top: 100%; right: 0; background-color: var(--black);
       padding: 0; display: none; min-width: 160px; border: 3px solid var(--black); z-index: 1100;
     }
     
-    /* Menu di Sinistra (Want List...) con le miniature */
+    /* Menu di Sinistra (★WANT LIST) allargato per 4 miniature in orizzontale */
     .dropdown-menu-visual {
       position: absolute; top: 100%; left: 0; background-color: var(--black);
-      padding: 16px; display: none; width: 340px; border: 3px solid var(--black); z-index: 1100;
+      padding: 16px; display: none; width: 420px; border: 3px solid var(--black); z-index: 1100;
     }
     
     /* Contenitore delle miniature storte interne al menu */
@@ -105,7 +105,7 @@
       box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
       transition: transform 0.2s, filter 0.2s;
       cursor: pointer;
-      display: block; /* assicura il corretto allineamento del tag a */
+      display: block;
     }
     
     .looking-thumb img {
@@ -116,10 +116,11 @@
       display: block;
     }
     
-    /* Rotazioni asimmetriche e "storte" stile fanzine punk */
+    /* Rotazioni asimmetriche e "storte" stile fanzine punk (aggiornate per 4 elementi) */
     .looking-thumb:nth-child(1) { transform: rotate(-5deg); }
     .looking-thumb:nth-child(2) { transform: rotate(4deg); }
     .looking-thumb:nth-child(3) { transform: rotate(-3deg); }
+    .looking-thumb:nth-child(4) { transform: rotate(5deg); }
     
     .looking-thumb:hover {
       transform: rotate(0deg) scale(1.1);
@@ -405,9 +406,14 @@
         padding: 6px 4px !important;
       }
 
+      /* Allargato il menu mobile per far stare 4 icone in orizzontale */
       .dropdown-menu-visual {
-        width: 270px !important;
+        width: 335px !important;
         padding: 10px !important;
+      }
+
+      .looking-grid {
+        gap: 8px !important;
       }
 
       .looking-thumb {
@@ -615,20 +621,27 @@
 
   <nav>
     <div class="dropdown">
-      <a class="dropdown-trigger">Want List...</a>
+      <a class="dropdown-trigger">★WANT LIST</a>
       <div class="dropdown-menu-visual">
         <div class="looking-grid">
           <a href="https://www.discogs.com/master/854821-Skrewdriver-All-Skrewed-Up" target="_blank" class="looking-thumb">
             <img src="images/skrewdrivera.jpg" alt="Skrewdriver">
           </a>
-          <div class="looking-thumb"><img src="images/thegermsa.jpg" alt="The Germs"></div>
-          <div class="looking-thumb"><img src="images/theclasha.jpg" alt="The Clash"></div>
+          <a href="https://www.discogs.com/master/38300-Germs-GI" target="_blank" class="looking-thumb">
+            <img src="images/thegermsa.jpg" alt="The Germs">
+          </a>
+          <a href="https://www.discogs.com/master/24371-The-Clash-The-Clash" target="_blank" class="looking-thumb">
+            <img src="images/theclasha.jpg" alt="The Clash">
+          </a>
+          <a href="https://www.discogs.com/master/22168-Suicide-Suicide" target="_blank" class="looking-thumb">
+            <img src="images/suicidea.jpg" alt="Suicide">
+          </a>
         </div>
       </div>
     </div>
 
     <div class="dropdown">
-      <a class="dropdown-trigger">About Me</a>
+      <a class="dropdown-trigger">★ABOUT ME</a>
       <ul class="dropdown-menu">
         <li><a href="mailto:maxximo@gmail.com?subject=From%20the%20%5BGlues%26Chaos%5D%20site" target="_blank">E-mail</a></li>
         <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
