@@ -58,33 +58,88 @@
       z-index: 10;
     }
 
+    /* NAV MODIFICATA: Distribuisce i menu ai due lati opposti */
     nav {
       border-bottom: var(--border); padding: 14px 40px;
       display: flex;
-      justify-content: flex-end; 
+      justify-content: space-between; 
+      align-items: center;
       z-index: 1000; 
     }
 
     .dropdown { position: relative; list-style: none; }
+    
     .dropdown-trigger {
       font-family: 'TR', sans-serif; font-weight: 700; font-size: 0.68rem;
       letter-spacing: 4px;
       text-transform: uppercase; text-decoration: none; color: var(--black); padding: 6px 12px; cursor: pointer;
     }
+    
+    /* Menu di Destra (About me) */
     .dropdown-menu {
       position: absolute; top: 100%; right: 0; background-color: var(--black);
       padding: 0; display: none; min-width: 160px; border: 3px solid var(--black); z-index: 1100;
     }
-    .dropdown-menu li { list-style: none; }
     
+    /* NUOVO: Menu di Sinistra (What I'm looking for) con le miniature */
+    .dropdown-menu-visual {
+      position: absolute; top: 100%; left: 0; background-color: var(--black);
+      padding: 16px; display: none; width: 340px; border: 3px solid var(--black); z-index: 1100;
+    }
+    
+    /* Contenitore delle miniature storte interne al menu */
+    .looking-grid {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 0;
+    }
+    
+    .looking-thumb {
+      width: 80px;
+      aspect-ratio: 1/1;
+      border: 2px solid var(--white);
+      background: #000;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+      transition: transform 0.2s, filter 0.2s;
+      cursor: pointer;
+    }
+    
+    .looking-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      display: block;
+    }
+    
+    /* Rotazioni asimmetriche e "storte" stile fanzine punk */
+    .looking-thumb:nth-child(1) { transform: rotate(-5deg); }
+    .looking-thumb:nth-child(2) { transform: rotate(4deg); }
+    .looking-thumb:nth-child(3) { transform: rotate(-3deg); }
+    
+    .looking-thumb:hover {
+      transform: rotate(0deg) scale(1.1);
+      z-index: 10;
+    }
+    .looking-thumb:hover img {
+      filter: grayscale(0%);
+    }
+
+    .dropdown-menu li { list-style: none; }
     .dropdown-menu li:not(:last-child) {
       border-bottom: 2px dashed var(--white);
     }
     
+    /* Classi per l'apertura dei menu */
     .dropdown.open .dropdown-menu { display: block !important; }
+    .dropdown.open .dropdown-menu-visual { display: block !important; }
     
     @media (hover: hover) {
       .dropdown:hover .dropdown-menu { display: block; }
+      .dropdown:hover .dropdown-menu-visual { display: block; }
       .dropdown:hover .dropdown-trigger { background: var(--black); color: var(--white); }
     }
     
@@ -343,6 +398,22 @@
         padding: 14px 24px;
         background: transparent !important;
       }
+
+      /* Regolazione responsive per non far sovrapporre i due menu su mobile */
+      .dropdown-trigger {
+        font-size: 0.58rem !important;
+        letter-spacing: 2px !important;
+        padding: 6px 4px !important;
+      }
+
+      .dropdown-menu-visual {
+        width: 270px !important;
+        padding: 10px !important;
+      }
+
+      .looking-thumb {
+        width: 65px !important;
+      }
       
       .grid-bg {
         position: fixed !important; 
@@ -548,6 +619,17 @@
   <div class="grid-bg"></div>
 
   <nav>
+    <div class="dropdown">
+      <a class="dropdown-trigger">What I’m looking for…</a>
+      <div class="dropdown-menu-visual">
+        <div class="looking-grid">
+          <div class="looking-thumb"><img src="images/skrewdrivera.jpg" alt="Skrewdriver"></div>
+          <div class="looking-thumb"><img src="images/thegermsa.jpg" alt="The Germs"></div>
+          <div class="looking-thumb"><img src="images/theclasha.jpg" alt="The Clash"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="dropdown">
       <a class="dropdown-trigger">About Me</a>
       <ul class="dropdown-menu">
@@ -817,16 +899,23 @@
   </footer>
 
   <script>
-    const dropdown = document.querySelector('.dropdown');
-    const trigger = document.querySelector('.dropdown-trigger');
+    const dropdowns = document.querySelectorAll('.dropdown');
     const cards = document.querySelectorAll('.record-card');
 
-    trigger.addEventListener('click', (e) => {
-      if (window.matchMedia('(pointer: coarse)').matches) {
-        e.preventDefault();
-        dropdown.classList.toggle('open');
-      }
+    // Gestione clic sui dropdown per i dispositivi Touch/Mobile
+    dropdowns.forEach(dd => {
+      const trigger = dd.querySelector('.dropdown-trigger');
+      trigger.addEventListener('click', (e) => {
+        if (window.matchMedia('(pointer: coarse)').matches) {
+          e.preventDefault();
+          e.stopPropagation();
+          // Chiude l'altro dropdown se aperto
+          dropdowns.forEach(other => { if(other !== dd) other.classList.remove('open'); });
+          dd.classList.toggle('open');
+        }
+      });
     });
+
     cards.forEach(card => {
       card.addEventListener('click', function(e) {
         if (window.matchMedia('(pointer: coarse)').matches) {
@@ -840,14 +929,20 @@
         }
       });
     });
+
     document.addEventListener('touchstart', (e) => {
-      if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
-      if (!e.target.closest('.record-card')) cards.forEach(c => c.classList.remove('active'));
+      if (!e.target.closest('.dropdown')) {
+        dropdowns.forEach(dd => dd.classList.remove('open'));
+      }
+      if (!e.target.closest('.record-card')) {
+        cards.forEach(c => c.classList.remove('active'));
+      }
     });
 
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
+    
     document.addEventListener('keydown', function(e) {
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
