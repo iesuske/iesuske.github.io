@@ -428,31 +428,31 @@
         opacity: 0.28;
       }
 
-      /* MEDIA QUERY DI CONTROLLO PER IPAD CORRETTO (Tra 481px e 768px) */
+      /* MEDIA QUERY DI CONTROLLO PER IPAD (Tra 481px e 768px) */
       @media (min-width: 481px) and (max-width: 768px) {
         .hero-title {
           font-size: 5.2rem !important;
         }
         .hero-divider {
-          /* MODIFICA: Allungata per arrivare sotto l'inizio della S di Chaos su iPad */
-          width: 325px !important; 
+          /* MODIFICA: Accorciata a 215px per finire esattamente all'inizio della S di Chaos */
+          width: 215px !important; 
           margin: 16px 0 14px 0;
-          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%) !important;
-          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%) !important;
+          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
+          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
         }
       }
 
-      /* BLOCCO DI PROTEZIONE ERMETICO PER IPHONE (Fino a 480px) */
+      /* BLOCCO PER IPHONE (Fino a 480px) */
       @media (max-width: 480px) {
         .hero-title { 
           font-size: 3.1rem !important;
         }
         .hero-divider {
-          /* MODIFICA: Allungata all'84% per arrivare esattamente sotto l'inizio della S di Chaos su iPhone */
-          width: 84% !important;
+          /* MODIFICA: Accorciata al 54% per finire esattamente all'inizio della S di Chaos */
+          width: 54% !important;
           margin: 16px 0 14px 0;
-          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%) !important;
-          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%) !important;
+          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%) !important;
+          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%) !important;
         }
       }
 
