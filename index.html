@@ -408,10 +408,6 @@
         margin: 0;
         text-align: left;
         max-width: 100%; 
-        /* Usiamo flexbox per calcolare la larghezza della linea basandoci sulla scritta Chaos */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
       }
 
       .hero-eyebrow {
@@ -426,12 +422,27 @@
       
       .hero-title { 
         margin-left: -4px; 
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
       }
       
       .hero-title .line2 {
         opacity: 0.28;
         display: inline-block;
+        position: relative;
+      }
+
+      /* LA SVOLTA OPERATIVA PER LA LINEA TRATTEGGIATA SU MOBILE */
+      .hero-title .hero-divider {
+        display: block !important;
+        width: 100% !important;
+        /* Limita la lunghezza massima della linea esattamente prima della S di Chaos */
+        max-width: 4.2em !important; 
+        margin: 16px 0 14px 0 !important;
+        /* Sfumatura ad alta precisione indipendente dal dispositivo */
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%) !important;
+        mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%) !important;
       }
 
       /* MEDIA QUERY DI CONTROLLO PER IPAD (Tra 481px e 768px) */
@@ -439,26 +450,12 @@
         .hero-title {
           font-size: 5.2rem !important;
         }
-        .hero-divider {
-          /* SOLUZIONE DINAMICA: Calcolata sulla dimensione del font di iPad */
-          width: 4.05em !important; 
-          margin: 16px 0 14px 0;
-          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
-          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
-        }
       }
 
       /* BLOCCO PER IPHONE (Fino a 480px) */
       @media (max-width: 480px) {
         .hero-title { 
           font-size: 3.1rem !important;
-        }
-        .hero-divider {
-          /* SOLUZIONE DINAMICA: Calcolata sulla dimensione del font di iPhone */
-          width: 4.1em !important;
-          margin: 16px 0 14px 0;
-          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
-          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
         }
       }
 
@@ -548,8 +545,13 @@
 
     <div class="hero-inner">
       <p class="hero-eyebrow">My 1977 Punk Vinyl Archive-</p>
-      <h1 class="hero-title">[Glue<br><span class="line2">&amp; Chaos]</span></h1>
-      <div class="hero-divider"></div>
+      <h1 class="hero-title">
+        [Glue<br>
+        <span class="line2">
+          &amp; Chaos]
+          <div class="hero-divider"></div>
+        </span>
+      </h1>
       <p class="hero-tagline">
         “...Don’t you know your last years<br class="mobile-only-br">youth, ’77 you told the truth...”<span class="autore">(Menace, 1979)</span>
       </p>
@@ -559,13 +561,13 @@
   <div class="ticker">
     <div class="ticker-track">
       <div class="ticker-item">
-        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
       </div>
       <div class="ticker-item">
-        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
       </div>
       <div class="ticker-item">
-        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+
+        <span>SEX PISTOLS</span><span class="dot">+</span><span>THE CLASH</span><span class="dot">+</span><span>THE DAMNED</span><span class="dot">+</span><span>RAMONES</span><span class="dot">+</span><span>SHAM 69</span><span class="dot">+</span><span>DEAD BOYS</span><span class="dot">+</span><span>SLAUGHTER AND THE DOGS</span><span class="dot">+</span><span>THE LURKERS</span><span class="dot">+</span><span>THE VIBRATORS</span><span class="dot">+</span><span>THE UNDERTONES</span><span class="dot">+</span><span>ANGELIC UPSTARTS</span><span class="dot">+</span><span>THE BOYS</span><span class="dot">+</span><span>MENACE</span><span class="dot">+</span><span>EDDIE AND THE HOT RODS</span><span class="dot">+</span><span>ELTON MONTELLO</span><span class="dot">+</span><span>NEW YORK DOLLS</span><span class="dot">+</span><span>BUZZCOCKS</span><span class="dot">+</span><span>SUICIDE</span><span class="dot">+</span><span>999</span><span class="dot">+</span><span>THE ADVERTS</span><span class="dot">+</span><span>THE DRONES</span><span class="dot">+</span><span>JOHNNY MOPED</span><span class="dot">+</span><span>THE DEPRESSIONS</span><span class="dot">+</span><span>THE CORTINAS</span><span class="dot">+</span><span>COCKNEY REJECTS</span><span class="dot">+</span><span>THE JAM</span><span class="dot">+</span><span>CHELSEA</span><span class="dot">+</span><span>STIFF LITTLE FINGERS</span><span class="dot">+</span>
       </div>
     </div>
   </div>
