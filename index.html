@@ -433,22 +433,27 @@
         position: relative;
       }
 
-      /* LA SVOLTA OPERATIVA PER LA LINEA TRATTEGGIATA SU MOBILE */
+      /* FIX VISIBILITÀ LINEA TRATTEGGIATA SU MOBILE */
       .hero-title .hero-divider {
         display: block !important;
-        width: 100% !important;
-        /* Limita la lunghezza massima della linea esattamente prima della S di Chaos */
-        max-width: 4.2em !important; 
-        margin: 16px 0 14px 0 !important;
-        /* Sfumatura ad alta precisione indipendente dal dispositivo */
-        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%) !important;
-        mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%) !important;
+        width: 195px !important; 
+        max-width: 85% !important;
+        height: 4px !important;
+        margin: 18px 0 14px 0 !important;
+        opacity: 0.55 !important; /* Ripristina la pienezza visiva del tratteggio */
+        
+        /* Maschera ultra-morbida: visibile al 100% fino alla fine, sfuma solo negli ultimi pixel */
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
+        mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
       }
 
       /* MEDIA QUERY DI CONTROLLO PER IPAD (Tra 481px e 768px) */
       @media (min-width: 481px) and (max-width: 768px) {
         .hero-title {
           font-size: 5.2rem !important;
+        }
+        .hero-title .hero-divider {
+          width: 245px !important;
         }
       }
 
