@@ -325,7 +325,7 @@
     }
 
     /* ========================================================
-       SEZIONE OPERATIVA MOBILE
+       SEZIONE OPERATIVA MOBILE (iPhone & iPad)
        ======================================================== */
     @media (max-width: 768px) {
       html {
@@ -428,8 +428,11 @@
       }
       
       .hero-divider {
-        width: 185px;
+        width: 162px; /* Arriva precisamente a metà della lettera 'o' su iPhone e iPad */
         margin: 16px 0 14px 0;
+        /* Ripristino dell'effetto sfumato dissolvente verso destra specifico per mobile */
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
       }
 
       .hero-tagline { 
