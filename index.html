@@ -157,26 +157,27 @@
       letter-spacing: -3px;
       margin-left: -14px; 
     }
-    .hero-title .line2 { opacity: 0.28; display: block; }
+    .hero-title .line2 { opacity: 0.28; display: block; position: relative; }
     
+    /* RIPRISTINO LINEA DESKTOP: Sfumatura reale dal nero al grigio/trasparente */
     .hero-divider { 
       width: 40%; 
       height: 4px;
       margin: 32px 0 28px;
-      opacity: 0.4;
       background: repeating-linear-gradient(
         90deg,
         transparent,
         transparent 2px,
-        var(--white) 2px,
-        var(--white) 7px,
+        var(--black) 2px,
+        var(--black) 7px,
         transparent 7px,
         transparent 9px,
-        var(--white) 9px,
-        var(--white) 12px
+        var(--black) 9px,
+        var(--black) 12px
       );
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
+      opacity: 0.85;
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0.3) 85%, rgba(0,0,0,0) 100%);
     }
     
     .hero-tagline { font-size: 1.20rem; font-style: italic; opacity: 0.75; max-width: 900px; line-height: 1.6; }
@@ -433,18 +434,27 @@
         position: relative;
       }
 
-      /* FIX VISIBILITÀ LINEA TRATTEGGIATA SU MOBILE */
+      /* FIXED: Colore reale, fisso e sfumatura visibile su iPad/Mobile generico */
       .hero-title .hero-divider {
         display: block !important;
-        width: 195px !important; 
+        width: 245px !important; 
         max-width: 85% !important;
         height: 4px !important;
         margin: 18px 0 14px 0 !important;
-        opacity: 0.55 !important; /* Ripristina la pienezza visiva del tratteggio */
-        
-        /* Maschera ultra-morbida: visibile al 100% fino alla fine, sfuma solo negli ultimi pixel */
-        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
-        mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
+        background: repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 2px,
+          var(--black) 2px,
+          var(--black) 7px,
+          transparent 7px,
+          transparent 9px,
+          var(--black) 9px,
+          var(--black) 12px
+        ) !important;
+        opacity: 0.85 !important;
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 75%, rgba(0,0,0,0.3) 90%, rgba(0,0,0,0) 100%) !important;
+        mask-image: linear-gradient(to right, rgba(0,0,0,1) 75%, rgba(0,0,0,0.3) 90%, rgba(0,0,0,0) 100%) !important;
       }
 
       /* MEDIA QUERY DI CONTROLLO PER IPAD (Tra 481px e 768px) */
@@ -457,10 +467,16 @@
         }
       }
 
-      /* BLOCCO PER IPHONE (Fino a 480px) */
+      /* BLOCCO SPECIFICO PER IPHONE (Fino a 480px) */
       @media (max-width: 480px) {
         .hero-title { 
           font-size: 3.1rem !important;
+        }
+        /* FIXED: Lunghezza esatta calibrata per finire sotto la "S" di Chaos ed evitare trasparenze fasulle */
+        .hero-title .hero-divider {
+          width: 118px !important;
+          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%) !important;
+          mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0.4) 90%, rgba(0,0,0,0) 100%) !important;
         }
       }
 
