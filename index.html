@@ -419,8 +419,8 @@
       }
       
       .hero-title { 
-        /* Ingrandito il valore massimo (iPad) da 5.4rem a 6.0rem. Il minimo dell'iPhone resta bloccato e protetto a 3.9rem */
-        font-size: clamp(3.9rem, 8.5vw, 6.0rem);
+        /* Ingrandito ulteriormente il valore massimo (iPad) da 6.0rem a 6.8rem. Il minimo dell'iPhone resta blindato a 3.9rem */
+        font-size: clamp(3.9rem, 8.5vw, 6.8rem);
         margin-left: -4px; 
       }
       
@@ -429,21 +429,21 @@
       }
       
       .hero-divider {
-        /* Adattata la riga a 174px per assecondare alla perfezione il nuovo ingrandimento del testo su iPad */
-        width: 174px; 
+        /* Allungata la riga a 196px per assecondare l'ulteriore ingrandimento della scritta su iPad e spezzarsi al centro esatto della 'o' */
+        width: 196px; 
         margin: 16px 0 14px 0;
         -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
         mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
       }
 
       @media (min-width: 600px) and (max-width: 768px) {
-        /* Regolazione millimetrica per la riga se si scende leggermente di viewport su tablet mantenendo la proporzione */
+        /* Adattamento millimetrico della riga nel range intermedio dei tablet */
         .hero-divider {
-          width: 168px;
+          width: 188px;
         }
       }
 
-      /* Blocco fisso e protetto per iPhone (fino a 480px di larghezza schermo) per non intaccare il lavoro perfetto precedente */
+      /* Blocco fisso ed ermetico per iPhone (schermi fino a 480px) per conservare la visualizzazione precedente */
       @media (max-width: 480px) {
         .hero-divider {
           width: 158px !important;
