@@ -419,8 +419,8 @@
       }
       
       .hero-title { 
-        /* Ingrandito ulteriormente sia il valore minimo (per iPhone) che il valore scalabile/massimo (per iPad) */
-        font-size: clamp(3.4rem, 8.5vw, 5.4rem);
+        /* Aumentato solo il valore minimo da 3.4rem a 3.9rem per l'iPhone, lasciando intatto il massimo per iPad */
+        font-size: clamp(3.9rem, 8.5vw, 5.4rem);
         margin-left: -4px; 
       }
       
@@ -429,7 +429,7 @@
       }
       
       .hero-divider {
-        /* Ricalibrata a 158px per coprire l'ingrandimento dei caratteri e arrivare alla metà esatta della lettera 'o' */
+        /* Mantenuta a 158px per garantire l'allineamento perfetto a metà della lettera 'o' */
         width: 158px; 
         margin: 16px 0 14px 0;
         /* Sfumatura dissolvente mantenuta verso destra */
