@@ -327,9 +327,9 @@
     }
 
     /* ========================================================
-       SEZIONE OPERATIVA MOBILE
+       SEZIONE OPERATIVA MOBILE (iPhone & iPad e schermi ridotti)
        ======================================================== */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       html {
         background-color: var(--white) !important;
       }
@@ -429,8 +429,9 @@
         opacity: 0.28;
       }
       
+      /* MODIFICA EFFETTUATA: Aumentata la larghezza per coprire la parola fino alla 'O' */
       .hero-divider {
-        width: 35%;
+        width: 78%;
         margin: 16px 0 14px 0;
       }
 
@@ -495,7 +496,17 @@
         z-index: 100;
         white-space: nowrap;
       }
-    } 
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { 
+        font-size: 3.1rem;
+      }
+      /* Uniformato anche per schermi smartphone molto stretti */
+      .hero-divider {
+        width: 78%;
+      }
+    }
   </style>
 </head>
 <body>
