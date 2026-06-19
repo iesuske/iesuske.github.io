@@ -159,11 +159,11 @@
     }
     .hero-title .line2 { opacity: 0.28; display: block; position: relative; }
     
-    /* FIX DESKTOP: Linea bianca che sfuma su sfondo nero (crea il grigio nativo e sparisce nel nulla) */
+    /* DESKTOP MODIFICATA: Spostata di mezzo punto più in alto (margin-top da 32px a 24px) */
     .hero-divider { 
       width: 40%; 
       height: 4px;
-      margin: 32px 0 28px;
+      margin: 24px 0 28px;
       background: repeating-linear-gradient(
         90deg,
         transparent,
@@ -434,13 +434,13 @@
         position: relative;
       }
 
-      /* FIX GENERALE MOBILE: Sfumatura bianca che vira al grigio e trasparenza su fondo nero */
+      /* MOBILE (iPad & iPhone): Avvicinata molto più in alto ed attaccata al testo (margin-top: 8px) */
       .hero-title .hero-divider {
         display: block !important;
         width: 245px !important; 
         max-width: 85% !important;
         height: 4px !important;
-        margin: 18px 0 14px 0 !important;
+        margin: 8px 0 14px 0 !important;
         background: repeating-linear-gradient(
           90deg,
           transparent,
@@ -463,20 +463,20 @@
           font-size: 5.2rem !important;
         }
         .hero-title .hero-divider {
-          width: 245px !important; /* Larghezza proporzionata per tablet */
+          width: 245px !important;
         }
       }
 
-      /* BLOCCO PERFETTO PER IPHONE (Fino a 480px) */
+      /* BLOCCO SPECIFICO PER IPHONE (Fino a 480px) */
       @media (max-width: 480px) {
         .hero-title { 
           font-size: 3.1rem !important;
         }
-        /* ACCORCIATA: Arriva precisamente all'inizio della lettera S di Chaos */
+        /* IPHONE FIX: Portata fino all'inizio della lettera S (122px) includendo tutta la sfumatura fluida (0% al 100% della maschera) */
         .hero-title .hero-divider {
-          width: 95px !important;
-          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0.3) 90%, rgba(0,0,0,0) 100%) !important;
-          mask-image: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0.3) 90%, rgba(0,0,0,0) 100%) !important;
+          width: 122px !important;
+          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%) !important;
+          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%) !important;
         }
       }
 
