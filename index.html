@@ -216,8 +216,7 @@
       opacity: 0.5;
       font-size: 1rem; 
       padding-right: 18px;
-      line-height: 1;
-      display: inline-flex;
+      line-flex;
       align-items: center;
     }
     
@@ -428,11 +427,11 @@
       }
       
       .hero-divider {
-        width: 162px; /* Arriva precisamente a metà della lettera 'o' su iPhone e iPad */
+        width: 142px; /* Accorciata per arrivare precisamente a metà della lettera 'o' di Chaos su iPhone e iPad */
         margin: 16px 0 14px 0;
-        /* Ripristino dell'effetto sfumato dissolvente verso destra specifico per mobile */
-        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-        mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        /* Mantenimento della sfumatura dissolvente verso destra */
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
       }
 
       .hero-tagline { 
