@@ -151,7 +151,7 @@
     border-left: 3px solid var(--white); padding-left: 14px;}
     
     .hero-title { 
-      font-size: clamp(5.5rem, 12vw, 11rem); /* Ottimizzato il limite minimo per schermi desktop ridotti o iPad in orizzontale */
+      font-size: clamp(5.5rem, 12vw, 11rem); 
       line-height: 0.88; 
       text-transform: uppercase; 
       letter-spacing: -3px;
@@ -419,8 +419,8 @@
       }
       
       .hero-title { 
-        /* Bilanciamento dinamico: preserva una dimensione imponente su iPad evitando che si rimpicciolisca troppo, mantenendosi perfetto su iPhone */
-        font-size: clamp(3.1rem, 7.5vw, 4.8rem);
+        /* Ingrandito ulteriormente sia il valore minimo (per iPhone) che il valore scalabile/massimo (per iPad) */
+        font-size: clamp(3.4rem, 8.5vw, 5.4rem);
         margin-left: -4px; 
       }
       
@@ -429,7 +429,8 @@
       }
       
       .hero-divider {
-        width: 142px; /* Perfettamente calibrata a metà della lettera 'o' di Chaos su iPhone e iPad */
+        /* Ricalibrata a 158px per coprire l'ingrandimento dei caratteri e arrivare alla metà esatta della lettera 'o' */
+        width: 158px; 
         margin: 16px 0 14px 0;
         /* Sfumatura dissolvente mantenuta verso destra */
         -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
