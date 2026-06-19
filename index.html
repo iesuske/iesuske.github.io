@@ -431,7 +431,7 @@
       }
       
       .hero-divider {
-        /* Lunghezza corretta proporzionale a 5.2rem per terminare a metà della lettera 'o' */
+        /* Lunghezza di base per iPad */
         width: 185px !important; 
         margin: 16px 0 14px 0;
         -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
@@ -454,10 +454,11 @@
           font-size: 3.1rem !important;
         }
         .hero-divider {
-          width: 35% !important;
-          /* MODIFICA: Sfumatura abilitata tramite linear-gradient per iPhone */
-          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%) !important;
-          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%) !important;
+          /* MODIFICA: Allungata al 68% per arrivare fino sotto all'inizio della S */
+          width: 68% !important;
+          /* Sfumatura calibrata per dissolversi dolcemente proprio alla fine sotto la lettera */
+          -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%) !important;
+          mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%) !important;
         }
       }
 
