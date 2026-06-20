@@ -10,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Glue &amp; Chaos — Original UK &amp; US Punk Vinyl Archive 1976–1980 | First Pressings</title>
 
-  <!-- SEO Core -->
   <meta name="description" content="Personal archive of original UK and US punk vinyl first pressings from 1976 to 1980. Sex Pistols, The Clash, The Damned, Ramones, Cockney Rejects, Sham 69 and more — original pressings with label and catalog details. Curated by Massimo Redaelli.">
   <meta name="keywords" content="punk vinyl archive, original pressings 1977, UK punk records, first pressing, Stiff Records, Chiswick Records, punk LP collection, 1977 punk, Oi records, punk vinyl collector">
   <meta name="author" content="Massimo Redaelli">
@@ -18,7 +17,6 @@
   <meta name="google-site-verification" content="6d684c8e6719270e">
   <link rel="canonical" href="https://iesuske.github.io/">
 
-  <!-- Open Graph (Facebook, WhatsApp, social sharing) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://iesuske.github.io/">
   <meta property="og:title" content="Glue &amp; Chaos — Original UK &amp; US Punk Vinyl Archive 1976–1980">
@@ -27,13 +25,11 @@
   <meta property="og:locale" content="en_GB">
   <meta property="og:site_name" content="Glue &amp; Chaos">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Glue &amp; Chaos — Punk Vinyl Archive 1976–1980">
   <meta name="twitter:description" content="Original UK and US punk vinyl first pressings 1976–1980. Curated by Massimo Redaelli.">
   <meta name="twitter:image" content="https://iesuske.github.io/images/backgroundhome.jpg">
 
-  <!-- Structured Data: CollectionPage + Person -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -134,10 +130,22 @@
       text-transform: uppercase; text-decoration: none; color: var(--black); padding: 6px 12px; cursor: pointer;
     }
     
-    /* Menu di Destra (★ABOUT ME) */
+    /* Menu di Destra (★ABOUT ME) - AGGIORNATO: Forma Irregolare Punk Fanzine */
     .dropdown-menu {
-      position: absolute; top: 100%; right: 0; background-color: var(--black);
-      padding: 0; display: none; min-width: 160px; border: 3px solid var(--black); z-index: 1100;
+      position: absolute; 
+      top: 100%; 
+      right: 0; 
+      background-color: var(--black);
+      padding: 14px 8px; 
+      display: none; 
+      min-width: 175px; 
+      z-index: 1100;
+      transform: rotate(-1.5deg);
+      box-shadow: 5px 5px 0px rgba(0,0,0,0.85);
+      
+      /* Taglio irregolare stile collage xerox */
+      border: 4px solid var(--black);
+      clip-path: polygon(1% 2%, 98% 0%, 100% 96%, 96% 100%, 2% 98%, 0% 12%);
     }
     
     /* Menu di Sinistra (★WANT LIST) allargato per 4 miniature in orizzontale */
@@ -175,7 +183,7 @@
       display: block;
     }
     
-    /* Rotazioni asimmetriche e "storte" stile fanzine punk (aggiornate per 4 elementi) */
+    /* Rotazioni asimmetriche e "storte" stile fanzine punk */
     .looking-thumb:nth-child(1) { transform: rotate(-5deg); }
     .looking-thumb:nth-child(2) { transform: rotate(4deg); }
     .looking-thumb:nth-child(3) { transform: rotate(-3deg); }
@@ -191,8 +199,14 @@
 
     .dropdown-menu li { list-style: none; }
     .dropdown-menu li:not(:last-child) {
-      border-bottom: 2px dashed var(--white);
+      border-bottom: 2px dashed rgba(244, 241, 232, 0.4);
     }
+    
+    /* Rotazioni interne asimmetriche per le singole voci del menu About Me */
+    .dropdown-menu li:nth-child(1) { transform: rotate(1deg); }
+    .dropdown-menu li:nth-child(2) { transform: rotate(-2deg); }
+    .dropdown-menu li:nth-child(3) { transform: rotate(1.5deg); }
+    .dropdown-menu li:nth-child(4) { transform: rotate(-1deg); }
     
     /* Classi per l'apertura dei menu */
     .dropdown.open .dropdown-menu { display: block !important; }
@@ -206,11 +220,14 @@
     
     .dropdown-menu li a {
       color: var(--white);
-      padding: 12px 20px; display: block; font-size: 0.65rem;
+      padding: 10px 14px; display: block; font-size: 0.65rem;
       letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
-      transition: opacity 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
-    .dropdown-menu li a:hover { opacity: 0.7; }
+    .dropdown-menu li a:hover { 
+      background: var(--white);
+      color: var(--black);
+    }
 
     .hero {
       background: var(--black); color: var(--white); padding: 72px 40px 56px;
@@ -471,6 +488,13 @@
         padding: 10px !important;
       }
 
+      /* Mobile adjustment per la tendina About Me */
+      .dropdown-menu {
+        min-width: 150px !important;
+        right: 0 !important;
+        top: 100% !important;
+      }
+
       .looking-grid {
         gap: 8px !important;
       }
@@ -704,6 +728,7 @@
       <ul class="dropdown-menu">
         <li><a href="mailto:maxximo@gmail.com?subject=From%20the%20%5BGlues%26Chaos%5D%20site" target="_blank">E-mail</a></li>
         <li><a href="https://www.instagram.com/massimoredaelli/" target="_blank">Instagram</a></li>
+        <li><a href="https://x.com/MaxximoRedaelli" target="_blank">X (Twitter)</a></li>
         <li><a href="https://wa.me/393382975188" target="_blank">Whatsapp Me</a></li>
       </ul>
     </div>
@@ -798,7 +823,7 @@
         <div class="record-meta">US • LP • 1977</div>
       </div>
       <div class="record-card">
-        <div class="record-cover"><img src="images/theadvertsa.jpg" alt="The Adverts - Crossing The Red Sea With The Adverts - Original UK LP 1978 - Bright Records"></div>
+        <div class="record-cover"><img src="images/johnnymopeda.jpg" alt="The Adverts - Crossing The Red Sea With The Adverts - Original UK LP 1978 - Bright Records"></div>
         <div class="record-band">The Adverts</div>
         <div class="record-title">Crossing The Red Sea With The Adverts</div>
         <div class="record-meta">UK • LP • 1978</div>
