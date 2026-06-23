@@ -1,0 +1,30 @@
+{
+  "name": "Glue & Chaos — Original UK & US Punk Vinyl 1976–1980",
+  "short_name": "Glue & Chaos",
+  "description": "Personal archive of original UK and US punk vinyl first pressings, 1976–1980. Sex Pistols, The Clash, The Damned, Ramones and more. Curated by Massimo Redaelli.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f1e8",
+  "theme_color": "#080808",
+  "lang": "en-GB",
+  "categories": ["music", "entertainment", "lifestyle"],
+  "icons": [
+    {
+      "src": "images/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
