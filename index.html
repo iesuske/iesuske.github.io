@@ -69,7 +69,7 @@
         }
 
         /* =======================================================
-           TITOLO HEADER (DESKTOP)
+           TITOLO HEADER (DESKTOP - PERFETTO E INTATTO)
            ======================================================= */
         .header-anchor {
             position: absolute;
@@ -236,7 +236,7 @@
         }
 
         /* =======================================================
-           MOBILE & TABLET RESPONSIVE (NUOVO APPROCCIO DEFINITIVO)
+           MOBILE & TABLET RESPONSIVE (CORRETTO E ALLINEATO)
            ======================================================= */
         @media screen and (max-width: 1024px) {
             html, body {
@@ -247,26 +247,22 @@
             }
 
             .master-canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
+                position: relative;
                 width: 100vw;
                 height: 100vh;
-                margin: 0 !important;
-                padding: 0;
-                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: #fde3b8;
+                margin-top: 0 !important;
+                overflow: hidden;
             }
 
-            /* L'immagine ora fa da sfondo coprente a tutto schermo: zero spazi vuoti, macchina grande */
             .bg-image {
-                position: absolute;
-                top: 0;
-                left: 0;
                 width: 100vw;
-                height: 100vh;
-                object-fit: cover;
-                object-position: center;
+                height: auto;
+                max-height: 100vh;
+                object-fit: contain;
                 display: block;
             }
 
@@ -279,9 +275,10 @@
                 pointer-events: none;
             }
 
+            /* ALLINEAMENTO FINALE SULLA FASCIA ROSSA MOBILE */
             .header-anchor {
                 position: absolute;
-                top: 9%; /* Posizionamento calibrato in percentuale di viewport sulla fascia rossa */
+                top: 18%; 
                 left: 0;
                 width: 100%;
                 padding: 0 10px;
@@ -290,7 +287,7 @@
             }
 
             .brand-title {
-                font-size: 5.2vw;
+                font-size: 5vw;
                 white-space: nowrap;
             }
 
@@ -299,7 +296,7 @@
                 justify-content: center;
                 align-items: center;
                 margin-left: 0 !important;
-                margin-top: 1.2vh;
+                margin-top: 1vh;
                 gap: 6vw; 
                 width: 100%;
             }
@@ -312,7 +309,7 @@
                 font-size: 0.95rem;
             }
 
-            /* FOOTER MOBILE: Riga unica compatta in basso */
+            /* FOOTER MOBILE: Compatto in riga unica */
             footer {
                 position: fixed;
                 bottom: 0;
