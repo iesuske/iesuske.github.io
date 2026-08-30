@@ -236,7 +236,7 @@
         }
 
         /* =======================================================
-           MOBILE & TABLET RESPONSIVE (CORRETTO E ALLINEATO)
+           MOBILE & TABLET RESPONSIVE (NUOVO APPROCCIO STRUTTURALE)
            ======================================================= */
         @media screen and (max-width: 1024px) {
             html, body {
@@ -247,47 +247,55 @@
             }
 
             .master-canvas {
-                position: relative;
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100vw;
                 height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #fde3b8;
-                margin-top: 0 !important;
+                margin: 0 !important;
+                padding: 0;
                 overflow: hidden;
+                background-color: #fde3b8;
             }
 
+            /* L'immagine copre interamente lo schermo: macchina grande e centrata, zero spazi beige vuoti */
             .bg-image {
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100vw;
-                height: auto;
-                max-height: 100vh;
-                object-fit: contain;
+                height: 100vh;
+                object-fit: cover;
+                object-position: center;
                 display: block;
             }
 
+            /* Layout flex verticale per ancorare perfettamente la scritta sulla fascia rossa */
             .text-layer {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100vw;
                 height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 5.5vh; 
                 pointer-events: none;
+                z-index: 10;
             }
 
-            /* ALLINEAMENTO FINALE SULLA FASCIA ROSSA MOBILE */
             .header-anchor {
-                position: absolute;
-                top: 18%; 
-                left: 0;
+                position: relative;
+                top: auto;
+                left: auto;
                 width: 100%;
-                padding: 0 10px;
                 text-align: center;
                 pointer-events: auto;
             }
 
             .brand-title {
-                font-size: 5vw;
+                font-size: 5.2vw;
                 white-space: nowrap;
             }
 
@@ -309,7 +317,7 @@
                 font-size: 0.95rem;
             }
 
-            /* FOOTER MOBILE: Compatto in riga unica */
+            /* FOOTER MOBILE: Compatto in riga unica in basso */
             footer {
                 position: fixed;
                 bottom: 0;
