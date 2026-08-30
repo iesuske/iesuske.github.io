@@ -42,13 +42,18 @@
             min-height: 100vh;
             background-color: #fde3b8; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
+        /* =======================================================
+           STRUTTURA COMUNE (DESKTOP)
+           ======================================================= */
         .master-canvas {
             position: relative;
             width: 100%;
+            max-width: 100%;
             background-color: #fde3b8;
-            margin-top: -50px;
+            margin: 0 auto;
         }
 
         .bg-image {
@@ -66,9 +71,6 @@
             pointer-events: none; 
         }
 
-        /* =======================================================
-           TITOLO HEADER (DESKTOP - PERFETTO E INTATTO)
-           ======================================================= */
         .header-anchor {
             position: absolute;
             top: 7.6%; 
@@ -110,9 +112,6 @@
             text-shadow: none;
         }
 
-        /* =======================================================
-           POSIZIONE MENU DESKTOP
-           ======================================================= */
         .menus-container {
             display: flex;
             gap: 5.5vw; 
@@ -219,72 +218,40 @@
             border-bottom-right-radius: 12px;
         }
 
-        /* FOOTER FISSO IN BASSO (DESKTOP) */
         footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            z-index: 1000;
-            padding: 5px 10px;
+            padding: 10px;
             text-align: center;
             background: rgba(13, 27, 42, 1);
             color: white;
             font-size: 0.75rem;
+            z-index: 1000;
         }
 
         /* =======================================================
-           MOBILE & TABLET RESPONSIVO (FORZATO E RIMPICCIOLITO)
+           MOBILE & TABLET RESPONSIVE (NUOVA LOGICA UNIFICATA)
            ======================================================= */
         @media screen and (max-width: 1024px) {
-            html, body {
-                width: 100%;
-                height: auto;
-                overflow-x: hidden;
-                overflow-y: auto;
-                background-color: #fde3b8 !important;
-            }
-
             .master-canvas {
-                position: relative;
                 width: 100%;
-                height: auto;
-                margin-top: 0 !important;
-                background-color: #fde3b8;
+                margin-top: 0;
             }
 
-            /* L'immagine si adatta interamente allo schermo senza tagli ai lati */
             .bg-image {
-                width: 100% !important;
-                height: auto !important;
-                max-width: 100% !important;
-                display: block;
+                width: 100%;
+                height: auto;
                 object-fit: contain;
             }
 
-            .text-layer {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-            }
-
-            /* Ancoraggio preciso sulla fascia rossa rapportato alla nuova dimensione dell'immagine */
+            /* Ancoraggio calibrato percentualmente sullo stesso canvas dell'immagine */
             .header-anchor {
-                position: absolute;
-                top: 7.2% !important; 
-                left: 0;
-                width: 100%;
+                top: 7.6%; 
                 padding: 0 5px;
-                text-align: center;
-                pointer-events: auto;
             }
 
             .brand-title {
-                font-size: 4.8vw !important;
-                white-space: nowrap;
+                font-size: 5.2vw;
             }
 
             .menus-container {
@@ -292,26 +259,22 @@
                 justify-content: center;
                 align-items: center;
                 margin-left: 0 !important;
-                margin-top: 0.6vw !important;
-                gap: 5vw; 
+                margin-top: 1vw;
+                gap: 6vw; 
                 width: 100%;
             }
 
             .dropdown-trigger {
-                font-size: 3vw !important;
+                font-size: 3.2vw;
             }
 
             .dropdown-menu li {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
 
             footer {
-                position: relative;
-                width: 100%;
                 font-size: 0.6rem;
-                padding: 8px 5px;
-                background: rgba(13, 27, 42, 1);
-                z-index: 2000;
+                padding: 8px 4px;
             }
         }
     </style>
@@ -327,8 +290,7 @@
 <body>
 
     <div class="master-canvas">
-        <!-- Aggiunto parametro ?v=99 per forzare il refresh della cache dell'immagine -->
-        <img src="images/bg2.jpg?v=99" class="bg-image" alt="Artwork Fabio Redaelli">
+        <img src="images/bg2.jpg" class="bg-image" alt="Artwork Fabio Redaelli">
         <div class="text-layer">
             <div class="header-anchor">
                 <h1 class="brand-title testo-custom"><span class="text-white">Fabio</span>&nbsp;<span class="text-black">Hot Stuff</span>&nbsp;<span class="text-white">Redaelli</span></h1>
