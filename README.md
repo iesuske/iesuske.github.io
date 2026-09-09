@@ -1,12 +1,12 @@
 # [Glue & Chaos]
 
-**Original UK & US Punk Vinyl Archive — 1976–1980**
+**Original UK & US Punk Vinyl Archive — 1976–1979**
 
 ★ FIRST PRESSINGS ONLY ★ NO REPRESSES ★ NO BOOTLEGS ★ NO BULLSHIT ★
 
 ---
 
-A personal archive of original first-pressing punk vinyl from the UK and US, 1976–1980. No reissues, no repressed nostalgia — just the real labels, the real catalog numbers, the real runout groove matrix. Built one record at a time by a collector, for collectors.
+A personal archive of original first-pressing punk vinyl from the UK and US, 1976–1979. No reissues, no repressed nostalgia — just the real labels, the real catalog numbers, the real runout groove matrix. Built one record at a time by a collector, for collectors.
 
 **Live site:** [iesuske.github.io](https://iesuske.github.io/)
 
